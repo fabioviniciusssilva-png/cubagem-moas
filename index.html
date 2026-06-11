@@ -465,67 +465,34 @@ function startAnalysis(dataUrl){
 }
 
 async function analisarComIA(dataUrl){
-  // Reduz tamanho da imagem antes de enviar para a API
-  var mtype = dataUrl.split(';')[0].split(':')[1];
-
   try{
-    // Comprimir imagem via canvas
-    var compressed = await comprimirImagem(dataUrl, 800);
+    var compressed = await comprimirImagem(dataUrl, 900);
     var base64 = compressed.split(',')[1];
     var ctype = compressed.split(';')[0].split(':')[1];
 
-    var prompt = 'Analise a foto de caixas ou pallet. '
-      + 'Retorne APENAS este JSON (sem texto extra, sem markdown): '
-      + '{"C":60,"L":40,"A":30,"qtd":1,"conf":"alta","obs":"motivo"} '
-      + 'Onde C=comprimento, L=largura, A=altura em CENTIMETROS inteiros. '
-      + 'Se houver etiqueta com medidas, use-as. '
-      + 'Pallet padrao = 120x100cm de base. '
-      + 'qtd = numero de caixas iguais visiveis.';
-
-    var res = await fetch('https://api.anthropic.com/v1/messages',{
+    var res = await fetch('/api/analisar',{
       method:'POST',
       headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({
-        model:'claude-sonnet-4-20250514',
-        max_tokens:150,
-        messages:[{role:'user',content:[
-          {type:'image',source:{type:'base64',media_type:ctype,data:base64}},
-          {type:'text',text:prompt}
-        ]}]
-      })
+      body:JSON.stringify({imageBase64:base64, mediaType:ctype})
     });
 
     var txt_raw = await res.text();
-
-    // Tratar resposta crua antes de parsear
-    var data;
-    try{ data = JSON.parse(txt_raw); }
-    catch(e){ throw new Error('Erro de comunicacao com a IA'); }
-
-    if(data.error) throw new Error(data.error.message||'Erro da API');
-
-    var block = data.content && data.content.find(function(b){return b.type==='text';});
-    var txt = block ? block.text.trim() : '';
-
-    // Extrai JSON da resposta (mesmo que venha com texto extra)
-    var m = txt.match(/\{[^{}]*\}/);
-    if(!m) throw new Error('IA nao retornou dimensoes. Tente uma foto mais proxima e bem iluminada.');
-
     var p;
-    try{ p = JSON.parse(m[0]); }
-    catch(e){ throw new Error('Formato invalido. Tente novamente.'); }
+    try{ p = JSON.parse(txt_raw); }
+    catch(e){ throw new Error('Erro ao processar resposta da IA'); }
+
+    if(p.error) throw new Error(p.error);
 
     var C = Math.round(parseFloat(p.C||p.comprimento||p.c||0));
     var L = Math.round(parseFloat(p.L||p.largura||p.l||0));
     var A = Math.round(parseFloat(p.A||p.altura||p.a||0));
     var qtd = Math.max(1, parseInt(p.qtd||p.quantidade||1)||1);
 
-    // Correcao: se em metros, converter
     if(C>0&&C<6) C=C*100;
     if(L>0&&L<6) L=L*100;
     if(A>0&&A<6) A=A*100;
 
-    if(C<5||L<5||A<5) throw new Error('Dimensoes muito pequenas. Aproxime mais a camera da caixa.');
+    if(C<5||L<5||A<5) throw new Error('Nao foi possivel estimar. Aproxime mais a camera.');
 
     mostrarResultado(C, L, A, qtd, p.conf||'media', p.obs||'Estimativa visual');
 
