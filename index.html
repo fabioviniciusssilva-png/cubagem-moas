@@ -13,327 +13,339 @@
 <title>Cubagem MOAS</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap');
-:root{--sage:#5a7a62;--sage-l:#7a9e84;--sage-pale:#e8f0ea;--sage-dim:#c6d9c9;--charcoal:#2c3530;--ch-mid:#485249;--ch-light:#6b7570;--surface:#f5f8f5;--border:#d4e0d6;--warn:#c97c2e;--warn-pale:#fdf3e7;--warn-border:#e8b97a;--danger:#b94040;--danger-pale:#fdeaea;--info:#2e6fc9;--info-pale:#e7f0fd;--mono:"JetBrains Mono",monospace;--sans:"Inter",sans-serif;--r:14px;--rsm:8px;--shadow:0 2px 12px rgba(44,53,48,.10);--shadow-lg:0 8px 32px rgba(44,53,48,.18);}
+:root{--sage:#5a7a62;--sage-l:#7a9e84;--sage-pale:#e8f0ea;--sage-dim:#c6d9c9;--ch:#2c3530;--ch2:#485249;--ch3:#6b7570;--surf:#f5f8f5;--brd:#d4e0d6;--warn:#c97c2e;--wp:#fdf3e7;--wb:#e8b97a;--err:#b94040;--ep:#fdeaea;--info:#2e6fc9;--ip:#e7f0fd;--mono:"JetBrains Mono",monospace;--sans:"Inter",sans-serif;--r:14px;--rsm:8px;--sh:0 2px 12px rgba(44,53,48,.10);--shl:0 6px 28px rgba(44,53,48,.16);}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
-body{font-family:var(--sans);background:var(--surface);color:var(--charcoal);min-height:100vh;padding-bottom:env(safe-area-inset-bottom)}
-header{background:var(--charcoal);padding:0 16px;padding-top:env(safe-area-inset-top);display:flex;align-items:center;justify-content:space-between;height:calc(54px + env(safe-area-inset-top));position:sticky;top:0;z-index:200;box-shadow:0 2px 8px rgba(0,0,0,.2)}
-.brand{display:flex;align-items:center;gap:10px}
+body{font-family:var(--sans);background:var(--surf);color:var(--ch);min-height:100vh;padding-bottom:env(safe-area-inset-bottom)}
+header{background:var(--ch);padding:0 16px;padding-top:env(safe-area-inset-top);display:flex;align-items:center;justify-content:space-between;height:calc(52px + env(safe-area-inset-top));position:sticky;top:0;z-index:200;box-shadow:0 2px 8px rgba(0,0,0,.2)}
 .brand-name{font-size:14px;font-weight:700;color:#fff}
 .brand-sub{font-size:10px;color:var(--sage-dim)}
-.hdr-right{display:flex;align-items:center;gap:8px}
 .hdr-op{font-size:11px;color:rgba(255,255,255,.5);cursor:pointer;display:flex;align-items:center;gap:4px}
-.hdr-op span{color:var(--sage-dim);font-weight:600;max-width:100px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-#installBanner{background:linear-gradient(135deg,#3d5a47,#2c3530);border-radius:var(--r);padding:12px 14px;margin:12px 14px 0;display:none;align-items:center;gap:10px;box-shadow:var(--shadow-lg)}
-.install-icon{font-size:24px;flex-shrink:0}
-.install-text{flex:1}
-.install-text strong{font-size:12px;color:#fff;display:block}
-.install-text span{font-size:10px;color:rgba(255,255,255,.55)}
-.btn-install{background:var(--sage);color:#fff;border:none;border-radius:var(--rsm);padding:8px 14px;font-family:var(--sans);font-size:12px;font-weight:600;cursor:pointer;flex-shrink:0}
-.btn-install-close{background:none;border:none;color:rgba(255,255,255,.4);font-size:20px;cursor:pointer;padding:2px 6px;flex-shrink:0;line-height:1}
-#toast{position:fixed;bottom:calc(20px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%) translateY(60px);background:var(--charcoal);color:#fff;padding:11px 20px;border-radius:30px;font-size:13px;font-weight:500;box-shadow:var(--shadow-lg);z-index:999;opacity:0;transition:all .3s;pointer-events:none;white-space:nowrap;max-width:92vw;text-align:center}
+.hdr-op span{color:var(--sage-dim);font-weight:600;max-width:90px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#installBanner{background:linear-gradient(135deg,#3d5a47,#2c3530);padding:11px 14px;margin:12px 14px 0;border-radius:var(--r);display:none;align-items:center;gap:10px;box-shadow:var(--shl)}
+.ib-text{flex:1}.ib-text strong{font-size:12px;color:#fff;display:block}.ib-text span{font-size:10px;color:rgba(255,255,255,.5)}
+.btn-inst{background:var(--sage);color:#fff;border:none;border-radius:var(--rsm);padding:8px 14px;font-size:12px;font-weight:600;cursor:pointer;flex-shrink:0}
+.btn-inst-x{background:none;border:none;color:rgba(255,255,255,.4);font-size:20px;cursor:pointer;padding:2px 5px;line-height:1}
+#toast{position:fixed;bottom:calc(16px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%) translateY(60px);background:var(--ch);color:#fff;padding:11px 20px;border-radius:30px;font-size:13px;font-weight:500;box-shadow:var(--shl);z-index:999;opacity:0;transition:all .3s;pointer-events:none;white-space:nowrap;max-width:92vw;text-align:center}
 #toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
-
-/* MODAL OPERADOR */
 .modal-op{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:500;display:none;align-items:center;justify-content:center;padding:20px}
-.modal-op-box{background:#fff;border-radius:var(--r);width:100%;max-width:340px;overflow:hidden;box-shadow:var(--shadow-lg)}
-.modal-op-hd{background:var(--charcoal);padding:16px 18px}
-.modal-op-hd h2{font-size:15px;font-weight:600;color:#fff;margin-bottom:3px}
-.modal-op-hd p{font-size:12px;color:rgba(255,255,255,.5)}
-.modal-op-body{padding:18px}
-.modal-op-body label{font-size:11px;font-weight:600;color:var(--ch-mid);text-transform:uppercase;display:block;margin-bottom:6px}
-.modal-op-body input{font-family:var(--sans);font-size:16px;color:var(--charcoal);background:var(--surface);border:1.5px solid var(--border);border-radius:var(--rsm);padding:10px 12px;width:100%;outline:none;margin-bottom:12px}
-.modal-op-body input:focus{border-color:var(--sage);background:#fff}
-.btn-salvar-op{width:100%;background:var(--sage);color:#fff;border:none;border-radius:var(--rsm);padding:13px;font-family:var(--sans);font-size:15px;font-weight:600;cursor:pointer}
-.btn-salvar-op:active{filter:brightness(.9)}
-
-/* TABS */
-.tabs-bar{background:var(--charcoal);display:flex;border-top:1px solid rgba(255,255,255,.08)}
-.tab-btn{flex:1;background:none;border:none;color:rgba(255,255,255,.45);font-family:var(--sans);font-size:13px;font-weight:500;padding:12px 8px;cursor:pointer;border-bottom:2px solid transparent;transition:all .15s;display:flex;align-items:center;justify-content:center;gap:6px}
+.modal-op-box{background:#fff;border-radius:var(--r);width:100%;max-width:340px;overflow:hidden;box-shadow:var(--shl)}
+.mob-hd{background:var(--ch);padding:16px 18px}.mob-hd h2{font-size:15px;font-weight:600;color:#fff;margin-bottom:3px}.mob-hd p{font-size:12px;color:rgba(255,255,255,.5)}
+.mob-body{padding:18px}.mob-body label{font-size:11px;font-weight:600;color:var(--ch2);text-transform:uppercase;display:block;margin-bottom:6px}
+.mob-body input{font-size:16px;color:var(--ch);background:var(--surf);border:1.5px solid var(--brd);border-radius:var(--rsm);padding:10px 12px;width:100%;outline:none;margin-bottom:12px;font-family:var(--sans)}
+.mob-body input:focus{border-color:var(--sage);background:#fff}
+.btn-ok{width:100%;background:var(--sage);color:#fff;border:none;border-radius:var(--rsm);padding:13px;font-size:15px;font-weight:600;cursor:pointer;font-family:var(--sans)}
+.tabs-bar{background:var(--ch);display:flex;border-top:1px solid rgba(255,255,255,.08)}
+.tab-btn{flex:1;background:none;border:none;color:rgba(255,255,255,.45);font-family:var(--sans);font-size:13px;font-weight:500;padding:11px 8px;cursor:pointer;border-bottom:2px solid transparent;display:flex;align-items:center;justify-content:center;gap:5px}
 .tab-btn.active{color:#fff;border-bottom-color:var(--sage);font-weight:600}
+main{max-width:580px;margin:0 auto;padding:16px 14px 40px}
+.cfg-bar{background:#fff;border:1px solid var(--brd);border-radius:var(--r);padding:11px 14px;display:flex;flex-wrap:wrap;gap:10px;box-shadow:var(--sh);margin-bottom:14px}
+.cfg-g{display:flex;align-items:center;gap:7px}
+.cfg-lbl{font-size:11px;font-weight:600;color:var(--ch2);text-transform:uppercase;letter-spacing:.4px}
+.cfg-in{font-family:var(--mono);font-size:13px;font-weight:600;color:var(--sage);background:var(--sage-pale);border:1.5px solid var(--sage-dim);border-radius:var(--rsm);padding:5px 9px;width:78px;text-align:center;outline:none}
+.cfg-in:focus{border-color:var(--sage)}
+select.cfg-in{width:auto}
 
-main{max-width:600px;margin:0 auto;padding:16px 14px 40px}
-.page-title{font-size:21px;font-weight:700;letter-spacing:-.3px;margin-bottom:2px}
-.page-sub{font-size:12px;color:var(--ch-light);margin-bottom:14px}
-.config-bar{background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:11px 14px;display:flex;flex-wrap:wrap;gap:10px;box-shadow:var(--shadow);margin-bottom:14px}
-.cfg-group{display:flex;align-items:center;gap:7px}
-.cfg-label{font-size:11px;font-weight:600;color:var(--ch-mid);text-transform:uppercase;letter-spacing:.4px}
-.cfg-input{font-family:var(--mono);font-size:13px;font-weight:600;color:var(--sage);background:var(--sage-pale);border:1.5px solid var(--sage-dim);border-radius:var(--rsm);padding:5px 9px;width:78px;text-align:center;outline:none}
-.cfg-input:focus{border-color:var(--sage)}
-select.cfg-input{width:auto}
-.camera-section{background:linear-gradient(135deg,#2c3530,#3a5244);border-radius:var(--r);padding:16px 14px 18px;margin-bottom:14px;box-shadow:var(--shadow-lg)}
-.camera-title{font-size:11px;font-weight:600;color:rgba(255,255,255,.5);text-align:center;text-transform:uppercase;letter-spacing:.6px;margin-bottom:12px}
-.btn-camera-wrap{position:relative;width:100%;margin-bottom:10px}
-.btn-camera{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;background:var(--sage);color:#fff;border:none;border-radius:14px;padding:20px 14px;font-family:var(--sans);cursor:pointer;width:100%;transition:transform .15s;box-shadow:0 4px 18px rgba(90,122,98,.4)}
-.btn-camera:active{transform:scale(.97)}
-.cam-icon{font-size:40px;line-height:1}
-.cam-text{font-size:16px;font-weight:700}
-.cam-sub{font-size:11px;color:rgba(255,255,255,.7)}
-.btn-camera-wrap input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+/* BOTÃO CÂMERA — grande e destacado */
+.cam-sec{background:linear-gradient(135deg,var(--ch),#3a5244);border-radius:var(--r);padding:18px 14px 20px;margin-bottom:14px;box-shadow:var(--shl)}
+.cam-lbl{font-size:11px;font-weight:600;color:rgba(255,255,255,.5);text-align:center;text-transform:uppercase;letter-spacing:.6px;margin-bottom:12px}
+.cam-wrap{position:relative;width:100%;margin-bottom:10px}
+.btn-cam{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;background:var(--sage);color:#fff;border:none;border-radius:14px;padding:22px 14px;cursor:pointer;width:100%;transition:transform .15s;box-shadow:0 4px 18px rgba(90,122,98,.4);font-family:var(--sans)}
+.btn-cam:active{transform:scale(.97)}
+.cam-icon{font-size:44px;line-height:1}
+.cam-txt{font-size:17px;font-weight:700}
+.cam-sub{font-size:12px;color:rgba(255,255,255,.7)}
+.cam-wrap input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
 .or-line{display:flex;align-items:center;gap:8px;margin:2px 0 10px}
 .or-line::before,.or-line::after{content:"";flex:1;height:1px;background:rgba(255,255,255,.12)}
 .or-line span{font-size:11px;color:rgba(255,255,255,.3)}
-.btn-gallery-wrap{position:relative;width:100%}
-.btn-gallery{display:flex;align-items:center;justify-content:center;gap:7px;background:rgba(255,255,255,.08);color:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.18);border-radius:var(--r);padding:11px 14px;font-family:var(--sans);font-size:13px;font-weight:500;cursor:pointer;width:100%}
-.btn-gallery-wrap input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
-.ai-card{background:#fff;border:1px solid var(--border);border-radius:var(--r);box-shadow:var(--shadow-lg);margin-bottom:14px;overflow:hidden;display:none}
-.ai-card-hd{background:var(--charcoal);padding:11px 14px;display:flex;align-items:center;justify-content:space-between}
-.ai-card-title{font-size:13px;font-weight:600;color:#fff}
-.ai-badge{font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px}
-.ai-badge.loading{background:var(--info-pale);color:var(--info)}
-.ai-badge.success{background:var(--sage-pale);color:var(--sage)}
-.ai-badge.error{background:var(--warn-pale);color:var(--warn)}
-.ai-body{padding:13px}
-.ai-preview{width:100%;max-height:160px;object-fit:contain;border-radius:var(--rsm);border:1px solid var(--border);margin-bottom:10px;display:block}
-.ai-loading{display:flex;align-items:center;gap:10px;color:var(--info);padding:6px 0 10px}
-.spinner{width:20px;height:20px;border:3px solid var(--info-pale);border-top-color:var(--info);border-radius:50%;animation:spin .8s linear infinite;flex-shrink:0}
+.gal-wrap{position:relative;width:100%}
+.btn-gal{display:flex;align-items:center;justify-content:center;gap:7px;background:rgba(255,255,255,.08);color:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.18);border-radius:var(--r);padding:11px 14px;font-family:var(--sans);font-size:13px;font-weight:500;cursor:pointer;width:100%}
+.gal-wrap input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+
+/* PAINEL DE ANÁLISE */
+#painelAnalise{background:#fff;border:1px solid var(--brd);border-radius:var(--r);box-shadow:var(--shl);margin-bottom:14px;overflow:hidden;display:none}
+.pan-hd{background:var(--ch);padding:12px 14px;display:flex;align-items:center;justify-content:space-between}
+.pan-hd-title{font-size:13px;font-weight:600;color:#fff}
+#imgPreview{width:100%;max-height:180px;object-fit:contain;border-bottom:1px solid var(--brd);display:none}
+#loadingDiv{display:none;align-items:center;gap:12px;padding:20px 16px;color:var(--info)}
+.spinner{width:24px;height:24px;border:3px solid var(--ip);border-top-color:var(--info);border-radius:50%;animation:spin .8s linear infinite;flex-shrink:0}
 @keyframes spin{to{transform:rotate(360deg)}}
-.ai-loading span{font-size:13px}
-.ai-section-title{font-size:10px;font-weight:600;color:var(--ch-light);text-transform:uppercase;letter-spacing:.4px;margin:0 0 7px}
-.ai-dims{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-bottom:9px}
-.ai-dim label{font-size:10px;font-weight:600;color:var(--ch-light);text-transform:uppercase;display:block;margin-bottom:3px}
-.ai-dim input{font-family:var(--mono);font-size:17px;font-weight:700;color:var(--sage);background:var(--sage-pale);border:2px solid var(--sage-dim);border-radius:var(--rsm);padding:8px 5px;width:100%;text-align:center;outline:none}
-.ai-dim input:focus{border-color:var(--sage);background:#fff}
-.ai-row2{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:9px}
-.ai-field label{font-size:10px;font-weight:600;color:var(--ch-light);text-transform:uppercase;display:block;margin-bottom:3px}
-.ai-field input{font-family:var(--mono);font-size:15px;font-weight:600;color:var(--charcoal);background:var(--surface);border:1.5px solid var(--border);border-radius:var(--rsm);padding:8px;width:100%;text-align:center;outline:none}
-.ai-field input:focus{border-color:var(--sage);background:#fff}
-.ai-field.hl label{color:var(--sage)}
-.ai-field.hl input{color:var(--sage);background:var(--sage-pale);border-color:var(--sage-dim)}
-.ai-obs{font-size:12px;color:var(--ch-light);background:var(--surface);border-radius:var(--rsm);padding:7px 10px;margin-bottom:9px;line-height:1.5}
-.ai-obs strong{color:var(--ch-mid)}
-.cub-preview{background:var(--charcoal);border-radius:var(--rsm);padding:11px 12px;margin-bottom:10px;display:none}
-.cub-preview-title{font-size:10px;font-weight:600;color:rgba(255,255,255,.35);text-transform:uppercase;letter-spacing:.4px;margin-bottom:7px}
-.cub-dims-row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:7px}
-.cub-dims-row span{font-size:11px;color:rgba(255,255,255,.4)}
-.cub-dims-row strong{color:rgba(255,255,255,.75);font-family:var(--mono)}
-.cub-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}
-.cub-cell{text-align:center}
-.cub-cell .cc-label{font-size:10px;color:rgba(255,255,255,.35);margin-bottom:2px}
-.cub-cell .cc-val{font-family:var(--mono);font-size:13px;font-weight:700;color:#fff}
-.cub-cell.hi .cc-val{color:#a8d4b0;font-size:16px}
-.cub-cell.warn .cc-val{color:#f0b97a;font-size:16px}
-.ai-note{font-size:11px;color:var(--ch-light);margin-bottom:10px;line-height:1.5;padding:7px 10px;background:var(--warn-pale);border-radius:var(--rsm);border-left:3px solid var(--warn)}
-.ai-actions{display:flex;gap:7px}
-.btn-confirm{flex:1;background:var(--sage);color:#fff;border:none;border-radius:var(--rsm);padding:13px;font-family:var(--sans);font-size:14px;font-weight:600;cursor:pointer}
-.btn-confirm:active{filter:brightness(.9)}
-.btn-cancel{background:transparent;color:var(--ch-light);border:1.5px solid var(--border);border-radius:var(--rsm);padding:13px 14px;font-family:var(--sans);font-size:13px;cursor:pointer}
-.volumes-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:9px}
-.volumes-hd-title{font-size:13px;font-weight:600}
-.btn-clear{background:transparent;color:var(--ch-light);border:1px solid var(--border);border-radius:var(--rsm);padding:5px 11px;font-family:var(--sans);font-size:12px;cursor:pointer}
-.empty-state{text-align:center;padding:26px 14px;color:var(--ch-light);font-size:13px;background:#fff;border:1px solid var(--border);border-radius:var(--r)}
-.vol-card{background:#fff;border:1px solid var(--border);border-radius:var(--r);margin-bottom:9px;box-shadow:var(--shadow);overflow:hidden}
-.vol-card-hd{background:var(--sage-pale);border-bottom:1px solid var(--sage-dim);padding:8px 13px;display:flex;align-items:center;justify-content:space-between}
-.vol-card-name{font-size:13px;font-weight:600;color:var(--sage)}
-.vol-badge{font-family:var(--mono);font-size:12px;font-weight:600;padding:2px 8px;border-radius:4px;background:#fff;border:1px solid var(--border);color:var(--charcoal)}
-.vol-badge.warn{color:var(--warn);border-color:var(--warn-border);background:var(--warn-pale)}
-.vol-grid{padding:10px 13px;display:grid;grid-template-columns:repeat(3,1fr);gap:7px}
-.vol-field label{font-size:10px;font-weight:600;color:var(--ch-light);text-transform:uppercase;display:block;margin-bottom:2px}
-.vol-field input{font-family:var(--mono);font-size:13px;color:var(--charcoal);background:var(--surface);border:1px solid var(--border);border-radius:var(--rsm);padding:6px;width:100%;text-align:center;outline:none}
-.vol-field input:focus{border-color:var(--sage);background:#fff}
-.vol-field input[readonly]{color:var(--sage);font-weight:600;background:var(--sage-pale);border-color:var(--sage-dim)}
-.vol-foot{border-top:1px solid var(--border);padding:7px 13px;display:flex;align-items:center;justify-content:space-between}
-.vol-foot-info{font-size:11px;color:var(--ch-light)}
-.btn-del{background:none;border:none;color:var(--danger);font-size:22px;cursor:pointer;padding:2px 5px;border-radius:4px;line-height:1}
-.total-bar{background:var(--charcoal);border-radius:var(--r);padding:14px;margin:12px 0;box-shadow:var(--shadow-lg);display:none}
-.total-lbl{font-size:10px;font-weight:600;color:rgba(255,255,255,.35);text-transform:uppercase;letter-spacing:.5px;margin-bottom:9px}
-.total-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}
-.ti-label{font-size:10px;color:rgba(255,255,255,.4);margin-bottom:1px}
+.loading-txt{font-size:14px}
+#erroDiv{display:none;padding:14px 16px;background:var(--ep);border-bottom:1px solid #f5c6c6}
+.erro-txt{font-size:13px;color:var(--err);margin-bottom:10px}
+.btn-manual{background:var(--ch);color:#fff;border:none;border-radius:var(--rsm);padding:8px 14px;font-size:13px;cursor:pointer;font-family:var(--sans)}
+
+/* RESULTADO DA IA */
+#resultDiv{display:none;padding:14px}
+.ia-conf{font-size:12px;color:var(--ch3);background:var(--surf);border-radius:var(--rsm);padding:7px 10px;margin-bottom:12px}
+.ia-conf strong{color:var(--ch2)}
+
+/* CAMPOS DE DIMENSÃO — grandes e claros */
+.dims-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:10px}
+.dim-box label{font-size:10px;font-weight:700;color:var(--sage);text-transform:uppercase;display:block;margin-bottom:3px;letter-spacing:.5px}
+.dim-box input{font-family:var(--mono);font-size:22px;font-weight:700;color:var(--ch);background:var(--sage-pale);border:2px solid var(--sage-dim);border-radius:var(--rsm);padding:10px 6px;width:100%;text-align:center;outline:none}
+.dim-box input:focus{border-color:var(--sage);background:#fff}
+.dim-unit{font-size:10px;color:var(--ch3);text-align:center;margin-top:2px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
+.dim-box2 label{font-size:10px;font-weight:600;color:var(--ch2);text-transform:uppercase;display:block;margin-bottom:3px}
+.dim-box2 input{font-family:var(--mono);font-size:17px;font-weight:600;color:var(--ch);background:var(--surf);border:1.5px solid var(--brd);border-radius:var(--rsm);padding:9px 8px;width:100%;text-align:center;outline:none}
+.dim-box2 input:focus{border-color:var(--sage);background:#fff}
+.dim-box2.hl label{color:var(--sage)}
+.dim-box2.hl input{background:var(--sage-pale);border-color:var(--sage-dim);color:var(--sage)}
+
+/* RESULTADO DO CÁLCULO — destaque total */
+#boxResultado{display:none;background:var(--ch);border-radius:var(--r);padding:14px;margin-bottom:12px}
+.res-dims{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,.1)}
+.res-dims span{font-size:12px;color:rgba(255,255,255,.5)}
+.res-dims strong{color:#fff;font-family:var(--mono)}
+.res-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:10px}
+.rg-cell{text-align:center}
+.rg-cell .rl{font-size:10px;color:rgba(255,255,255,.4);margin-bottom:3px}
+.rg-cell .rv{font-family:var(--mono);font-size:14px;font-weight:700;color:#fff}
+.res-tax-box{border-radius:var(--rsm);padding:12px;text-align:center;transition:background .2s}
+.res-tax-box.ok{background:var(--sage)}
+.res-tax-box.warn{background:var(--warn)}
+.tax-label{font-size:11px;font-weight:600;color:rgba(255,255,255,.8);margin-bottom:4px}
+.tax-val{font-family:var(--mono);font-size:28px;font-weight:700;color:#fff;line-height:1}
+.tax-unit{font-size:11px;color:rgba(255,255,255,.7);margin-top:2px}
+
+.pan-note{font-size:11px;color:var(--ch3);padding:8px 10px;background:var(--wp);border-radius:var(--rsm);border-left:3px solid var(--warn);margin-bottom:12px}
+.pan-actions{display:flex;gap:8px}
+.btn-add{flex:1;background:var(--sage);color:#fff;border:none;border-radius:var(--rsm);padding:14px;font-size:15px;font-weight:600;cursor:pointer;font-family:var(--sans)}
+.btn-add:active{filter:brightness(.9)}
+.btn-cncl{background:transparent;color:var(--ch3);border:1.5px solid var(--brd);border-radius:var(--rsm);padding:14px 14px;font-size:14px;cursor:pointer;font-family:var(--sans)}
+
+/* VOLUMES */
+.vols-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:9px}
+.vols-hd-title{font-size:13px;font-weight:600}
+.btn-clr{background:transparent;color:var(--ch3);border:1px solid var(--brd);border-radius:var(--rsm);padding:5px 11px;font-size:12px;cursor:pointer;font-family:var(--sans)}
+.empty{text-align:center;padding:28px 14px;color:var(--ch3);font-size:14px;background:#fff;border:1px solid var(--brd);border-radius:var(--r)}
+.vol-card{background:#fff;border:1px solid var(--brd);border-radius:var(--r);margin-bottom:9px;box-shadow:var(--sh);overflow:hidden}
+.vc-hd{background:var(--sage-pale);border-bottom:1px solid var(--sage-dim);padding:8px 13px;display:flex;align-items:center;justify-content:space-between}
+.vc-name{font-size:13px;font-weight:600;color:var(--sage)}
+.vc-badge{font-family:var(--mono);font-size:12px;font-weight:600;padding:2px 8px;border-radius:4px;background:#fff;border:1px solid var(--brd);color:var(--ch)}
+.vc-badge.w{color:var(--warn);border-color:var(--wb);background:var(--wp)}
+.vg{padding:10px 13px;display:grid;grid-template-columns:repeat(3,1fr);gap:7px}
+.vf label{font-size:10px;font-weight:600;color:var(--ch3);text-transform:uppercase;display:block;margin-bottom:2px}
+.vf input{font-family:var(--mono);font-size:13px;color:var(--ch);background:var(--surf);border:1px solid var(--brd);border-radius:var(--rsm);padding:6px;width:100%;text-align:center;outline:none}
+.vf input:focus{border-color:var(--sage);background:#fff}
+.vf input[readonly]{color:var(--sage);font-weight:600;background:var(--sage-pale);border-color:var(--sage-dim)}
+.vf-row{border-top:1px solid var(--brd);padding:7px 13px;display:flex;align-items:center;justify-content:space-between}
+.vf-info{font-size:11px;color:var(--ch3)}
+.btn-del{background:none;border:none;color:var(--err);font-size:22px;cursor:pointer;padding:2px 5px;border-radius:4px;line-height:1}
+
+/* TOTAL */
+#totalBar{background:var(--ch);border-radius:var(--r);padding:14px;margin:12px 0;box-shadow:var(--shl);display:none}
+.tot-lbl{font-size:10px;font-weight:600;color:rgba(255,255,255,.35);text-transform:uppercase;letter-spacing:.5px;margin-bottom:9px}
+.tot-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:10px}
+.ti-lbl{font-size:10px;color:rgba(255,255,255,.4);margin-bottom:1px}
 .ti-val{font-family:var(--mono);font-size:18px;font-weight:700;color:#fff;line-height:1}
-.ti-val.hi{color:#a8d4b0;font-size:22px}
-.ti-unit{font-size:10px;color:rgba(255,255,255,.3);margin-top:2px}
-.total-taxado-row{margin-top:10px;padding-top:10px;border-top:1px solid rgba(255,255,255,.1)}
-.footer-actions{display:none;gap:9px;margin-top:4px}
-.btn-act{flex:1;background:#fff;color:var(--ch-mid);border:1px solid var(--border);border-radius:var(--rsm);padding:11px 7px;font-family:var(--sans);font-size:12px;font-weight:500;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:5px}
+.tot-tax-row{padding-top:10px;border-top:1px solid rgba(255,255,255,.1)}
+.tot-tax-lbl{font-size:11px;color:rgba(255,255,255,.4);margin-bottom:4px}
+.tot-tax-val{font-family:var(--mono);font-size:28px;font-weight:700;color:#a8d4b0;line-height:1}
+.tot-tax-unit{font-size:10px;color:rgba(255,255,255,.35);margin-top:2px}
+#footerActs{display:none;gap:9px;margin-top:4px}
+.btn-act{flex:1;background:#fff;color:var(--ch2);border:1px solid var(--brd);border-radius:var(--rsm);padding:11px 7px;font-family:var(--sans);font-size:12px;font-weight:500;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:5px}
 .btn-act:active{background:var(--sage-pale);color:var(--sage)}
 
 /* HISTÓRICO */
-.hist-filters{background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:12px 14px;box-shadow:var(--shadow);margin-bottom:12px;display:flex;flex-wrap:wrap;gap:10px;align-items:flex-end}
-.filt-group{display:flex;flex-direction:column;gap:4px;flex:1;min-width:110px}
-.filt-group label{font-size:10px;font-weight:600;color:var(--ch-mid);text-transform:uppercase;letter-spacing:.4px}
-.filt-group input{font-family:var(--sans);font-size:13px;color:var(--charcoal);background:var(--surface);border:1px solid var(--border);border-radius:var(--rsm);padding:7px 9px;outline:none;width:100%}
-.filt-group input:focus{border-color:var(--sage);background:#fff}
-.btn-filtrar{background:var(--sage);color:#fff;border:none;border-radius:var(--rsm);padding:8px 16px;font-family:var(--sans);font-size:13px;font-weight:600;cursor:pointer;align-self:flex-end;white-space:nowrap}
-.btn-filtrar:active{filter:brightness(.9)}
-.btn-exp-hist{background:transparent;color:var(--ch-mid);border:1px solid var(--border);border-radius:var(--rsm);padding:8px 12px;font-family:var(--sans);font-size:12px;cursor:pointer;align-self:flex-end;white-space:nowrap}
-.hist-loading{display:flex;align-items:center;gap:10px;color:var(--info);padding:20px 0}
-.hist-kpis{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:14px}
-.hk{background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:12px;box-shadow:var(--shadow);text-align:center}
-.hk.hi{background:var(--charcoal)}
-.hk-val{font-family:var(--mono);font-size:22px;font-weight:700;color:var(--charcoal);line-height:1;margin-bottom:3px}
-.hk.hi .hk-val{color:#a8d4b0}
-.hk-label{font-size:11px;color:var(--ch-light)}
-.hk.hi .hk-label{color:rgba(255,255,255,.4)}
-.hist-list{display:flex;flex-direction:column;gap:8px}
-.hist-row{background:#fff;border:1px solid var(--border);border-radius:var(--r);padding:11px 13px;box-shadow:var(--shadow)}
-.hist-row-top{display:flex;align-items:center;gap:8px;margin-bottom:5px;flex-wrap:wrap}
-.hist-op{font-size:13px;font-weight:600;color:var(--sage);flex:1}
-.hist-date{font-size:11px;color:var(--ch-light)}
-.hist-badge{font-family:var(--mono);font-size:12px;font-weight:600;padding:2px 8px;border-radius:4px;background:var(--sage-pale);border:1px solid var(--sage-dim);color:var(--sage)}
-.hist-badge.warn{color:var(--warn);border-color:var(--warn-border);background:var(--warn-pale)}
-.hist-row-dims{font-family:var(--mono);font-size:12px;color:var(--ch-mid)}
-.hist-row-obs{font-size:11px;color:var(--ch-light);margin-top:4px;font-style:italic}
-@media print{header,.tabs-bar,#installBanner,.camera-section,.ai-card,.footer-actions,.btn-del,.btn-clear,.hist-filters{display:none!important}body{background:#fff}.total-bar{background:#485249!important}}
+.hist-filt{background:#fff;border:1px solid var(--brd);border-radius:var(--r);padding:11px 14px;box-shadow:var(--sh);margin-bottom:12px;display:flex;flex-wrap:wrap;gap:9px;align-items:flex-end}
+.fg{display:flex;flex-direction:column;gap:3px;flex:1;min-width:100px}
+.fg label{font-size:10px;font-weight:600;color:var(--ch2);text-transform:uppercase;letter-spacing:.4px}
+.fg input{font-size:13px;color:var(--ch);background:var(--surf);border:1px solid var(--brd);border-radius:var(--rsm);padding:7px 9px;outline:none;width:100%;font-family:var(--sans)}
+.fg input:focus{border-color:var(--sage);background:#fff}
+.btn-filt{background:var(--sage);color:#fff;border:none;border-radius:var(--rsm);padding:8px 14px;font-size:13px;font-weight:600;cursor:pointer;font-family:var(--sans);align-self:flex-end}
+.loading-hist{display:flex;align-items:center;gap:10px;color:var(--info);padding:20px 0}
+.hkpis{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin-bottom:12px}
+.hk{background:#fff;border:1px solid var(--brd);border-radius:var(--r);padding:11px;box-shadow:var(--sh);text-align:center}
+.hk.hi{background:var(--ch)}
+.hkv{font-family:var(--mono);font-size:20px;font-weight:700;color:var(--ch);line-height:1;margin-bottom:3px}
+.hk.hi .hkv{color:#a8d4b0}
+.hkl{font-size:11px;color:var(--ch3)}
+.hk.hi .hkl{color:rgba(255,255,255,.4)}
+.hlist{display:flex;flex-direction:column;gap:8px}
+.hr{background:#fff;border:1px solid var(--brd);border-radius:var(--r);padding:11px 13px;box-shadow:var(--sh)}
+.hr-top{display:flex;align-items:center;gap:8px;margin-bottom:5px;flex-wrap:wrap}
+.hr-op{font-size:13px;font-weight:600;color:var(--sage);flex:1}
+.hr-dt{font-size:11px;color:var(--ch3)}
+.hr-b{font-family:var(--mono);font-size:12px;font-weight:600;padding:2px 8px;border-radius:4px;background:var(--sage-pale);border:1px solid var(--sage-dim);color:var(--sage)}
+.hr-b.w{color:var(--warn);border-color:var(--wb);background:var(--wp)}
+.hr-d{font-family:var(--mono);font-size:12px;color:var(--ch2)}
+.hr-obs{font-size:11px;color:var(--ch3);margin-top:4px;font-style:italic}
+@media print{header,.tabs-bar,#installBanner,.cam-sec,#painelAnalise,#footerActs,.btn-del,.btn-clr,.hist-filt{display:none!important}body{background:#fff}#totalBar{background:#485249!important}}
 </style>
 </head>
 <body>
 
-<!-- MODAL OPERADOR -->
-<div class="modal-op" id="modalOperador">
+<div class="modal-op" id="modalOp">
   <div class="modal-op-box">
-    <div class="modal-op-hd">
-      <h2>&#128075; Ol&aacute;! Qual &eacute; o seu nome?</h2>
-      <p>Para registrar quem realizou cada cubagem</p>
-    </div>
-    <div class="modal-op-body">
+    <div class="mob-hd"><h2>&#128075; Qual &eacute; o seu nome?</h2><p>Para registrar quem realizou cada cubagem</p></div>
+    <div class="mob-body">
       <label>Seu nome</label>
-      <input type="text" id="inputOperador" placeholder="Ex: Jo&atilde;o Silva" autocomplete="name">
-      <button class="btn-salvar-op" id="btnSalvarOperador">Entrar &#8594;</button>
+      <input type="text" id="inputOp" placeholder="Ex: Jo&atilde;o Silva" autocomplete="name">
+      <button class="btn-ok" id="btnSalvarOp">Entrar &#8594;</button>
     </div>
   </div>
 </div>
 
 <header>
-  <div class="brand">
-    <div>
-      <div class="brand-name">Grupo MOAS</div>
-      <div class="brand-sub">Aferidor de Cubagem</div>
-    </div>
-  </div>
-  <div class="hdr-right">
-    <div class="hdr-op" id="btnTrocarOp">&#128100; <span id="operadorNome">—</span></div>
-  </div>
+  <div><div class="brand-name">Grupo MOAS</div><div class="brand-sub">Aferidor de Cubagem</div></div>
+  <div class="hdr-op" id="btnTrocarOp">&#128100; <span id="opNome">&mdash;</span></div>
 </header>
-
 <div class="tabs-bar">
-  <button class="tab-btn active" id="tabCalc" onclick="switchTab('calc')">&#128247; Calcular</button>
-  <button class="tab-btn" id="tabHist" onclick="switchTab('hist')">&#128202; Hist&oacute;rico</button>
+  <button class="tab-btn active" id="btnTabCalc" onclick="switchTab('calc')">&#128247; Calcular</button>
+  <button class="tab-btn" id="btnTabHist" onclick="switchTab('hist')">&#128202; Hist&oacute;rico</button>
 </div>
 
 <div id="installBanner">
-  <span class="install-icon">&#128241;</span>
-  <div class="install-text">
-    <strong>Instalar como App</strong>
-    <span>Funciona offline &mdash; ícone na tela inicial</span>
-  </div>
-  <button class="btn-install" id="btnInstall">Instalar</button>
-  <button class="btn-install-close" onclick="fecharBanner()">&#215;</button>
+  <span style="font-size:24px">&#128241;</span>
+  <div class="ib-text"><strong>Instalar como App</strong><span>Funciona offline &mdash; &iacute;cone na tela inicial</span></div>
+  <button class="btn-inst" id="btnInstall">Instalar</button>
+  <button class="btn-inst-x" onclick="fecharBanner()">&#215;</button>
 </div>
-
 <div id="toast"></div>
 
 <!-- TAB CALCULAR -->
-<div id="tab-calc">
+<div id="tabCalc">
 <main>
-  <div class="page-title">Cubagem por Foto</div>
-  <div class="page-sub">Fotografe a caixa ou pallet &mdash; a IA calcula e salva no hist&oacute;rico.</div>
-
-  <div class="config-bar">
-    <div class="cfg-group">
-      <span class="cfg-label">Fator</span>
-      <input class="cfg-input" id="fatorCub" type="number" value="300" min="50" max="1000">
-      <span style="font-size:11px;color:var(--ch-light)">kg/m&sup3; rod:300 a&eacute;reo:167</span>
-    </div>
-    <div class="cfg-group">
-      <span class="cfg-label">Unid.</span>
-      <select class="cfg-input" id="unidade">
-        <option value="cm" selected>cm</option>
-        <option value="m">m</option>
-      </select>
+  <div class="cfg-bar">
+    <div class="cfg-g">
+      <span class="cfg-lbl">Fator</span>
+      <input class="cfg-in" id="fatorCub" type="number" value="300" min="50" max="1000">
+      <span style="font-size:11px;color:var(--ch3)">kg/m&sup3; &nbsp;rod:300 &nbsp;a&eacute;reo:167</span>
     </div>
   </div>
 
-  <div class="camera-section">
-    <div class="camera-title">&#128247; Analisar por Foto</div>
-    <div class="btn-camera-wrap">
-      <button class="btn-camera">
+  <!-- CÂMERA -->
+  <div class="cam-sec">
+    <div class="cam-lbl">&#128247; Analisar por Foto</div>
+    <div class="cam-wrap">
+      <button class="btn-cam">
         <span class="cam-icon">&#128247;</span>
-        <span class="cam-text">Abrir C&acirc;mera</span>
-        <span class="cam-sub">Toque para fotografar a caixa ou pallet</span>
+        <span class="cam-txt">Abrir C&acirc;mera</span>
+        <span class="cam-sub">Fotografe a caixa ou pallet — a IA mede automaticamente</span>
       </button>
-      <input type="file" accept="image/*" capture="environment" id="inputCamera" onchange="handleFile(this)">
+      <input type="file" accept="image/*" capture="environment" onchange="handleFile(this)">
     </div>
     <div class="or-line"><span>ou escolha da galeria</span></div>
-    <div class="btn-gallery-wrap">
-      <button class="btn-gallery">&#128444;&#65038; Escolher da Galeria</button>
-      <input type="file" accept="image/*" id="inputGaleria" onchange="handleFile(this)">
+    <div class="gal-wrap">
+      <button class="btn-gal">&#128444;&#65038; Escolher da Galeria</button>
+      <input type="file" accept="image/*" onchange="handleFile(this)">
     </div>
   </div>
 
-  <div class="ai-card" id="aiCard">
-    <div class="ai-card-hd">
-      <span class="ai-card-title">An&aacute;lise da Imagem</span>
-      <span class="ai-badge loading" id="aiBadge">Analisando...</span>
+  <!-- PAINEL DE ANÁLISE -->
+  <div id="painelAnalise">
+    <div class="pan-hd">
+      <span class="pan-hd-title">&#128269; An&aacute;lise da Foto</span>
+      <button onclick="cancelarAnalise()" style="background:none;border:none;color:rgba(255,255,255,.5);font-size:20px;cursor:pointer;line-height:1">&#215;</button>
     </div>
-    <div class="ai-body">
-      <img id="aiPreview" class="ai-preview" src="" alt="">
-      <div class="ai-loading" id="aiLoading">
-        <div class="spinner"></div>
-        <span>IA lendo as dimens&otilde;es...</span>
+    <img id="imgPreview" src="" alt="">
+    
+    <!-- LOADING -->
+    <div id="loadingDiv">
+      <div class="spinner"></div>
+      <div>
+        <div class="loading-txt" style="font-weight:600">IA analisando a imagem...</div>
+        <div style="font-size:12px;color:var(--ch3);margin-top:3px">Lendo dimens&otilde;es automaticamente</div>
       </div>
-      <div id="aiContent" style="display:none">
-        <div class="ai-section-title">Dimens&otilde;es detectadas (cm)</div>
-        <div class="ai-dims">
-          <div class="ai-dim"><label>Comp.</label><input type="number" id="aiC" min="0" step="0.1" placeholder="0"></div>
-          <div class="ai-dim"><label>Larg.</label><input type="number" id="aiL" min="0" step="0.1" placeholder="0"></div>
-          <div class="ai-dim"><label>Altura</label><input type="number" id="aiA" min="0" step="0.1" placeholder="0"></div>
+    </div>
+    
+    <!-- ERRO -->
+    <div id="erroDiv">
+      <div class="erro-txt" id="erroTxt"></div>
+      <div style="font-size:12px;color:var(--ch3);margin-bottom:10px">Insira as dimens&otilde;es manualmente:</div>
+    </div>
+    
+    <!-- RESULTADO -->
+    <div id="resultDiv">
+      <div class="ia-conf" id="iaConfBox"><strong id="dimConf"></strong> &nbsp;<span id="dimObs"></span></div>
+      
+      <div style="font-size:11px;font-weight:600;color:var(--ch3);text-transform:uppercase;letter-spacing:.4px;margin-bottom:7px;padding:0 14px">Dimens&otilde;es detectadas (cm) — toque para ajustar</div>
+      
+      <div style="padding:0 14px">
+        <div class="dims-grid">
+          <div class="dim-box">
+            <label>&#8596; Comp.</label>
+            <input type="number" id="dimC" min="0" step="1" placeholder="0">
+            <div class="dim-unit">centímetros</div>
+          </div>
+          <div class="dim-box">
+            <label>&#8597; Larg.</label>
+            <input type="number" id="dimL" min="0" step="1" placeholder="0">
+            <div class="dim-unit">centímetros</div>
+          </div>
+          <div class="dim-box">
+            <label>&#8645; Altura</label>
+            <input type="number" id="dimA" min="0" step="1" placeholder="0">
+            <div class="dim-unit">centímetros</div>
+          </div>
         </div>
-        <div class="ai-row2">
-          <div class="ai-field hl">
+        <div class="row2">
+          <div class="dim-box2 hl">
             <label>&#128230; Qtd de caixas</label>
-            <input type="number" id="aiQtd" min="1" step="1" value="1">
+            <input type="number" id="dimQtd" min="1" step="1" value="1">
           </div>
-          <div class="ai-field">
+          <div class="dim-box2">
             <label>Peso real / cx (kg)</label>
-            <input type="number" id="aiPeso" min="0" step="0.1" placeholder="0">
+            <input type="number" id="dimPeso" min="0" step="0.1" placeholder="0">
           </div>
         </div>
-        <div class="ai-obs" id="aiObs"></div>
-        <div class="cub-preview" id="cubPreview">
-          <div class="cub-preview-title">Cubagem calculada</div>
-          <div class="cub-dims-row">
-            <span><strong id="cpComp">—</strong> C</span>
-            <span><strong id="cpLarg">—</strong> L</span>
-            <span><strong id="cpAlt">—</strong> A</span>
-            <span>&#215; <strong id="cpQtd">—</strong></span>
-            <span>= <strong id="cpM3">—</strong></span>
+
+        <!-- RESULTADO DO CÁLCULO — aparece automaticamente -->
+        <div id="boxResultado">
+          <div class="res-dims">
+            <span><strong id="resComp">—</strong> C</span>
+            <span><strong id="resLarg">—</strong> L</span>
+            <span><strong id="resAlt">—</strong> A</span>
+            <span>&#215;<strong id="resQtd">—</strong></span>
+            <span>= <strong id="resM3">—</strong></span>
           </div>
-          <div class="cub-grid">
-            <div class="cub-cell"><div class="cc-label">Peso Real</div><div class="cc-val" id="cpReal">&mdash;</div></div>
-            <div class="cub-cell"><div class="cc-label">Peso Cubado</div><div class="cc-val" id="cpCub">&mdash;</div></div>
-            <div class="cub-cell hi" id="cpTaxCell"><div class="cc-label">&#9654; Taxado</div><div class="cc-val" id="cpTax">&mdash;</div></div>
+          <div class="res-grid">
+            <div class="rg-cell"><div class="rl">Peso Real</div><div class="rv" id="resReal">&mdash;</div></div>
+            <div class="rg-cell"><div class="rl">Peso Cubado</div><div class="rv" id="resCub">&mdash;</div></div>
+            <div class="rg-cell"><div class="rl">Fator</div><div class="rv" id="resFator">300</div></div>
+          </div>
+          <div class="res-tax-box ok" id="resTaxBox">
+            <div class="tax-label">&#9654; Peso Taxado</div>
+            <div class="tax-val" id="resTax">&mdash;</div>
+            <div class="tax-unit">kg — cobrado pela transportadora</div>
           </div>
         </div>
-        <div class="ai-note">&#9888; Confira as dimens&otilde;es e ajuste se necess&aacute;rio.</div>
-        <div class="ai-actions">
-          <button class="btn-cancel" onclick="cancelarAI()">Cancelar</button>
-          <button class="btn-confirm" onclick="adicionarDaIA()">&#43; Salvar no hist&oacute;rico</button>
+
+        <div class="pan-note" style="margin-top:12px">&#9888; Confira as dimens&otilde;es — ajuste se necess&aacute;rio antes de adicionar.</div>
+        <div class="pan-actions">
+          <button class="btn-cncl" onclick="cancelarAnalise()">Cancelar</button>
+          <button class="btn-add" onclick="adicionarVolume()">&#43; Adicionar ao total</button>
         </div>
       </div>
+      <div style="height:14px"></div>
     </div>
   </div>
 
-  <div class="volumes-hd">
-    <span class="volumes-hd-title">Volumes desta sess&atilde;o</span>
-    <button class="btn-clear" onclick="limparTudo()">&#128465; Limpar</button>
+  <!-- VOLUMES -->
+  <div class="vols-hd">
+    <span class="vols-hd-title">Volumes desta sess&atilde;o</span>
+    <button class="btn-clr" onclick="limparTudo()">&#128465; Limpar</button>
   </div>
   <div id="volsList"></div>
 
-  <div class="total-bar" id="totalBar">
-    <div class="total-lbl">Total da Sess&atilde;o</div>
-    <div class="total-grid">
-      <div><div class="ti-label">Volumes (caixas)</div><div class="ti-val" id="totVol">0</div><div class="ti-unit">unidades</div></div>
-      <div><div class="ti-label">Volume</div><div class="ti-val" id="totM3" style="font-size:15px">0,0000</div><div class="ti-unit">m&sup3;</div></div>
-      <div><div class="ti-label">Peso Real</div><div class="ti-val" id="totReal">&mdash;</div><div class="ti-unit">kg</div></div>
-      <div><div class="ti-label">Peso Cubado</div><div class="ti-val" id="totCub">&mdash;</div><div class="ti-unit">kg</div></div>
+  <div id="totalBar">
+    <div class="tot-lbl">Total Geral da Sess&atilde;o</div>
+    <div class="tot-grid">
+      <div><div class="ti-lbl">Volumes (caixas)</div><div class="ti-val" id="totVol">0</div></div>
+      <div><div class="ti-lbl">m&sup3; total</div><div class="ti-val" id="totM3" style="font-size:14px">0,0000</div></div>
+      <div><div class="ti-lbl">Peso Real</div><div class="ti-val" id="totReal">&mdash;</div></div>
+      <div><div class="ti-lbl">Peso Cubado</div><div class="ti-val" id="totCub">&mdash;</div></div>
     </div>
-    <div class="total-taxado-row">
-      <div class="ti-label">&#9654; Peso Taxado (cobrado)</div>
-      <div class="ti-val hi" id="totTax" style="font-size:28px">&mdash;</div>
-      <div class="ti-unit">kg</div>
+    <div class="tot-tax-row">
+      <div class="tot-tax-lbl">&#9654; Peso Taxado (cobrado)</div>
+      <div class="tot-tax-val" id="totTax">&mdash;</div>
+      <div class="tot-tax-unit">kg</div>
     </div>
   </div>
 
-  <div class="footer-actions" id="footerActs">
+  <div id="footerActs" style="display:flex">
     <button class="btn-act" onclick="exportCSV()">&#8595; CSV</button>
     <button class="btn-act" onclick="copiarResumo()">&#128203; Copiar</button>
     <button class="btn-act" onclick="window.print()">&#128424; PDF</button>
@@ -342,27 +354,15 @@ select.cfg-input{width:auto}
 </div>
 
 <!-- TAB HISTÓRICO -->
-<div id="tab-hist" style="display:none">
+<div id="tabHist" style="display:none">
 <main>
-  <div class="page-title">Hist&oacute;rico</div>
-  <div class="page-sub">Todos os registros da equipe em tempo real.</div>
-
-  <div class="hist-filters">
-    <div class="filt-group">
-      <label>Operador</label>
-      <input type="text" id="filtroOp" placeholder="Filtrar por nome...">
-    </div>
-    <div class="filt-group">
-      <label>A partir de</label>
-      <input type="date" id="filtroData">
-    </div>
-    <button class="btn-filtrar" id="btnFiltrar">Filtrar</button>
-    <button class="btn-exp-hist" id="btnExportHist">&#8595; CSV</button>
+  <div style="font-size:20px;font-weight:700;margin-bottom:12px">Hist&oacute;rico da Equipe</div>
+  <div class="hist-filt">
+    <div class="fg"><label>Operador</label><input type="text" id="filtroOp" placeholder="Filtrar por nome..."></div>
+    <div class="fg"><label>A partir de</label><input type="date" id="filtroData"></div>
+    <button class="btn-filt" id="btnFiltrar">Filtrar</button>
   </div>
-
-  <div id="histContainer">
-    <div class="empty-state">Toque em <strong>Hist&oacute;rico</strong> para carregar os registros.</div>
-  </div>
+  <div id="histContainer"><div class="empty">Toque em Hist&oacute;rico para carregar.</div></div>
 </main>
 </div>
 
@@ -370,14 +370,12 @@ select.cfg-input{width:auto}
 
 var SUPA_URL='https://wlisylbblngldjeasnld.supabase.co';
 var SUPA_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndsaXN5bGJibG5nbGRqZWFzbmxkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzk2NjA3MzcsImV4cCI6MjA5NTIzNjczN30.VuonruQ24VZl1OzMKMAQOcwC_5TLiAgVg-vAaBWtbB8';
-
 var volumes=[];
 var vid=0;
 var operadorNome='';
 var deferredPrompt=null;
-var currentTab='calc';
 
-// ── PWA INSTALL ──
+// PWA
 window.addEventListener('beforeinstallprompt',function(e){
   e.preventDefault();deferredPrompt=e;
   document.getElementById('installBanner').style.display='flex';
@@ -392,45 +390,41 @@ document.getElementById('btnInstall').addEventListener('click',function(){
   });
 });
 function fecharBanner(){document.getElementById('installBanner').style.display='none';}
-
 if('serviceWorker' in navigator){
   window.addEventListener('load',function(){navigator.serviceWorker.register('./sw.js').catch(function(){});});
 }
 
-// ── OPERADOR ──
+// OPERADOR
 function checkOperador(){
-  var saved=localStorage.getItem('moas_operador');
-  if(saved){operadorNome=saved;document.getElementById('operadorNome').textContent=saved;return;}
-  document.getElementById('modalOperador').style.display='flex';
+  var s=localStorage.getItem('moas_op');
+  if(s){operadorNome=s;document.getElementById('opNome').textContent=s;return;}
+  document.getElementById('modalOp').style.display='flex';
 }
-document.getElementById('btnSalvarOperador').addEventListener('click',function(){
-  var nome=document.getElementById('inputOperador').value.trim();
-  if(!nome){alert('Digite seu nome!');return;}
-  operadorNome=nome;
-  localStorage.setItem('moas_operador',nome);
-  document.getElementById('operadorNome').textContent=nome;
-  document.getElementById('modalOperador').style.display='none';
+document.getElementById('btnSalvarOp').addEventListener('click',function(){
+  var n=document.getElementById('inputOp').value.trim();
+  if(!n){alert('Digite seu nome!');return;}
+  operadorNome=n;localStorage.setItem('moas_op',n);
+  document.getElementById('opNome').textContent=n;
+  document.getElementById('modalOp').style.display='none';
+  toast('Bem-vindo, '+n+'!');
 });
-document.getElementById('inputOperador').addEventListener('keydown',function(e){
-  if(e.key==='Enter') document.getElementById('btnSalvarOperador').click();
-});
+document.getElementById('inputOp').addEventListener('keydown',function(e){if(e.key==='Enter')document.getElementById('btnSalvarOp').click();});
 document.getElementById('btnTrocarOp').addEventListener('click',function(){
-  localStorage.removeItem('moas_operador');
-  document.getElementById('inputOperador').value='';
-  document.getElementById('modalOperador').style.display='flex';
+  localStorage.removeItem('moas_op');
+  document.getElementById('inputOp').value='';
+  document.getElementById('modalOp').style.display='flex';
 });
 
-// ── TABS ──
+// TABS
 function switchTab(tab){
-  currentTab=tab;
-  document.getElementById('tab-calc').style.display=tab==='calc'?'block':'none';
-  document.getElementById('tab-hist').style.display=tab==='hist'?'block':'none';
-  document.getElementById('tabCalc').className='tab-btn'+(tab==='calc'?' active':'');
-  document.getElementById('tabHist').className='tab-btn'+(tab==='hist'?' active':'');
-  if(tab==='hist') loadHistorico();
+  document.getElementById('tabCalc').style.display=tab==='calc'?'block':'none';
+  document.getElementById('tabHist').style.display=tab==='hist'?'block':'none';
+  document.getElementById('btnTabCalc').className='tab-btn'+(tab==='calc'?' active':'');
+  document.getElementById('btnTabHist').className='tab-btn'+(tab==='hist'?' active':'');
+  if(tab==='hist')loadHist();
 }
 
-// ── UTILS ──
+// UTILS
 function getFator(){return parseFloat(document.getElementById('fatorCub').value)||300;}
 function fmt(n,d){d=d||3;return n.toLocaleString('pt-BR',{minimumFractionDigits:d,maximumFractionDigits:d});}
 function toast(msg,dur){
@@ -439,174 +433,246 @@ function toast(msg,dur){
   setTimeout(function(){t.classList.remove('show');},dur||2800);
 }
 
-// ── CÂMERA ──
+// ═══════════════════════════════════════════
+// CÂMERA — abre direto, sem modal complexo
+// ═══════════════════════════════════════════
 function handleFile(input){
   var file=input.files&&input.files[0];
   if(!file)return;
   var reader=new FileReader();
-  reader.onload=function(e){openAICard(e.target.result);analyzeImage(e.target.result);};
+  reader.onload=function(e){startAnalysis(e.target.result);};
   reader.readAsDataURL(file);
   input.value='';
 }
-function openAICard(dataUrl){
-  document.getElementById('aiPreview').src=dataUrl;
-  document.getElementById('aiLoading').style.display='flex';
-  document.getElementById('aiContent').style.display='none';
-  document.getElementById('cubPreview').style.display='none';
-  var b=document.getElementById('aiBadge');b.className='ai-badge loading';b.textContent='Analisando...';
-  document.getElementById('aiCard').style.display='block';
-  setTimeout(function(){document.getElementById('aiCard').scrollIntoView({behavior:'smooth',block:'start'});},120);
+
+function startAnalysis(dataUrl){
+  // Mostra painel de análise
+  var p=document.getElementById('painelAnalise');
+  p.style.display='block';
+  document.getElementById('imgPreview').src=dataUrl;
+  document.getElementById('imgPreview').style.display='block';
+  
+  // Mostra loading grande
+  document.getElementById('loadingDiv').style.display='flex';
+  document.getElementById('resultDiv').style.display='none';
+  document.getElementById('erroDiv').style.display='none';
+  
+  // Scroll até o painel
+  setTimeout(function(){p.scrollIntoView({behavior:'smooth',block:'start'});},100);
+  
+  // Chama IA
+  analisarComIA(dataUrl);
 }
-async function analyzeImage(dataUrl){
+
+async function analisarComIA(dataUrl){
   var base64=dataUrl.split(',')[1];
-  var mediaType=dataUrl.split(';')[0].split(':')[1];
+  var mtype=dataUrl.split(';')[0].split(':')[1];
+  
+  var prompt = 'Voce e um sistema de medicao de caixas e pallets para logistica. '
+    + 'TAREFA: analisar a foto e retornar as dimensoes EXTERNAS em CENTIMETROS. '
+    + 'REGRAS OBRIGATORIAS: '
+    + '1) Se houver ETIQUETA com medidas impressas (ex: 60x40x30cm, 120x80x90cm), use EXATAMENTE esses valores. '
+    + '2) Se nao houver etiqueta, estime pelas proporcoes visuais. Um pallet padrao tem 120x100cm de base. '
+    + '3) Valores SEMPRE em centimetros inteiros. Nunca em metros. '
+    + '4) Caixas tipicas: 20-120cm por lado. Pallets: altura 80-200cm. '
+    + '5) Se houver multiplas caixas iguais, informe a quantidade. '
+    + 'Responda SOMENTE o JSON abaixo, sem explicacao: '
+    + '{"C":60,"L":40,"A":30,"qtd":1,"conf":"alta","obs":"etiqueta visivel 60x40x30cm"}';
+
   try{
     var res=await fetch('https://api.anthropic.com/v1/messages',{
-      method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:400,
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        model:'claude-sonnet-4-20250514',
+        max_tokens:200,
         messages:[{role:'user',content:[
-          {type:'image',source:{type:'base64',media_type:mediaType,data:base64}},
-          {type:'text',text:'Especialista logistica. Estime dimensoes EXTERNAS em CENTIMETROS da caixa ou pallet. Valores tipicos: 20-300cm. Se ver etiqueta com medidas, use-as com prioridade maxima. Pallet padrao 120x100cm base como referencia. Responda so JSON: {"comprimento":0,"largura":0,"altura":0,"qtd_caixas":1,"confianca":"alta","observacao":"texto"}'}
-        ]}]})
+          {type:'image',source:{type:'base64',media_type:mtype,data:base64}},
+          {type:'text',text:prompt}
+        ]}]
+      })
     });
+    
     var data=await res.json();
     if(data.error)throw new Error(data.error.message);
-    var block=data.content&&data.content.find(function(b){return b.type==='text';});
-    var m=(block?block.text:'').match(/\{[\s\S]*\}/);
-    if(!m)throw new Error('sem JSON');
+    
+    var txt=(data.content&&data.content.find(function(b){return b.type==='text';})||{text:''}).text;
+    var m=txt.match(/\{[\s\S]*?\}/);
+    if(!m)throw new Error('Resposta invalida da IA');
+    
     var p=JSON.parse(m[0]);
-    var c=parseFloat(p.comprimento)||0,l=parseFloat(p.largura)||0,a=parseFloat(p.altura)||0;
-    if(c>0&&c<5)c=Math.round(c*100);
-    if(l>0&&l<5)l=Math.round(l*100);
-    if(a>0&&a<5)a=Math.round(a*100);
-    document.getElementById('aiC').value=c||'';
-    document.getElementById('aiL').value=l||'';
-    document.getElementById('aiA').value=a||'';
-    document.getElementById('aiQtd').value=p.qtd_caixas&&p.qtd_caixas>0?p.qtd_caixas:1;
-    document.getElementById('aiPeso').value='';
-    document.getElementById('aiObs').innerHTML='<strong>Confianca: '+(p.confianca||'media')+'</strong>'+(p.observacao?' — '+p.observacao:'');
-    var b=document.getElementById('aiBadge');b.className='ai-badge success';b.textContent='OK ✓';
-    document.getElementById('aiLoading').style.display='none';
-    document.getElementById('aiContent').style.display='block';
-    calcPreview();
+    var C=parseFloat(p.C||p.comprimento||p.c||0);
+    var L=parseFloat(p.L||p.largura||p.l||0);
+    var A=parseFloat(p.A||p.altura||p.a||0);
+    var qtd=parseInt(p.qtd||p.quantidade||1)||1;
+    
+    // Correcao automatica: se vieram em metros, converter
+    if(C>0&&C<=5) C=Math.round(C*100);
+    if(L>0&&L<=5) L=Math.round(L*100);
+    if(A>0&&A<=5) A=Math.round(A*100);
+    
+    if(C===0||L===0||A===0) throw new Error('IA nao conseguiu estimar as dimensoes');
+    
+    mostrarResultado(C, L, A, qtd, p.conf||'media', p.obs||'');
+    
   }catch(err){
-    document.getElementById('aiLoading').style.display='none';
-    document.getElementById('aiContent').style.display='block';
-    document.getElementById('aiObs').innerHTML='<strong>Nao foi possivel ler automaticamente.</strong> Insira manualmente.';
-    document.getElementById('aiC').value='';document.getElementById('aiL').value='';document.getElementById('aiA').value='';
-    var b=document.getElementById('aiBadge');b.className='ai-badge error';b.textContent='Manual';
+    mostrarErro(err.message);
   }
 }
-function calcPreview(){
-  var c=parseFloat(document.getElementById('aiC').value)||0;
-  var l=parseFloat(document.getElementById('aiL').value)||0;
-  var a=parseFloat(document.getElementById('aiA').value)||0;
-  var qtd=parseFloat(document.getElementById('aiQtd').value)||1;
-  var p=parseFloat(document.getElementById('aiPeso').value)||0;
-  var cp=document.getElementById('cubPreview');
-  if(c===0||l===0||a===0){cp.style.display='none';return;}
-  var m3=(c/100)*(l/100)*(a/100)*qtd;
-  var cub=m3*getFator();var real=p*qtd;var tax=Math.max(cub,real);
-  document.getElementById('cpComp').textContent=c+' cm';
-  document.getElementById('cpLarg').textContent=l+' cm';
-  document.getElementById('cpAlt').textContent=a+' cm';
-  document.getElementById('cpQtd').textContent=qtd+' cx';
-  document.getElementById('cpM3').textContent=m3.toLocaleString('pt-BR',{minimumFractionDigits:4,maximumFractionDigits:4})+' m\u00b3';
-  document.getElementById('cpReal').textContent=fmt(real)+' kg';
-  document.getElementById('cpCub').textContent=fmt(cub)+' kg';
-  document.getElementById('cpTax').textContent=fmt(tax)+' kg';
-  document.getElementById('cpTaxCell').className='cub-cell '+(cub>real&&cub>0?'warn':'hi');
-  cp.style.display='block';
+
+function mostrarResultado(C, L, A, qtd, conf, obs){
+  document.getElementById('loadingDiv').style.display='none';
+  document.getElementById('erroDiv').style.display='none';
+  
+  // Preenche campos editaveis
+  document.getElementById('dimC').value=C;
+  document.getElementById('dimL').value=L;
+  document.getElementById('dimA').value=A;
+  document.getElementById('dimQtd').value=qtd;
+  document.getElementById('dimPeso').value='';
+  document.getElementById('dimConf').textContent=conf==='alta'?'✓ Alta':conf==='baixa'?'⚠ Baixa':'~ Média';
+  document.getElementById('dimObs').textContent=obs||'Estimativa visual';
+  
+  // Calcula e mostra resultado imediatamente
+  recalcular();
+  
+  document.getElementById('resultDiv').style.display='block';
 }
-['aiC','aiL','aiA','aiQtd','aiPeso'].forEach(function(id){
-  document.getElementById(id).addEventListener('input',calcPreview);
+
+function mostrarErro(msg){
+  document.getElementById('loadingDiv').style.display='none';
+  document.getElementById('resultDiv').style.display='none';
+  document.getElementById('erroTxt').textContent=msg;
+  document.getElementById('erroDiv').style.display='block';
+}
+
+// RECALCULA sempre que mudar qualquer campo
+function recalcular(){
+  var C=parseFloat(document.getElementById('dimC').value)||0;
+  var L=parseFloat(document.getElementById('dimL').value)||0;
+  var A=parseFloat(document.getElementById('dimA').value)||0;
+  var qtd=parseFloat(document.getElementById('dimQtd').value)||1;
+  var peso=parseFloat(document.getElementById('dimPeso').value)||0;
+  
+  if(C===0||L===0||A===0){
+    document.getElementById('boxResultado').style.display='none';
+    return;
+  }
+  
+  var fator=getFator();
+  var m3=(C/100)*(L/100)*(A/100)*qtd;
+  var cubado=m3*fator;
+  var real=peso*qtd;
+  var taxado=Math.max(cubado,real);
+  var isOver=cubado>real&&cubado>0;
+  
+  document.getElementById('resComp').textContent=C+' cm';
+  document.getElementById('resLarg').textContent=L+' cm';
+  document.getElementById('resAlt').textContent=A+' cm';
+  document.getElementById('resQtd').textContent=qtd+' cx';
+  document.getElementById('resM3').textContent=m3.toLocaleString('pt-BR',{minimumFractionDigits:4,maximumFractionDigits:4})+' m³';
+  document.getElementById('resReal').textContent=fmt(real)+' kg';
+  document.getElementById('resCub').textContent=fmt(cubado)+' kg';
+  document.getElementById('resTax').textContent=fmt(taxado)+' kg';
+  
+  var taxEl=document.getElementById('resTaxBox');
+  taxEl.className='res-tax-box '+(isOver?'warn':'ok');
+  taxEl.querySelector('.tax-label').textContent=isOver?'⚠ Peso Taxado (cubado maior!)':'✓ Peso Taxado';
+  
+  document.getElementById('boxResultado').style.display='block';
+  
+  // Guarda para uso no adicionar
+  window._current={C:C,L:L,A:A,qtd:qtd,pesoReal:peso,m3:m3,cubado:cubado,real:real,taxado:taxado};
+}
+
+['dimC','dimL','dimA','dimQtd','dimPeso'].forEach(function(id){
+  var el=document.getElementById(id);
+  if(el) el.addEventListener('input',recalcular);
 });
-function cancelarAI(){document.getElementById('aiCard').style.display='none';}
 
-// ── ADICIONAR VOLUME + SALVAR SUPABASE ──
-async function adicionarDaIA(){
-  var c=parseFloat(document.getElementById('aiC').value)||0;
-  var l=parseFloat(document.getElementById('aiL').value)||0;
-  var a=parseFloat(document.getElementById('aiA').value)||0;
-  if(c===0||l===0||a===0){toast('Preencha as dimensoes antes de adicionar.');return;}
-  vid++;
-  var qtd=parseFloat(document.getElementById('aiQtd').value)||1;
-  var pesoReal=parseFloat(document.getElementById('aiPeso').value)||0;
-  var obs=document.getElementById('aiObs').textContent||'';
-  var m3=(c/100)*(l/100)*(a/100)*qtd;
-  var cubado=m3*getFator();var real=pesoReal*qtd;var taxado=Math.max(cubado,real);
-
-  volumes.push({id:vid,desc:'Volume '+vid,comp:c,larg:l,alt:a,qtd:qtd,pesoReal:pesoReal});
+document.getElementById('fatorCub').addEventListener('input',function(){
+  recalcular();
   renderVolumes();
-  document.getElementById('aiCard').style.display='none';
+});
 
-  // Salvar no Supabase
+async function adicionarVolume(){
+  if(!window._current){toast('Tire uma foto primeiro!');return;}
+  var d=window._current;
+  if(d.C===0||d.L===0||d.A===0){toast('Dimensoes zeradas — ajuste os campos.');return;}
+  
+  vid++;
+  var obs=document.getElementById('dimObs').textContent||'';
+  volumes.push({id:vid,desc:'Volume '+vid,comp:d.C,larg:d.L,alt:d.A,qtd:d.qtd,pesoReal:d.pesoReal});
+  renderVolumes();
+  
+  // Fecha painel
+  document.getElementById('painelAnalise').style.display='none';
+  window._current=null;
+  
+  // Salva no Supabase
   try{
     await fetch(SUPA_URL+'/rest/v1/cubagem_historico',{
       method:'POST',
-      headers:{
-        'Content-Type':'application/json',
-        'apikey':SUPA_KEY,
-        'Authorization':'Bearer '+SUPA_KEY,
-        'Prefer':'return=minimal'
-      },
+      headers:{'Content-Type':'application/json','apikey':SUPA_KEY,'Authorization':'Bearer '+SUPA_KEY,'Prefer':'return=minimal'},
       body:JSON.stringify({
         operador:operadorNome||'Anonimo',
         descricao:'Volume '+vid,
-        comprimento:c,largura:l,altura:a,
-        qtd_caixas:qtd,
-        peso_real:real,peso_cubado:cubado,peso_taxado:taxado,
-        volume_m3:m3,
-        fator_cubagem:getFator(),
-        observacao:obs,
+        comprimento:d.C,largura:d.L,altura:d.A,
+        qtd_caixas:d.qtd,peso_real:d.real,peso_cubado:d.cubado,
+        peso_taxado:d.taxado,volume_m3:d.m3,
+        fator_cubagem:getFator(),observacao:obs,
         dispositivo:navigator.userAgent.includes('Mobile')?'Mobile':'Desktop'
       })
     });
-    toast('Volume '+vid+' adicionado e salvo no historico!');
+    toast('✓ Volume '+vid+' salvo no histórico!');
   }catch(e){
-    toast('Volume adicionado (sem conexao para salvar historico)');
+    toast('Volume '+vid+' adicionado (sem conexão para salvar histórico)');
   }
 }
 
-// ── VOLUMES LOCAL ──
+function cancelarAnalise(){
+  document.getElementById('painelAnalise').style.display='none';
+  window._current=null;
+}
+
+// VOLUMES
 function calcVol(v){
   var m3=(v.comp/100)*(v.larg/100)*(v.alt/100)*v.qtd;
   var cub=m3*getFator();var real=v.pesoReal*v.qtd;
   return{m3:m3,cubado:cub,real:real,taxado:Math.max(cub,real),qtd:v.qtd};
 }
-function updVol(id,field,val){
-  var v=volumes.find(function(x){return x.id===id;});
-  if(v){v[field]=parseFloat(val)||0;renderVolumes();}
+function updVol(id,f,v){
+  var vol=volumes.find(function(x){return x.id===id;});
+  if(vol){vol[f]=parseFloat(v)||0;renderVolumes();}
 }
 function delVol(id){
   volumes=volumes.filter(function(x){return x.id!==id;});
   renderVolumes();
-  if(!volumes.length)toast('Lista limpa.');
 }
 function limparTudo(){
   if(!volumes.length)return;
   if(confirm('Limpar todos os volumes?')){volumes=[];renderVolumes();}
 }
-function buildVolCard(v,r,over){
-  var m3str=r.m3.toLocaleString('pt-BR',{minimumFractionDigits:4,maximumFractionDigits:4});
-  var rows=[['Comp (cm)','comp',v.comp,'0.1'],['Larg (cm)','larg',v.larg,'0.1'],['Alt (cm)','alt',v.alt,'0.1'],['Qtd caixas','qtd',v.qtd,'1'],['Peso/cx kg','pesoReal',v.pesoReal,'0.1']];
-  var fhtml='';
-  rows.forEach(function(row){
-    fhtml+='<div class="vol-field"><label>'+row[0]+'</label><input type="number" min="0" step="'+row[3]+'" value="'+row[2]+'" oninput="updVol('+v.id+',\''+row[1]+'\',this.value)"></div>';
-  });
-  fhtml+='<div class="vol-field"><label>m\u00b3</label><input readonly value="'+m3str+'"></div>';
-  return '<div class="vol-card"><div class="vol-card-hd"><span class="vol-card-name">'+v.desc+'</span><span class="vol-badge'+(over?' warn':'')+'">'+fmt(r.taxado)+' kg</span></div><div class="vol-grid">'+fhtml+'</div><div class="vol-foot"><span class="vol-foot-info">Real: '+fmt(r.real)+' | Cub: '+fmt(r.cubado)+' | <strong>Tax: '+fmt(r.taxado)+' kg</strong></span><button class="btn-del" onclick="delVol('+v.id+')">\u00d7</button></div></div>';
+
+function buildCard(v,r,over){
+  var m3s=r.m3.toLocaleString('pt-BR',{minimumFractionDigits:4,maximumFractionDigits:4});
+  var rows=[['C (cm)','comp',v.comp,'0.1'],['L (cm)','larg',v.larg,'0.1'],['A (cm)','alt',v.alt,'0.1'],['Qtd cx','qtd',v.qtd,'1'],['Peso/cx kg','pesoReal',v.pesoReal,'0.1']];
+  var fh='';
+  rows.forEach(function(r){fh+='<div class="vf"><label>'+r[0]+'</label><input type="number" min="0" step="'+r[3]+'" value="'+r[2]+'" oninput="updVol('+v.id+',\''+r[1]+'\',this.value)"></div>';});
+  fh+='<div class="vf"><label>m³</label><input readonly value="'+m3s+'"></div>';
+  return '<div class="vol-card"><div class="vc-hd"><span class="vc-name">'+v.desc+'</span><span class="vc-badge'+(over?' w':'')+'">'+fmt(r.taxado)+' kg</span></div><div class="vg">'+fh+'</div><div class="vf-row"><span class="vf-info">Real: '+fmt(r.real)+' | Cub: '+fmt(r.cubado)+' | <strong>Tax: '+fmt(r.taxado)+'kg</strong></span><button class="btn-del" onclick="delVol('+v.id+')">\u00d7</button></div></div>';
 }
+
 function renderVolumes(){
   var list=document.getElementById('volsList');
   if(!volumes.length){
-    list.innerHTML='<div class="empty-state">\u{1F4F7} Fotografe uma caixa ou pallet para come\u00e7ar!</div>';
+    list.innerHTML='<div class="empty">📷 Tire uma foto para começar!</div>';
     document.getElementById('totalBar').style.display='none';
     document.getElementById('footerActs').style.display='none';
     return;
   }
   var html='';
-  volumes.forEach(function(v){var r=calcVol(v);html+=buildVolCard(v,r,r.cubado>r.real&&r.cubado>0);});
+  volumes.forEach(function(v){var r=calcVol(v);html+=buildCard(v,r,r.cubado>r.real&&r.cubado>0);});
   list.innerHTML=html;
   var tot={qtd:0,real:0,cub:0,m3:0};
   volumes.forEach(function(v){var r=calcVol(v);tot.qtd+=r.qtd;tot.real+=r.real;tot.cub+=r.cubado;tot.m3+=r.m3;});
@@ -620,112 +686,48 @@ function renderVolumes(){
   document.getElementById('footerActs').style.display='flex';
 }
 
-// ── HISTÓRICO SUPABASE ──
-async function loadHistorico(){
-  var container=document.getElementById('histContainer');
-  container.innerHTML='<div class="hist-loading"><div class="spinner"></div><span>Carregando historico...</span></div>';
-
-  var filtroOp=document.getElementById('filtroOp').value.trim();
-  var filtroData=document.getElementById('filtroData').value;
-
+// HISTÓRICO
+async function loadHist(){
+  var c=document.getElementById('histContainer');
+  c.innerHTML='<div class="loading-hist"><div class="spinner"></div><span>Carregando...</span></div>';
+  var op=document.getElementById('filtroOp').value.trim();
+  var dt=document.getElementById('filtroData').value;
   var url=SUPA_URL+'/rest/v1/cubagem_historico?select=*&order=created_at.desc&limit=100';
-  if(filtroOp) url+='&operador=ilike.*'+encodeURIComponent(filtroOp)+'*';
-  if(filtroData) url+='&created_at=gte.'+filtroData+'T00:00:00';
-
+  if(op)url+='&operador=ilike.*'+encodeURIComponent(op)+'*';
+  if(dt)url+='&created_at=gte.'+dt+'T00:00:00';
   try{
     var res=await fetch(url,{headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+SUPA_KEY}});
     var data=await res.json();
-    if(!data||!data.length){
-      container.innerHTML='<div class="empty-state">Nenhum registro encontrado.</div>';
-      return;
-    }
-    renderHistorico(data);
-  }catch(e){
-    container.innerHTML='<div class="empty-state" style="color:var(--danger)">Erro ao carregar. Verifique conexao.</div>';
-  }
-}
-
-function renderHistorico(data){
-  var container=document.getElementById('histContainer');
-
-  // KPIs
-  var totalReg=data.length;
-  var totalCubado=data.reduce(function(s,r){return s+(parseFloat(r.peso_cubado)||0);},0);
-  var totalTaxado=data.reduce(function(s,r){return s+(parseFloat(r.peso_taxado)||0);},0);
-  var totalM3=data.reduce(function(s,r){return s+(parseFloat(r.volume_m3)||0);},0);
-
-  // Operadores únicos
-  var ops={};
-  data.forEach(function(r){ops[r.operador]=(ops[r.operador]||0)+1;});
-
-  var kpiHtml='<div class="hist-kpis">'
-    +'<div class="hk"><div class="hk-val">'+totalReg+'</div><div class="hk-label">Registros</div></div>'
-    +'<div class="hk"><div class="hk-val">'+Object.keys(ops).length+'</div><div class="hk-label">Operadores</div></div>'
-    +'<div class="hk"><div class="hk-val">'+totalM3.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})+'</div><div class="hk-label">m\u00b3 total</div></div>'
-    +'<div class="hk hi"><div class="hk-val">'+fmt(totalTaxado)+'</div><div class="hk-label">kg taxado total</div></div>'
-    +'</div>';
-
-  var rowsHtml='';
-  data.forEach(function(r){
-    var dt=new Date(r.created_at);
-    var dtStr=dt.toLocaleDateString('pt-BR')+' '+dt.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'});
-    var isOver=(parseFloat(r.peso_cubado)||0)>(parseFloat(r.peso_real)||0);
-    rowsHtml+='<div class="hist-row">'
-      +'<div class="hist-row-top">'
-        +'<span class="hist-op">'+r.operador+'</span>'
-        +'<span class="hist-date">'+dtStr+'</span>'
-        +'<span class="hist-badge'+(isOver?' warn':'')+'">'+fmt(parseFloat(r.peso_taxado)||0)+' kg</span>'
-      +'</div>'
-      +'<div class="hist-row-dims">'
-        +(r.comprimento?r.comprimento+'&times;'+r.largura+'&times;'+r.altura+' cm':'—')
-        +(r.qtd_caixas&&r.qtd_caixas>1?' &times; '+r.qtd_caixas+' cx':'')
-        +' &nbsp;|&nbsp; '+(r.volume_m3?parseFloat(r.volume_m3).toLocaleString('pt-BR',{minimumFractionDigits:4,maximumFractionDigits:4})+' m\u00b3':'—')
-      +'</div>'
-      +(r.observacao?'<div class="hist-row-obs">'+r.observacao+'</div>':'')
-    +'</div>';
-  });
-
-  container.innerHTML=kpiHtml+'<div class="hist-list">'+rowsHtml+'</div>';
-}
-
-document.getElementById('btnFiltrar').addEventListener('click',loadHistorico);
-document.getElementById('btnExportHist').addEventListener('click',exportHistCSV);
-
-async function exportHistCSV(){
-  try{
-    var res=await fetch(SUPA_URL+'/rest/v1/cubagem_historico?select=*&order=created_at.desc&limit=1000',{
-      headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+SUPA_KEY}
-    });
-    var data=await res.json();
-    var csv='Data;Operador;Comp;Larg;Alt;Qtd;PesoReal;PesoCubado;PesoTaxado;m3;Observacao\n';
+    if(!data||!data.length){c.innerHTML='<div class="empty">Nenhum registro encontrado.</div>';return;}
+    var tot={r:0,c:0,t:0,m:0};
+    data.forEach(function(r){tot.r+=parseFloat(r.peso_real)||0;tot.c+=parseFloat(r.peso_cubado)||0;tot.t+=parseFloat(r.peso_taxado)||0;tot.m+=parseFloat(r.volume_m3)||0;});
+    var ops={};data.forEach(function(r){ops[r.operador]=(ops[r.operador]||0)+1;});
+    var kpi='<div class="hkpis"><div class="hk"><div class="hkv">'+data.length+'</div><div class="hkl">Registros</div></div><div class="hk"><div class="hkv">'+Object.keys(ops).length+'</div><div class="hkl">Operadores</div></div><div class="hk"><div class="hkv">'+tot.m.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})+'</div><div class="hkl">m³ total</div></div><div class="hk hi"><div class="hkv">'+fmt(tot.t)+'</div><div class="hkl">kg taxado</div></div></div>';
+    var rows='';
     data.forEach(function(r){
-      var dt=new Date(r.created_at).toLocaleString('pt-BR');
-      csv+=dt+';'+r.operador+';'+(r.comprimento||'')+';'+(r.largura||'')+';'+(r.altura||'')+';'+(r.qtd_caixas||1)+';'+(r.peso_real||0)+';'+(r.peso_cubado||0)+';'+(r.peso_taxado||0)+';'+(r.volume_m3||0)+';'+(r.observacao||'')+'\n';
+      var dt2=new Date(r.created_at);
+      var ds=dt2.toLocaleDateString('pt-BR')+' '+dt2.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'});
+      var ov=(parseFloat(r.peso_cubado)||0)>(parseFloat(r.peso_real)||0);
+      rows+='<div class="hr"><div class="hr-top"><span class="hr-op">'+r.operador+'</span><span class="hr-dt">'+ds+'</span><span class="hr-b'+(ov?' w':'')+'">'+fmt(parseFloat(r.peso_taxado)||0)+' kg</span></div><div class="hr-d">'+(r.comprimento?r.comprimento+'×'+r.largura+'×'+r.altura+' cm':'—')+(r.qtd_caixas&&r.qtd_caixas>1?' × '+r.qtd_caixas+' cx':'')+' | '+(r.volume_m3?parseFloat(r.volume_m3).toLocaleString('pt-BR',{minimumFractionDigits:4,maximumFractionDigits:4})+' m³':'—')+'</div>'+(r.observacao?'<div class="hr-obs">'+r.observacao+'</div>':'')+'</div>';
     });
-    var a=document.createElement('a');
-    a.href=URL.createObjectURL(new Blob(['\uFEFF'+csv],{type:'text/csv;charset=utf-8;'}));
-    a.download='historico_cubagem_'+new Date().toISOString().slice(0,10)+'.csv';a.click();
-    toast('CSV exportado!');
-  }catch(e){toast('Erro ao exportar.');}
+    c.innerHTML=kpi+'<div class="hlist">'+rows+'</div>';
+  }catch(e){c.innerHTML='<div class="empty" style="color:#b94040">Erro ao carregar.</div>';}
 }
 
 function exportCSV(){
   if(!volumes.length){toast('Adicione volumes primeiro.');return;}
-  var csv='Desc;Comp;Larg;Alt;Qtd;Real(kg);Cubado(kg);Taxado(kg);m3\n';
+  var csv='Desc;C(cm);L(cm);A(cm);Qtd;Real(kg);Cubado(kg);Taxado(kg);m3\n';
   volumes.forEach(function(v){var r=calcVol(v);csv+=v.desc+';'+v.comp+';'+v.larg+';'+v.alt+';'+v.qtd+';'+r.real.toFixed(3)+';'+r.cubado.toFixed(3)+';'+r.taxado.toFixed(3)+';'+r.m3.toFixed(5)+'\n';});
-  var a=document.createElement('a');
-  a.href=URL.createObjectURL(new Blob(['\uFEFF'+csv],{type:'text/csv;charset=utf-8;'}));
-  a.download='cubagem_'+new Date().toISOString().slice(0,10)+'.csv';a.click();
-  toast('CSV exportado!');
+  var a=document.createElement('a');a.href=URL.createObjectURL(new Blob(['\uFEFF'+csv],{type:'text/csv;charset=utf-8;'}));a.download='cubagem_'+new Date().toISOString().slice(0,10)+'.csv';a.click();toast('CSV exportado!');
 }
 function copiarResumo(){
-  var tot={qtd:0,real:0,cub:0};
-  volumes.forEach(function(v){var r=calcVol(v);tot.qtd+=r.qtd;tot.real+=r.real;tot.cub+=r.cubado;});
+  var tot={qtd:0,real:0,cub:0};volumes.forEach(function(v){var r=calcVol(v);tot.qtd+=r.qtd;tot.real+=r.real;tot.cub+=r.cubado;});
   var tax=Math.max(tot.real,tot.cub);
   navigator.clipboard.writeText('Cubagem MOAS\nOperador: '+operadorNome+'\nVolumes: '+tot.qtd+'\nReal: '+fmt(tot.real)+' kg\nCubado: '+fmt(tot.cub)+' kg\nTaxado: '+fmt(tax)+' kg').then(function(){toast('Copiado!');});
 }
 
-document.getElementById('fatorCub').addEventListener('input',function(){renderVolumes();calcPreview();});
+document.getElementById('btnFiltrar').addEventListener('click',loadHist);
+
 checkOperador();
 renderVolumes();
 
