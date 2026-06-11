@@ -465,59 +465,93 @@ function startAnalysis(dataUrl){
 }
 
 async function analisarComIA(dataUrl){
-  var base64=dataUrl.split(',')[1];
-  var mtype=dataUrl.split(';')[0].split(':')[1];
-  
-  var prompt = 'Voce e um sistema de medicao de caixas e pallets para logistica. '
-    + 'TAREFA: analisar a foto e retornar as dimensoes EXTERNAS em CENTIMETROS. '
-    + 'REGRAS OBRIGATORIAS: '
-    + '1) Se houver ETIQUETA com medidas impressas (ex: 60x40x30cm, 120x80x90cm), use EXATAMENTE esses valores. '
-    + '2) Se nao houver etiqueta, estime pelas proporcoes visuais. Um pallet padrao tem 120x100cm de base. '
-    + '3) Valores SEMPRE em centimetros inteiros. Nunca em metros. '
-    + '4) Caixas tipicas: 20-120cm por lado. Pallets: altura 80-200cm. '
-    + '5) Se houver multiplas caixas iguais, informe a quantidade. '
-    + 'Responda SOMENTE o JSON abaixo, sem explicacao: '
-    + '{"C":60,"L":40,"A":30,"qtd":1,"conf":"alta","obs":"etiqueta visivel 60x40x30cm"}';
+  // Reduz tamanho da imagem antes de enviar para a API
+  var mtype = dataUrl.split(';')[0].split(':')[1];
 
   try{
-    var res=await fetch('https://api.anthropic.com/v1/messages',{
+    // Comprimir imagem via canvas
+    var compressed = await comprimirImagem(dataUrl, 800);
+    var base64 = compressed.split(',')[1];
+    var ctype = compressed.split(';')[0].split(':')[1];
+
+    var prompt = 'Analise a foto de caixas ou pallet. '
+      + 'Retorne APENAS este JSON (sem texto extra, sem markdown): '
+      + '{"C":60,"L":40,"A":30,"qtd":1,"conf":"alta","obs":"motivo"} '
+      + 'Onde C=comprimento, L=largura, A=altura em CENTIMETROS inteiros. '
+      + 'Se houver etiqueta com medidas, use-as. '
+      + 'Pallet padrao = 120x100cm de base. '
+      + 'qtd = numero de caixas iguais visiveis.';
+
+    var res = await fetch('https://api.anthropic.com/v1/messages',{
       method:'POST',
       headers:{'Content-Type':'application/json'},
       body:JSON.stringify({
         model:'claude-sonnet-4-20250514',
-        max_tokens:200,
+        max_tokens:150,
         messages:[{role:'user',content:[
-          {type:'image',source:{type:'base64',media_type:mtype,data:base64}},
+          {type:'image',source:{type:'base64',media_type:ctype,data:base64}},
           {type:'text',text:prompt}
         ]}]
       })
     });
-    
-    var data=await res.json();
-    if(data.error)throw new Error(data.error.message);
-    
-    var txt=(data.content&&data.content.find(function(b){return b.type==='text';})||{text:''}).text;
-    var m=txt.match(/\{[\s\S]*?\}/);
-    if(!m)throw new Error('Resposta invalida da IA');
-    
-    var p=JSON.parse(m[0]);
-    var C=parseFloat(p.C||p.comprimento||p.c||0);
-    var L=parseFloat(p.L||p.largura||p.l||0);
-    var A=parseFloat(p.A||p.altura||p.a||0);
-    var qtd=parseInt(p.qtd||p.quantidade||1)||1;
-    
-    // Correcao automatica: se vieram em metros, converter
-    if(C>0&&C<=5) C=Math.round(C*100);
-    if(L>0&&L<=5) L=Math.round(L*100);
-    if(A>0&&A<=5) A=Math.round(A*100);
-    
-    if(C===0||L===0||A===0) throw new Error('IA nao conseguiu estimar as dimensoes');
-    
-    mostrarResultado(C, L, A, qtd, p.conf||'media', p.obs||'');
-    
+
+    var txt_raw = await res.text();
+
+    // Tratar resposta crua antes de parsear
+    var data;
+    try{ data = JSON.parse(txt_raw); }
+    catch(e){ throw new Error('Erro de comunicacao com a IA'); }
+
+    if(data.error) throw new Error(data.error.message||'Erro da API');
+
+    var block = data.content && data.content.find(function(b){return b.type==='text';});
+    var txt = block ? block.text.trim() : '';
+
+    // Extrai JSON da resposta (mesmo que venha com texto extra)
+    var m = txt.match(/\{[^{}]*\}/);
+    if(!m) throw new Error('IA nao retornou dimensoes. Tente uma foto mais proxima e bem iluminada.');
+
+    var p;
+    try{ p = JSON.parse(m[0]); }
+    catch(e){ throw new Error('Formato invalido. Tente novamente.'); }
+
+    var C = Math.round(parseFloat(p.C||p.comprimento||p.c||0));
+    var L = Math.round(parseFloat(p.L||p.largura||p.l||0));
+    var A = Math.round(parseFloat(p.A||p.altura||p.a||0));
+    var qtd = Math.max(1, parseInt(p.qtd||p.quantidade||1)||1);
+
+    // Correcao: se em metros, converter
+    if(C>0&&C<6) C=C*100;
+    if(L>0&&L<6) L=L*100;
+    if(A>0&&A<6) A=A*100;
+
+    if(C<5||L<5||A<5) throw new Error('Dimensoes muito pequenas. Aproxime mais a camera da caixa.');
+
+    mostrarResultado(C, L, A, qtd, p.conf||'media', p.obs||'Estimativa visual');
+
   }catch(err){
     mostrarErro(err.message);
   }
+}
+
+function comprimirImagem(dataUrl, maxSize){
+  return new Promise(function(resolve){
+    var img = new Image();
+    img.onload = function(){
+      var canvas = document.createElement('canvas');
+      var w = img.width, h = img.height;
+      if(w > maxSize || h > maxSize){
+        if(w > h){ h = Math.round(h*maxSize/w); w = maxSize; }
+        else{ w = Math.round(w*maxSize/h); h = maxSize; }
+      }
+      canvas.width = w; canvas.height = h;
+      var ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0, w, h);
+      resolve(canvas.toDataURL('image/jpeg', 0.75));
+    };
+    img.onerror = function(){ resolve(dataUrl); };
+    img.src = dataUrl;
+  });
 }
 
 function mostrarResultado(C, L, A, qtd, conf, obs){
