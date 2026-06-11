@@ -470,9 +470,9 @@ async function analisarComIA(dataUrl){
     var base64 = compressed.split(',')[1];
     var ctype = compressed.split(';')[0].split(':')[1];
 
-    var res = await fetch('/api/analisar',{
+    var res = await fetch('https://wlisylbblngldjeasnld.supabase.co/functions/v1/analisar-cubagem',{
       method:'POST',
-      headers:{'Content-Type':'application/json'},
+      headers:{'Content-Type':'application/json','apikey':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndsaXN5bGJibG5nbGRqZWFzbmxkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzk2NjA3MzcsImV4cCI6MjA5NTIzNjczN30.VuonruQ24VZl1OzMKMAQOcwC_5TLiAgVg-vAaBWtbB8'},
       body:JSON.stringify({imageBase64:base64, mediaType:ctype})
     });
 
