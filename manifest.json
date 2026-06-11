@@ -1,0 +1,25 @@
+{
+  "name": "Aferidor de Cubagem — Grupo MOAS",
+  "short_name": "Cubagem MOAS",
+  "description": "Calcule cubagem com IA e histórico em tempo real",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#2c3530",
+  "theme_color": "#5a7a62",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "icon-192.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "lang": "pt-BR"
+}
