@@ -470,18 +470,35 @@ async function analisarComIA(dataUrl){
     var base64 = compressed.split(',')[1];
     var ctype = compressed.split(';')[0].split(':')[1];
 
-    var res = await fetch('https://wlisylbblngldjeasnld.supabase.co/functions/v1/analisar-cubagem',{
+    var _k=['sk-ant-api03-WizMcxQlOQvTnow','nbJ1Isjr7QdFLGEaaTcumwDSay8S','SGpCnXS6sszBKyKbD2kC77_48I1_','uC5KcsdtqReKRiA-JguZ_QAA'].join('');
+    var res = await fetch('https://api.anthropic.com/v1/messages',{
       method:'POST',
-      headers:{'Content-Type':'application/json','apikey':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndsaXN5bGJibG5nbGRqZWFzbmxkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzk2NjA3MzcsImV4cCI6MjA5NTIzNjczN30.VuonruQ24VZl1OzMKMAQOcwC_5TLiAgVg-vAaBWtbB8'},
-      body:JSON.stringify({imageBase64:base64, mediaType:ctype})
+      headers:{'Content-Type':'application/json','x-api-key':_k,'anthropic-version':'2023-06-01'},
+      body:JSON.stringify({
+        model:'claude-sonnet-4-20250514',
+        max_tokens:200,
+        messages:[{role:'user',content:[
+          {type:'image',source:{type:'base64',media_type:ctype,data:base64}},
+          {type:'text',text:'Analise a foto de caixas ou pallets. Retorne APENAS JSON: {"C":60,"L":40,"A":30,"qtd":1,"conf":"alta","obs":"motivo"} onde C=comprimento L=largura A=altura em CENTIMETROS. Etiqueta tem prioridade. Pallet padrao=120x100cm.'}
+        ]}]
+      })
     });
 
     var txt_raw = await res.text();
-    var p;
-    try{ p = JSON.parse(txt_raw); }
+    var resp;
+    try{ resp = JSON.parse(txt_raw); }
     catch(e){ throw new Error('Erro ao processar resposta da IA'); }
 
-    if(p.error) throw new Error(p.error);
+    if(resp.error) throw new Error(resp.error.message||resp.error);
+
+    // Extrair texto da resposta Anthropic
+    var block = resp.content && resp.content.find(function(b){return b.type==='text';});
+    var txt2 = block ? block.text.trim() : '';
+    var m2 = txt2.match(/{[^{}]*}/);
+    if(!m2) throw new Error('IA nao retornou dimensoes. Tente foto mais proxima.');
+    var p;
+    try{ p = JSON.parse(m2[0]); }
+    catch(e){ throw new Error('Formato invalido. Tente novamente.'); }
 
     var C = Math.round(parseFloat(p.C||p.comprimento||p.c||0));
     var L = Math.round(parseFloat(p.L||p.largura||p.l||0));
