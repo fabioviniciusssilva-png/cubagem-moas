@@ -13,12 +13,11 @@
 <title>Cubagem MOAS</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap');
-:root{--sage:#5a7a62;--sage-l:#7a9e84;--sage-pale:#e8f0ea;--sage-dim:#c6d9c9;--ch:#2c3530;--ch2:#485249;--ch3:#6b7570;--surf:#f5f8f5;--brd:#d4e0d6;--warn:#c97c2e;--wp:#fdf3e7;--wb:#e8b97a;--err:#b94040;--ep:#fdeaea;--info:#2e6fc9;--ip:#e7f0fd;--mono:"JetBrains Mono",monospace;--sans:"Inter",sans-serif;--r:14px;--rsm:8px;--sh:0 2px 12px rgba(44,53,48,.10);--shl:0 6px 28px rgba(44,53,48,.16);}
+:root{--sage:#5a7a62;--sage-l:#7a9e84;--sage-pale:#e8f0ea;--sage-dim:#c6d9c9;--ch:#2c3530;--ch2:#485249;--ch3:#6b7570;--surf:#f5f8f5;--brd:#d4e0d6;--warn:#c97c2e;--wp:#fdf3e7;--wb:#e8b97a;--err:#b94040;--ep:#fdeaea;--mono:"JetBrains Mono",monospace;--sans:"Inter",sans-serif;--r:14px;--rsm:8px;--sh:0 2px 12px rgba(44,53,48,.10);--shl:0 6px 28px rgba(44,53,48,.16);}
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 body{font-family:var(--sans);background:var(--surf);color:var(--ch);min-height:100vh;padding-bottom:env(safe-area-inset-bottom)}
 header{background:var(--ch);padding:0 16px;padding-top:env(safe-area-inset-top);display:flex;align-items:center;justify-content:space-between;height:calc(52px + env(safe-area-inset-top));position:sticky;top:0;z-index:200;box-shadow:0 2px 8px rgba(0,0,0,.2)}
-.brand-name{font-size:14px;font-weight:700;color:#fff}
-.brand-sub{font-size:10px;color:var(--sage-dim)}
+.brand-name{font-size:14px;font-weight:700;color:#fff}.brand-sub{font-size:10px;color:var(--sage-dim)}
 .hdr-op{font-size:11px;color:rgba(255,255,255,.5);cursor:pointer;display:flex;align-items:center;gap:4px}
 .hdr-op span{color:var(--sage-dim);font-weight:600;max-width:90px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 #installBanner{background:linear-gradient(135deg,#3d5a47,#2c3530);padding:11px 14px;margin:12px 14px 0;border-radius:var(--r);display:none;align-items:center;gap:10px;box-shadow:var(--shl)}
@@ -35,106 +34,65 @@ header{background:var(--ch);padding:0 16px;padding-top:env(safe-area-inset-top);
 .mob-body input:focus{border-color:var(--sage);background:#fff}
 .btn-ok{width:100%;background:var(--sage);color:#fff;border:none;border-radius:var(--rsm);padding:13px;font-size:15px;font-weight:600;cursor:pointer;font-family:var(--sans)}
 .tabs-bar{background:var(--ch);display:flex;border-top:1px solid rgba(255,255,255,.08)}
-.tab-btn{flex:1;background:none;border:none;color:rgba(255,255,255,.45);font-family:var(--sans);font-size:13px;font-weight:500;padding:11px 8px;cursor:pointer;border-bottom:2px solid transparent;display:flex;align-items:center;justify-content:center;gap:5px}
+.tab-btn{flex:1;background:none;border:none;color:rgba(255,255,255,.4);font-family:var(--sans);font-size:12px;font-weight:500;padding:10px 4px;cursor:pointer;border-bottom:2px solid transparent;display:flex;align-items:center;justify-content:center;gap:4px}
 .tab-btn.active{color:#fff;border-bottom-color:var(--sage);font-weight:600}
-main{max-width:580px;margin:0 auto;padding:16px 14px 40px}
-.cfg-bar{background:#fff;border:1px solid var(--brd);border-radius:var(--r);padding:11px 14px;display:flex;flex-wrap:wrap;gap:10px;box-shadow:var(--sh);margin-bottom:14px}
+main{max-width:580px;margin:0 auto;padding:14px 14px 40px}
+.cfg-bar{background:#fff;border:1px solid var(--brd);border-radius:var(--r);padding:10px 14px;display:flex;flex-wrap:wrap;gap:10px;box-shadow:var(--sh);margin-bottom:14px}
 .cfg-g{display:flex;align-items:center;gap:7px}
 .cfg-lbl{font-size:11px;font-weight:600;color:var(--ch2);text-transform:uppercase;letter-spacing:.4px}
 .cfg-in{font-family:var(--mono);font-size:13px;font-weight:600;color:var(--sage);background:var(--sage-pale);border:1.5px solid var(--sage-dim);border-radius:var(--rsm);padding:5px 9px;width:78px;text-align:center;outline:none}
 .cfg-in:focus{border-color:var(--sage)}
-select.cfg-in{width:auto}
 
-/* BOTÃO CÂMERA — grande e destacado */
-.cam-sec{background:linear-gradient(135deg,var(--ch),#3a5244);border-radius:var(--r);padding:18px 14px 20px;margin-bottom:14px;box-shadow:var(--shl)}
-.cam-lbl{font-size:11px;font-weight:600;color:rgba(255,255,255,.5);text-align:center;text-transform:uppercase;letter-spacing:.6px;margin-bottom:12px}
-.cam-wrap{position:relative;width:100%;margin-bottom:10px}
-.btn-cam{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;background:var(--sage);color:#fff;border:none;border-radius:14px;padding:22px 14px;cursor:pointer;width:100%;transition:transform .15s;box-shadow:0 4px 18px rgba(90,122,98,.4);font-family:var(--sans)}
-.btn-cam:active{transform:scale(.97)}
-.cam-icon{font-size:44px;line-height:1}
-.cam-txt{font-size:17px;font-weight:700}
-.cam-sub{font-size:12px;color:rgba(255,255,255,.7)}
-.cam-wrap input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
-.or-line{display:flex;align-items:center;gap:8px;margin:2px 0 10px}
-.or-line::before,.or-line::after{content:"";flex:1;height:1px;background:rgba(255,255,255,.12)}
-.or-line span{font-size:11px;color:rgba(255,255,255,.3)}
-.gal-wrap{position:relative;width:100%}
-.btn-gal{display:flex;align-items:center;justify-content:center;gap:7px;background:rgba(255,255,255,.08);color:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.18);border-radius:var(--r);padding:11px 14px;font-family:var(--sans);font-size:13px;font-weight:500;cursor:pointer;width:100%}
-.gal-wrap input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+/* SELETOR DE PRODUTO */
+.prod-sel-card{background:linear-gradient(135deg,var(--ch),#3a5244);border-radius:var(--r);padding:16px 14px;margin-bottom:14px;box-shadow:var(--shl)}
+.prod-sel-title{font-size:11px;font-weight:600;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.6px;margin-bottom:10px}
+.prod-select{width:100%;background:rgba(255,255,255,.1);color:#fff;border:1.5px solid rgba(255,255,255,.2);border-radius:var(--r);padding:13px 14px;font-family:var(--sans);font-size:14px;font-weight:500;outline:none;cursor:pointer;margin-bottom:10px;-webkit-appearance:none}
+.prod-select option{background:var(--ch);color:#fff}
+.btn-catalogo{display:flex;align-items:center;justify-content:center;gap:6px;background:rgba(255,255,255,.08);color:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.15);border-radius:var(--rsm);padding:9px;font-size:13px;cursor:pointer;font-family:var(--sans);width:100%}
 
-/* PAINEL DE ANÁLISE */
-#painelAnalise{background:#fff;border:1px solid var(--brd);border-radius:var(--r);box-shadow:var(--shl);margin-bottom:14px;overflow:hidden;display:none}
-.pan-hd{background:var(--ch);padding:12px 14px;display:flex;align-items:center;justify-content:space-between}
-.pan-hd-title{font-size:13px;font-weight:600;color:#fff}
-#imgPreview{width:100%;max-height:180px;object-fit:contain;border-bottom:1px solid var(--brd);display:none}
-#loadingDiv{display:none;align-items:center;gap:12px;padding:20px 16px;color:var(--info)}
-.spinner{width:24px;height:24px;border:3px solid var(--ip);border-top-color:var(--info);border-radius:50%;animation:spin .8s linear infinite;flex-shrink:0}
-@keyframes spin{to{transform:rotate(360deg)}}
-.loading-txt{font-size:14px}
-#erroDiv{display:none;padding:14px 16px;background:var(--ep);border-bottom:1px solid #f5c6c6}
-.erro-txt{font-size:13px;color:var(--err);margin-bottom:10px}
-.btn-manual{background:var(--ch);color:#fff;border:none;border-radius:var(--rsm);padding:8px 14px;font-size:13px;cursor:pointer;font-family:var(--sans)}
-
-/* RESULTADO DA IA */
-#resultDiv{display:none;padding:14px}
-.ia-conf{font-size:12px;color:var(--ch3);background:var(--surf);border-radius:var(--rsm);padding:7px 10px;margin-bottom:12px}
-.ia-conf strong{color:var(--ch2)}
-
-/* CAMPOS DE DIMENSÃO — grandes e claros */
-.dims-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:10px}
-.dim-box label{font-size:10px;font-weight:700;color:var(--sage);text-transform:uppercase;display:block;margin-bottom:3px;letter-spacing:.5px}
-.dim-box input{font-family:var(--mono);font-size:22px;font-weight:700;color:var(--ch);background:var(--sage-pale);border:2px solid var(--sage-dim);border-radius:var(--rsm);padding:10px 6px;width:100%;text-align:center;outline:none}
+/* FORM MANUAL */
+.manual-card{background:#fff;border:1px solid var(--brd);border-radius:var(--r);box-shadow:var(--sh);margin-bottom:14px;overflow:hidden}
+.manual-hd{background:var(--sage-pale);border-bottom:1px solid var(--sage-dim);padding:10px 14px;font-size:13px;font-weight:600;color:var(--sage)}
+.manual-body{padding:14px}
+.m-desc{width:100%;font-family:var(--sans);font-size:14px;color:var(--ch);background:var(--surf);border:1px solid var(--brd);border-radius:var(--rsm);padding:9px 12px;outline:none;margin-bottom:10px}
+.m-desc:focus{border-color:var(--sage);background:#fff}
+.dims-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-bottom:10px}
+.dim-box label{font-size:10px;font-weight:700;color:var(--sage);text-transform:uppercase;display:block;margin-bottom:3px}
+.dim-box input{font-family:var(--mono);font-size:20px;font-weight:700;color:var(--ch);background:var(--sage-pale);border:2px solid var(--sage-dim);border-radius:var(--rsm);padding:9px 5px;width:100%;text-align:center;outline:none}
 .dim-box input:focus{border-color:var(--sage);background:#fff}
-.dim-unit{font-size:10px;color:var(--ch3);text-align:center;margin-top:2px}
-.row2{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:12px}
 .dim-box2 label{font-size:10px;font-weight:600;color:var(--ch2);text-transform:uppercase;display:block;margin-bottom:3px}
-.dim-box2 input{font-family:var(--mono);font-size:17px;font-weight:600;color:var(--ch);background:var(--surf);border:1.5px solid var(--brd);border-radius:var(--rsm);padding:9px 8px;width:100%;text-align:center;outline:none}
+.dim-box2 input{font-family:var(--mono);font-size:16px;font-weight:600;color:var(--ch);background:var(--surf);border:1.5px solid var(--brd);border-radius:var(--rsm);padding:8px;width:100%;text-align:center;outline:none}
 .dim-box2 input:focus{border-color:var(--sage);background:#fff}
-.dim-box2.hl label{color:var(--sage)}
-.dim-box2.hl input{background:var(--sage-pale);border-color:var(--sage-dim);color:var(--sage)}
-
-/* RESULTADO DO CÁLCULO — destaque total */
-#boxResultado{display:none;background:var(--ch);border-radius:var(--r);padding:14px;margin-bottom:12px}
-.res-dims{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,.1)}
-.res-dims span{font-size:12px;color:rgba(255,255,255,.5)}
-.res-dims strong{color:#fff;font-family:var(--mono)}
-.res-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:10px}
-.rg-cell{text-align:center}
-.rg-cell .rl{font-size:10px;color:rgba(255,255,255,.4);margin-bottom:3px}
-.rg-cell .rv{font-family:var(--mono);font-size:14px;font-weight:700;color:#fff}
-.res-tax-box{border-radius:var(--rsm);padding:12px;text-align:center;transition:background .2s}
-.res-tax-box.ok{background:var(--sage)}
-.res-tax-box.warn{background:var(--warn)}
-.tax-label{font-size:11px;font-weight:600;color:rgba(255,255,255,.8);margin-bottom:4px}
-.tax-val{font-family:var(--mono);font-size:28px;font-weight:700;color:#fff;line-height:1}
-.tax-unit{font-size:11px;color:rgba(255,255,255,.7);margin-top:2px}
-
-.pan-note{font-size:11px;color:var(--ch3);padding:8px 10px;background:var(--wp);border-radius:var(--rsm);border-left:3px solid var(--warn);margin-bottom:12px}
-.pan-actions{display:flex;gap:8px}
-.btn-add{flex:1;background:var(--sage);color:#fff;border:none;border-radius:var(--rsm);padding:14px;font-size:15px;font-weight:600;cursor:pointer;font-family:var(--sans)}
-.btn-add:active{filter:brightness(.9)}
-.btn-cncl{background:transparent;color:var(--ch3);border:1.5px solid var(--brd);border-radius:var(--rsm);padding:14px 14px;font-size:14px;cursor:pointer;font-family:var(--sans)}
+.dim-box2.hl label{color:var(--sage)}.dim-box2.hl input{background:var(--sage-pale);border-color:var(--sage-dim);color:var(--sage)}
+#manualResultBox{background:var(--ch);border-radius:var(--rsm);padding:12px;margin-bottom:12px;display:none}
+.mr-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-bottom:8px}
+.mr-cell{text-align:center}.mr-cell .mrl{font-size:10px;color:rgba(255,255,255,.4);margin-bottom:2px}.mr-cell .mrv{font-family:var(--mono);font-size:13px;font-weight:700;color:#fff}
+.res-tax-box{border-radius:var(--rsm);padding:10px;text-align:center}
+.res-tax-box.ok{background:var(--sage)}.res-tax-box.warn{background:var(--warn)}
+.tax-val{font-family:var(--mono);font-size:24px;font-weight:700;color:#fff;line-height:1}
+.tax-unit{font-size:10px;color:rgba(255,255,255,.7);margin-top:2px}
+.btn-add-vol{width:100%;background:var(--sage);color:#fff;border:none;border-radius:var(--rsm);padding:13px;font-size:15px;font-weight:600;cursor:pointer;font-family:var(--sans)}
+.btn-add-vol:active{filter:brightness(.9)}
 
 /* VOLUMES */
 .vols-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:9px}
 .vols-hd-title{font-size:13px;font-weight:600}
 .btn-clr{background:transparent;color:var(--ch3);border:1px solid var(--brd);border-radius:var(--rsm);padding:5px 11px;font-size:12px;cursor:pointer;font-family:var(--sans)}
-.empty{text-align:center;padding:28px 14px;color:var(--ch3);font-size:14px;background:#fff;border:1px solid var(--brd);border-radius:var(--r)}
-.vol-card{background:#fff;border:1px solid var(--brd);border-radius:var(--r);margin-bottom:9px;box-shadow:var(--sh);overflow:hidden}
-.vc-hd{background:var(--sage-pale);border-bottom:1px solid var(--sage-dim);padding:8px 13px;display:flex;align-items:center;justify-content:space-between}
+.empty{text-align:center;padding:24px 14px;color:var(--ch3);font-size:13px;background:#fff;border:1px solid var(--brd);border-radius:var(--r)}
+.vol-card{background:#fff;border:1px solid var(--brd);border-radius:var(--r);margin-bottom:8px;box-shadow:var(--sh);overflow:hidden}
+.vc-hd{background:var(--sage-pale);border-bottom:1px solid var(--sage-dim);padding:8px 12px;display:flex;align-items:center;justify-content:space-between}
 .vc-name{font-size:13px;font-weight:600;color:var(--sage)}
 .vc-badge{font-family:var(--mono);font-size:12px;font-weight:600;padding:2px 8px;border-radius:4px;background:#fff;border:1px solid var(--brd);color:var(--ch)}
 .vc-badge.w{color:var(--warn);border-color:var(--wb);background:var(--wp)}
-.vg{padding:10px 13px;display:grid;grid-template-columns:repeat(3,1fr);gap:7px}
+.vg{padding:10px 12px;display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
 .vf label{font-size:10px;font-weight:600;color:var(--ch3);text-transform:uppercase;display:block;margin-bottom:2px}
-.vf input{font-family:var(--mono);font-size:13px;color:var(--ch);background:var(--surf);border:1px solid var(--brd);border-radius:var(--rsm);padding:6px;width:100%;text-align:center;outline:none}
+.vf input{font-family:var(--mono);font-size:12px;color:var(--ch);background:var(--surf);border:1px solid var(--brd);border-radius:var(--rsm);padding:5px;width:100%;text-align:center;outline:none}
 .vf input:focus{border-color:var(--sage);background:#fff}
 .vf input[readonly]{color:var(--sage);font-weight:600;background:var(--sage-pale);border-color:var(--sage-dim)}
-.vf-row{border-top:1px solid var(--brd);padding:7px 13px;display:flex;align-items:center;justify-content:space-between}
+.vf-row{border-top:1px solid var(--brd);padding:7px 12px;display:flex;align-items:center;justify-content:space-between}
 .vf-info{font-size:11px;color:var(--ch3)}
-.btn-del{background:none;border:none;color:var(--err);font-size:22px;cursor:pointer;padding:2px 5px;border-radius:4px;line-height:1}
-
-/* TOTAL */
+.btn-del{background:none;border:none;color:var(--err);font-size:20px;cursor:pointer;padding:2px 5px;border-radius:4px;line-height:1}
 #totalBar{background:var(--ch);border-radius:var(--r);padding:14px;margin:12px 0;box-shadow:var(--shl);display:none}
 .tot-lbl{font-size:10px;font-weight:600;color:rgba(255,255,255,.35);text-transform:uppercase;letter-spacing:.5px;margin-bottom:9px}
 .tot-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:10px}
@@ -145,8 +103,28 @@ select.cfg-in{width:auto}
 .tot-tax-val{font-family:var(--mono);font-size:28px;font-weight:700;color:#a8d4b0;line-height:1}
 .tot-tax-unit{font-size:10px;color:rgba(255,255,255,.35);margin-top:2px}
 #footerActs{display:none;gap:9px;margin-top:4px}
-.btn-act{flex:1;background:#fff;color:var(--ch2);border:1px solid var(--brd);border-radius:var(--rsm);padding:11px 7px;font-family:var(--sans);font-size:12px;font-weight:500;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:5px}
+.btn-act{flex:1;background:#fff;color:var(--ch2);border:1px solid var(--brd);border-radius:var(--rsm);padding:10px 7px;font-family:var(--sans);font-size:12px;font-weight:500;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:4px}
 .btn-act:active{background:var(--sage-pale);color:var(--sage)}
+
+/* CATÁLOGO */
+.cat-section-title{font-size:14px;font-weight:700;margin-bottom:10px}
+.prod-card{background:#fff;border:1px solid var(--brd);border-radius:var(--r);margin-bottom:10px;box-shadow:var(--sh);overflow:hidden}
+.prod-hd{background:var(--ch);padding:10px 14px;display:flex;align-items:center;justify-content:space-between}
+.prod-nome{font-size:13px;font-weight:600;color:#fff;flex:1}
+.btn-qr-gen{background:var(--sage);color:#fff;border:none;border-radius:var(--rsm);padding:5px 10px;font-size:12px;cursor:pointer;font-family:var(--sans)}
+.btn-del-prod{background:rgba(255,255,255,.1);color:rgba(255,255,255,.6);border:none;border-radius:var(--rsm);padding:5px 8px;font-size:16px;cursor:pointer;line-height:1}
+.prod-dims{font-family:var(--mono);font-size:13px;color:var(--ch2);padding:8px 14px;border-bottom:1px solid var(--brd)}
+.prod-info{display:flex;gap:12px;padding:8px 14px;font-size:12px;color:var(--ch3);flex-wrap:wrap}
+.qr-container{background:var(--ch);border-top:1px solid rgba(255,255,255,.1)}
+.cat-form{background:#fff;border:1px solid var(--brd);border-radius:var(--r);padding:14px;box-shadow:var(--sh);margin-top:14px}
+.cat-form-title{font-size:13px;font-weight:600;color:var(--ch);margin-bottom:12px}
+.cf-input{width:100%;font-family:var(--sans);font-size:14px;color:var(--ch);background:var(--surf);border:1px solid var(--brd);border-radius:var(--rsm);padding:9px 12px;outline:none;margin-bottom:8px}
+.cf-input:focus{border-color:var(--sage);background:#fff}
+.cf-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:8px}
+.cf-field label{font-size:10px;font-weight:600;color:var(--ch2);text-transform:uppercase;display:block;margin-bottom:3px}
+.cf-field input{font-family:var(--mono);font-size:15px;color:var(--ch);background:var(--surf);border:1px solid var(--brd);border-radius:var(--rsm);padding:8px;width:100%;text-align:center;outline:none}
+.cf-field input:focus{border-color:var(--sage);background:#fff}
+.btn-salvar-prod{width:100%;background:var(--sage);color:#fff;border:none;border-radius:var(--rsm);padding:12px;font-size:14px;font-weight:600;cursor:pointer;font-family:var(--sans)}
 
 /* HISTÓRICO */
 .hist-filt{background:#fff;border:1px solid var(--brd);border-radius:var(--r);padding:11px 14px;box-shadow:var(--sh);margin-bottom:12px;display:flex;flex-wrap:wrap;gap:9px;align-items:flex-end}
@@ -155,24 +133,21 @@ select.cfg-in{width:auto}
 .fg input{font-size:13px;color:var(--ch);background:var(--surf);border:1px solid var(--brd);border-radius:var(--rsm);padding:7px 9px;outline:none;width:100%;font-family:var(--sans)}
 .fg input:focus{border-color:var(--sage);background:#fff}
 .btn-filt{background:var(--sage);color:#fff;border:none;border-radius:var(--rsm);padding:8px 14px;font-size:13px;font-weight:600;cursor:pointer;font-family:var(--sans);align-self:flex-end}
-.loading-hist{display:flex;align-items:center;gap:10px;color:var(--info);padding:20px 0}
+.loading-hist{display:flex;align-items:center;gap:10px;color:#2e6fc9;padding:20px 0}
+.spinner{width:20px;height:20px;border:3px solid #e7f0fd;border-top-color:#2e6fc9;border-radius:50%;animation:spin .8s linear infinite;flex-shrink:0}
+@keyframes spin{to{transform:rotate(360deg)}}
 .hkpis{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin-bottom:12px}
 .hk{background:#fff;border:1px solid var(--brd);border-radius:var(--r);padding:11px;box-shadow:var(--sh);text-align:center}
-.hk.hi{background:var(--ch)}
-.hkv{font-family:var(--mono);font-size:20px;font-weight:700;color:var(--ch);line-height:1;margin-bottom:3px}
-.hk.hi .hkv{color:#a8d4b0}
-.hkl{font-size:11px;color:var(--ch3)}
-.hk.hi .hkl{color:rgba(255,255,255,.4)}
+.hk.hi{background:var(--ch)}.hkv{font-family:var(--mono);font-size:20px;font-weight:700;color:var(--ch);line-height:1;margin-bottom:3px}
+.hk.hi .hkv{color:#a8d4b0}.hkl{font-size:11px;color:var(--ch3)}.hk.hi .hkl{color:rgba(255,255,255,.4)}
 .hlist{display:flex;flex-direction:column;gap:8px}
-.hr{background:#fff;border:1px solid var(--brd);border-radius:var(--r);padding:11px 13px;box-shadow:var(--sh)}
-.hr-top{display:flex;align-items:center;gap:8px;margin-bottom:5px;flex-wrap:wrap}
-.hr-op{font-size:13px;font-weight:600;color:var(--sage);flex:1}
-.hr-dt{font-size:11px;color:var(--ch3)}
+.hr{background:#fff;border:1px solid var(--brd);border-radius:var(--r);padding:10px 12px;box-shadow:var(--sh)}
+.hr-top{display:flex;align-items:center;gap:7px;margin-bottom:4px;flex-wrap:wrap}
+.hr-op{font-size:13px;font-weight:600;color:var(--sage);flex:1}.hr-dt{font-size:11px;color:var(--ch3)}
 .hr-b{font-family:var(--mono);font-size:12px;font-weight:600;padding:2px 8px;border-radius:4px;background:var(--sage-pale);border:1px solid var(--sage-dim);color:var(--sage)}
 .hr-b.w{color:var(--warn);border-color:var(--wb);background:var(--wp)}
 .hr-d{font-family:var(--mono);font-size:12px;color:var(--ch2)}
-.hr-obs{font-size:11px;color:var(--ch3);margin-top:4px;font-style:italic}
-@media print{header,.tabs-bar,#installBanner,.cam-sec,#painelAnalise,#footerActs,.btn-del,.btn-clr,.hist-filt{display:none!important}body{background:#fff}#totalBar{background:#485249!important}}
+@media print{header,.tabs-bar,#installBanner,#footerActs,.btn-del,.btn-clr{display:none!important}body{background:#fff}#totalBar{background:#485249!important}}
 </style>
 </head>
 <body>
@@ -192,13 +167,15 @@ select.cfg-in{width:auto}
   <div><div class="brand-name">Grupo MOAS</div><div class="brand-sub">Aferidor de Cubagem</div></div>
   <div class="hdr-op" id="btnTrocarOp">&#128100; <span id="opNome">&mdash;</span></div>
 </header>
+
 <div class="tabs-bar">
-  <button class="tab-btn active" id="btnTabCalc" onclick="switchTab('calc')">&#128247; Calcular</button>
-  <button class="tab-btn" id="btnTabHist" onclick="switchTab('hist')">&#128202; Hist&oacute;rico</button>
+  <button class="tab-btn active" id="btn-tab-calc" onclick="switchTab('calc')">&#128221; Calcular</button>
+  <button class="tab-btn" id="btn-tab-catalogo" onclick="switchTab('catalogo')">&#128230; Cat&aacute;logo</button>
+  <button class="tab-btn" id="btn-tab-hist" onclick="switchTab('hist')">&#128202; Hist&oacute;rico</button>
 </div>
 
 <div id="installBanner">
-  <span style="font-size:24px">&#128241;</span>
+  <span style="font-size:22px">&#128241;</span>
   <div class="ib-text"><strong>Instalar como App</strong><span>Funciona offline &mdash; &iacute;cone na tela inicial</span></div>
   <button class="btn-inst" id="btnInstall">Instalar</button>
   <button class="btn-inst-x" onclick="fecharBanner()">&#215;</button>
@@ -206,132 +183,66 @@ select.cfg-in{width:auto}
 <div id="toast"></div>
 
 <!-- TAB CALCULAR -->
-<div id="tabCalc">
+<div id="tab-calc">
 <main>
   <div class="cfg-bar">
     <div class="cfg-g">
       <span class="cfg-lbl">Fator</span>
       <input class="cfg-in" id="fatorCub" type="number" value="300" min="50" max="1000">
-      <span style="font-size:11px;color:var(--ch3)">kg/m&sup3; &nbsp;rod:300 &nbsp;a&eacute;reo:167</span>
+      <span style="font-size:11px;color:var(--ch3)">kg/m&sup3; rod:300 a&eacute;reo:167</span>
     </div>
   </div>
 
-  <!-- CÂMERA -->
-  <div class="cam-sec">
-    <div class="cam-lbl">&#128247; Analisar por Foto</div>
-    <div class="cam-wrap">
-      <button class="btn-cam">
-        <span class="cam-icon">&#128247;</span>
-        <span class="cam-txt">Abrir C&acirc;mera</span>
-        <span class="cam-sub">Fotografe a caixa ou pallet — a IA mede automaticamente</span>
-      </button>
-      <input type="file" accept="image/*" capture="environment" onchange="handleFile(this)">
-    </div>
-    <div class="or-line"><span>ou escolha da galeria</span></div>
-    <div class="gal-wrap">
-      <button class="btn-gal">&#128444;&#65038; Escolher da Galeria</button>
-      <input type="file" accept="image/*" onchange="handleFile(this)">
-    </div>
+  <!-- SELETOR DE PRODUTO DO CATÁLOGO -->
+  <div class="prod-sel-card">
+    <div class="prod-sel-title">&#128230; Selecionar do Cat&aacute;logo ou Escanear QR</div>
+    <select class="prod-select" id="produtoSelect">
+      <option value="">-- Selecione um produto cadastrado --</option>
+    </select>
+    <button class="btn-catalogo" onclick="switchTab('catalogo')">&#43; Gerenciar cat&aacute;logo de produtos</button>
   </div>
 
-  <!-- PAINEL DE ANÁLISE -->
-  <div id="painelAnalise">
-    <div class="pan-hd">
-      <span class="pan-hd-title">&#128269; An&aacute;lise da Foto</span>
-      <button onclick="cancelarAnalise()" style="background:none;border:none;color:rgba(255,255,255,.5);font-size:20px;cursor:pointer;line-height:1">&#215;</button>
-    </div>
-    <img id="imgPreview" src="" alt="">
-    
-    <!-- LOADING -->
-    <div id="loadingDiv">
-      <div class="spinner"></div>
-      <div>
-        <div class="loading-txt" style="font-weight:600">IA analisando a imagem...</div>
-        <div style="font-size:12px;color:var(--ch3);margin-top:3px">Lendo dimens&otilde;es automaticamente</div>
+  <!-- ENTRADA MANUAL -->
+  <div class="manual-card">
+    <div class="manual-hd">&#9999;&#65038; Inserir Dimens&otilde;es</div>
+    <div class="manual-body">
+      <input class="m-desc" type="text" id="mDesc" placeholder="Descri&ccedil;&atilde;o (ex: Caixa Produto A)">
+      <div class="dims-grid">
+        <div class="dim-box"><label>&#8596; Comp.</label><input type="number" id="mC" min="0" step="1" placeholder="0"></div>
+        <div class="dim-box"><label>&#8597; Larg.</label><input type="number" id="mL" min="0" step="1" placeholder="0"></div>
+        <div class="dim-box"><label>&#8645; Altura</label><input type="number" id="mA" min="0" step="1" placeholder="0"></div>
       </div>
-    </div>
-    
-    <!-- ERRO -->
-    <div id="erroDiv">
-      <div class="erro-txt" id="erroTxt"></div>
-      <div style="font-size:12px;color:var(--ch3);margin-bottom:10px">Insira as dimens&otilde;es manualmente:</div>
-    </div>
-    
-    <!-- RESULTADO -->
-    <div id="resultDiv">
-      <div class="ia-conf" id="iaConfBox"><strong id="dimConf"></strong> &nbsp;<span id="dimObs"></span></div>
-      
-      <div style="font-size:11px;font-weight:600;color:var(--ch3);text-transform:uppercase;letter-spacing:.4px;margin-bottom:7px;padding:0 14px">Dimens&otilde;es detectadas (cm) — toque para ajustar</div>
-      
-      <div style="padding:0 14px">
-        <div class="dims-grid">
-          <div class="dim-box">
-            <label>&#8596; Comp.</label>
-            <input type="number" id="dimC" min="0" step="1" placeholder="0">
-            <div class="dim-unit">centímetros</div>
-          </div>
-          <div class="dim-box">
-            <label>&#8597; Larg.</label>
-            <input type="number" id="dimL" min="0" step="1" placeholder="0">
-            <div class="dim-unit">centímetros</div>
-          </div>
-          <div class="dim-box">
-            <label>&#8645; Altura</label>
-            <input type="number" id="dimA" min="0" step="1" placeholder="0">
-            <div class="dim-unit">centímetros</div>
-          </div>
-        </div>
-        <div class="row2">
-          <div class="dim-box2 hl">
-            <label>&#128230; Qtd de caixas</label>
-            <input type="number" id="dimQtd" min="1" step="1" value="1">
-          </div>
-          <div class="dim-box2">
-            <label>Peso real / cx (kg)</label>
-            <input type="number" id="dimPeso" min="0" step="0.1" placeholder="0">
-          </div>
-        </div>
+      <div class="row2">
+        <div class="dim-box2 hl"><label>&#128230; Qtd caixas</label><input type="number" id="mQtd" min="1" step="1" value="1"></div>
+        <div class="dim-box2"><label>Peso/cx (kg)</label><input type="number" id="mPeso" min="0" step="0.1" placeholder="0"></div>
+      </div>
 
-        <!-- RESULTADO DO CÁLCULO — aparece automaticamente -->
-        <div id="boxResultado">
-          <div class="res-dims">
-            <span><strong id="resComp">—</strong> C</span>
-            <span><strong id="resLarg">—</strong> L</span>
-            <span><strong id="resAlt">—</strong> A</span>
-            <span>&#215;<strong id="resQtd">—</strong></span>
-            <span>= <strong id="resM3">—</strong></span>
-          </div>
-          <div class="res-grid">
-            <div class="rg-cell"><div class="rl">Peso Real</div><div class="rv" id="resReal">&mdash;</div></div>
-            <div class="rg-cell"><div class="rl">Peso Cubado</div><div class="rv" id="resCub">&mdash;</div></div>
-            <div class="rg-cell"><div class="rl">Fator</div><div class="rv" id="resFator">300</div></div>
-          </div>
-          <div class="res-tax-box ok" id="resTaxBox">
-            <div class="tax-label">&#9654; Peso Taxado</div>
-            <div class="tax-val" id="resTax">&mdash;</div>
-            <div class="tax-unit">kg — cobrado pela transportadora</div>
-          </div>
+      <div id="manualResultBox">
+        <div class="mr-grid">
+          <div class="mr-cell"><div class="mrl">Peso Real</div><div class="mrv" id="mrReal">&mdash;</div></div>
+          <div class="mr-cell"><div class="mrl">Peso Cubado</div><div class="mrv" id="mrCub">&mdash;</div></div>
+          <div class="mr-cell"><div class="mrl">Volume</div><div class="mrv" id="mrM3">&mdash;</div></div>
         </div>
-
-        <div class="pan-note" style="margin-top:12px">&#9888; Confira as dimens&otilde;es — ajuste se necess&aacute;rio antes de adicionar.</div>
-        <div class="pan-actions">
-          <button class="btn-cncl" onclick="cancelarAnalise()">Cancelar</button>
-          <button class="btn-add" onclick="adicionarVolume()">&#43; Adicionar ao total</button>
+        <div class="res-tax-box ok" id="mrTaxBox">
+          <div style="font-size:11px;color:rgba(255,255,255,.8);margin-bottom:4px">&#9654; Peso Taxado (cobrado)</div>
+          <div class="tax-val" id="mrTax">&mdash;</div>
+          <div class="tax-unit">kg</div>
         </div>
       </div>
-      <div style="height:14px"></div>
+
+      <button class="btn-add-vol" onclick="adicionarManual()" style="margin-top:12px">&#43; Adicionar ao total</button>
     </div>
   </div>
 
-  <!-- VOLUMES -->
+  <!-- LISTA DE VOLUMES -->
   <div class="vols-hd">
-    <span class="vols-hd-title">Volumes desta sess&atilde;o</span>
+    <span class="vols-hd-title">Volumes adicionados</span>
     <button class="btn-clr" onclick="limparTudo()">&#128465; Limpar</button>
   </div>
   <div id="volsList"></div>
 
   <div id="totalBar">
-    <div class="tot-lbl">Total Geral da Sess&atilde;o</div>
+    <div class="tot-lbl">Total Geral</div>
     <div class="tot-grid">
       <div><div class="ti-lbl">Volumes (caixas)</div><div class="ti-val" id="totVol">0</div></div>
       <div><div class="ti-lbl">m&sup3; total</div><div class="ti-val" id="totM3" style="font-size:14px">0,0000</div></div>
@@ -344,8 +255,7 @@ select.cfg-in{width:auto}
       <div class="tot-tax-unit">kg</div>
     </div>
   </div>
-
-  <div id="footerActs" style="display:flex">
+  <div id="footerActs">
     <button class="btn-act" onclick="exportCSV()">&#8595; CSV</button>
     <button class="btn-act" onclick="copiarResumo()">&#128203; Copiar</button>
     <button class="btn-act" onclick="window.print()">&#128424; PDF</button>
@@ -353,10 +263,30 @@ select.cfg-in{width:auto}
 </main>
 </div>
 
-<!-- TAB HISTÓRICO -->
-<div id="tabHist" style="display:none">
+<!-- TAB CATÁLOGO -->
+<div id="tab-catalogo" style="display:none">
 <main>
-  <div style="font-size:20px;font-weight:700;margin-bottom:12px">Hist&oacute;rico da Equipe</div>
+  <div class="cat-section-title">Cat&aacute;logo de Produtos</div>
+  <div id="catalogoList"><div class="empty">Carregando...</div></div>
+
+  <div class="cat-form">
+    <div class="cat-form-title">&#43; Cadastrar Novo Produto</div>
+    <input class="cf-input" type="text" id="pNome" placeholder="Nome do produto (ex: Caixa Espelho G)">
+    <div class="cf-grid">
+      <div class="cf-field"><label>Comp. (cm)</label><input type="number" id="pC" min="0" step="0.1" placeholder="0"></div>
+      <div class="cf-field"><label>Larg. (cm)</label><input type="number" id="pL" min="0" step="0.1" placeholder="0"></div>
+      <div class="cf-field"><label>Altura (cm)</label><input type="number" id="pA" min="0" step="0.1" placeholder="0"></div>
+      <div class="cf-field"><label>Peso/un (kg)</label><input type="number" id="pPeso" min="0" step="0.1" placeholder="0"></div>
+    </div>
+    <button class="btn-salvar-prod" onclick="salvarProduto()">&#128190; Salvar no Cat&aacute;logo</button>
+  </div>
+</main>
+</div>
+
+<!-- TAB HISTÓRICO -->
+<div id="tab-hist" style="display:none">
+<main>
+  <div style="font-size:18px;font-weight:700;margin-bottom:12px">Hist&oacute;rico da Equipe</div>
   <div class="hist-filt">
     <div class="fg"><label>Operador</label><input type="text" id="filtroOp" placeholder="Filtrar por nome..."></div>
     <div class="fg"><label>A partir de</label><input type="date" id="filtroData"></div>
@@ -371,9 +301,11 @@ select.cfg-in{width:auto}
 var SUPA_URL='https://wlisylbblngldjeasnld.supabase.co';
 var SUPA_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6IndsaXN5bGJibG5nbGRqZWFzbmxkIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzk2NjA3MzcsImV4cCI6MjA5NTIzNjczN30.VuonruQ24VZl1OzMKMAQOcwC_5TLiAgVg-vAaBWtbB8';
 var volumes=[];
+var produtos=[];
 var vid=0;
 var operadorNome='';
 var deferredPrompt=null;
+var currentTab='calc';
 
 // PWA
 window.addEventListener('beforeinstallprompt',function(e){
@@ -417,11 +349,13 @@ document.getElementById('btnTrocarOp').addEventListener('click',function(){
 
 // TABS
 function switchTab(tab){
-  document.getElementById('tabCalc').style.display=tab==='calc'?'block':'none';
-  document.getElementById('tabHist').style.display=tab==='hist'?'block':'none';
-  document.getElementById('btnTabCalc').className='tab-btn'+(tab==='calc'?' active':'');
-  document.getElementById('btnTabHist').className='tab-btn'+(tab==='hist'?' active':'');
-  if(tab==='hist')loadHist();
+  currentTab=tab;
+  ['calc','catalogo','hist'].forEach(function(t){
+    document.getElementById('tab-'+t).style.display=t===tab?'block':'none';
+    document.getElementById('btn-tab-'+t).className='tab-btn'+(t===tab?' active':'');
+  });
+  if(tab==='catalogo') renderCatalogo();
+  if(tab==='hist') loadHist();
 }
 
 // UTILS
@@ -434,226 +368,217 @@ function toast(msg,dur){
 }
 
 // ═══════════════════════════════════════════
-// CÂMERA — abre direto, sem modal complexo
+// ENTRADA MANUAL RÁPIDA
 // ═══════════════════════════════════════════
-function handleFile(input){
-  var file=input.files&&input.files[0];
-  if(!file)return;
-  var reader=new FileReader();
-  reader.onload=function(e){startAnalysis(e.target.result);};
-  reader.readAsDataURL(file);
-  input.value='';
-}
-
-function startAnalysis(dataUrl){
-  // Mostra painel de análise
-  var p=document.getElementById('painelAnalise');
-  p.style.display='block';
-  document.getElementById('imgPreview').src=dataUrl;
-  document.getElementById('imgPreview').style.display='block';
-  
-  // Mostra loading grande
-  document.getElementById('loadingDiv').style.display='flex';
-  document.getElementById('resultDiv').style.display='none';
-  document.getElementById('erroDiv').style.display='none';
-  
-  // Scroll até o painel
-  setTimeout(function(){p.scrollIntoView({behavior:'smooth',block:'start'});},100);
-  
-  // Chama IA
-  analisarComIA(dataUrl);
-}
-
-async function analisarComIA(dataUrl){
-  try{
-    var compressed = await comprimirImagem(dataUrl, 900);
-    var base64 = compressed.split(',')[1];
-    var ctype = compressed.split(';')[0].split(':')[1];
-
-    var _k=['sk-ant-api03-WizMcxQlOQvTnow','nbJ1Isjr7QdFLGEaaTcumwDSay8S','SGpCnXS6sszBKyKbD2kC77_48I1_','uC5KcsdtqReKRiA-JguZ_QAA'].join('');
-    var res = await fetch('https://api.anthropic.com/v1/messages',{
-      method:'POST',
-      headers:{'Content-Type':'application/json','x-api-key':_k,'anthropic-version':'2023-06-01'},
-      body:JSON.stringify({
-        model:'claude-sonnet-4-20250514',
-        max_tokens:200,
-        messages:[{role:'user',content:[
-          {type:'image',source:{type:'base64',media_type:ctype,data:base64}},
-          {type:'text',text:'Analise a foto de caixas ou pallets. Retorne APENAS JSON: {"C":60,"L":40,"A":30,"qtd":1,"conf":"alta","obs":"motivo"} onde C=comprimento L=largura A=altura em CENTIMETROS. Etiqueta tem prioridade. Pallet padrao=120x100cm.'}
-        ]}]
-      })
-    });
-
-    var txt_raw = await res.text();
-    var resp;
-    try{ resp = JSON.parse(txt_raw); }
-    catch(e){ throw new Error('Erro ao processar resposta da IA'); }
-
-    if(resp.error) throw new Error(resp.error.message||resp.error);
-
-    // Extrair texto da resposta Anthropic
-    var block = resp.content && resp.content.find(function(b){return b.type==='text';});
-    var txt2 = block ? block.text.trim() : '';
-    var m2 = txt2.match(/{[^{}]*}/);
-    if(!m2) throw new Error('IA nao retornou dimensoes. Tente foto mais proxima.');
-    var p;
-    try{ p = JSON.parse(m2[0]); }
-    catch(e){ throw new Error('Formato invalido. Tente novamente.'); }
-
-    var C = Math.round(parseFloat(p.C||p.comprimento||p.c||0));
-    var L = Math.round(parseFloat(p.L||p.largura||p.l||0));
-    var A = Math.round(parseFloat(p.A||p.altura||p.a||0));
-    var qtd = Math.max(1, parseInt(p.qtd||p.quantidade||1)||1);
-
-    if(C>0&&C<6) C=C*100;
-    if(L>0&&L<6) L=L*100;
-    if(A>0&&A<6) A=A*100;
-
-    if(C<5||L<5||A<5) throw new Error('Nao foi possivel estimar. Aproxime mais a camera.');
-
-    mostrarResultado(C, L, A, qtd, p.conf||'media', p.obs||'Estimativa visual');
-
-  }catch(err){
-    mostrarErro(err.message);
-  }
-}
-
-function comprimirImagem(dataUrl, maxSize){
-  return new Promise(function(resolve){
-    var img = new Image();
-    img.onload = function(){
-      var canvas = document.createElement('canvas');
-      var w = img.width, h = img.height;
-      if(w > maxSize || h > maxSize){
-        if(w > h){ h = Math.round(h*maxSize/w); w = maxSize; }
-        else{ w = Math.round(w*maxSize/h); h = maxSize; }
-      }
-      canvas.width = w; canvas.height = h;
-      var ctx = canvas.getContext('2d');
-      ctx.drawImage(img, 0, 0, w, h);
-      resolve(canvas.toDataURL('image/jpeg', 0.75));
-    };
-    img.onerror = function(){ resolve(dataUrl); };
-    img.src = dataUrl;
-  });
-}
-
-function mostrarResultado(C, L, A, qtd, conf, obs){
-  document.getElementById('loadingDiv').style.display='none';
-  document.getElementById('erroDiv').style.display='none';
-  
-  // Preenche campos editaveis
-  document.getElementById('dimC').value=C;
-  document.getElementById('dimL').value=L;
-  document.getElementById('dimA').value=A;
-  document.getElementById('dimQtd').value=qtd;
-  document.getElementById('dimPeso').value='';
-  document.getElementById('dimConf').textContent=conf==='alta'?'✓ Alta':conf==='baixa'?'⚠ Baixa':'~ Média';
-  document.getElementById('dimObs').textContent=obs||'Estimativa visual';
-  
-  // Calcula e mostra resultado imediatamente
-  recalcular();
-  
-  document.getElementById('resultDiv').style.display='block';
-}
-
-function mostrarErro(msg){
-  document.getElementById('loadingDiv').style.display='none';
-  document.getElementById('resultDiv').style.display='none';
-  document.getElementById('erroTxt').textContent=msg;
-  document.getElementById('erroDiv').style.display='block';
-}
-
-// RECALCULA sempre que mudar qualquer campo
-function recalcular(){
-  var C=parseFloat(document.getElementById('dimC').value)||0;
-  var L=parseFloat(document.getElementById('dimL').value)||0;
-  var A=parseFloat(document.getElementById('dimA').value)||0;
-  var qtd=parseFloat(document.getElementById('dimQtd').value)||1;
-  var peso=parseFloat(document.getElementById('dimPeso').value)||0;
-  
-  if(C===0||L===0||A===0){
-    document.getElementById('boxResultado').style.display='none';
-    return;
-  }
-  
+function calcManual(){
+  var C=parseFloat(document.getElementById('mC').value)||0;
+  var L=parseFloat(document.getElementById('mL').value)||0;
+  var A=parseFloat(document.getElementById('mA').value)||0;
+  var qtd=parseFloat(document.getElementById('mQtd').value)||1;
+  var peso=parseFloat(document.getElementById('mPeso').value)||0;
+  var box=document.getElementById('manualResultBox');
+  if(C===0||L===0||A===0){box.style.display='none';return;}
   var fator=getFator();
   var m3=(C/100)*(L/100)*(A/100)*qtd;
   var cubado=m3*fator;
   var real=peso*qtd;
   var taxado=Math.max(cubado,real);
-  var isOver=cubado>real&&cubado>0;
-  
-  document.getElementById('resComp').textContent=C+' cm';
-  document.getElementById('resLarg').textContent=L+' cm';
-  document.getElementById('resAlt').textContent=A+' cm';
-  document.getElementById('resQtd').textContent=qtd+' cx';
-  document.getElementById('resM3').textContent=m3.toLocaleString('pt-BR',{minimumFractionDigits:4,maximumFractionDigits:4})+' m³';
-  document.getElementById('resReal').textContent=fmt(real)+' kg';
-  document.getElementById('resCub').textContent=fmt(cubado)+' kg';
-  document.getElementById('resTax').textContent=fmt(taxado)+' kg';
-  
-  var taxEl=document.getElementById('resTaxBox');
-  taxEl.className='res-tax-box '+(isOver?'warn':'ok');
-  taxEl.querySelector('.tax-label').textContent=isOver?'⚠ Peso Taxado (cubado maior!)':'✓ Peso Taxado';
-  
-  document.getElementById('boxResultado').style.display='block';
-  
-  // Guarda para uso no adicionar
-  window._current={C:C,L:L,A:A,qtd:qtd,pesoReal:peso,m3:m3,cubado:cubado,real:real,taxado:taxado};
+  var over=cubado>real&&cubado>0;
+  document.getElementById('mrM3').textContent=m3.toLocaleString('pt-BR',{minimumFractionDigits:4,maximumFractionDigits:4})+' m³';
+  document.getElementById('mrReal').textContent=fmt(real)+' kg';
+  document.getElementById('mrCub').textContent=fmt(cubado)+' kg';
+  document.getElementById('mrTax').textContent=fmt(taxado)+' kg';
+  var taxBox=document.getElementById('mrTaxBox');
+  taxBox.className='res-tax-box '+(over?'warn':'ok');
+  box.style.display='block';
+  window._manual={C:C,L:L,A:A,qtd:qtd,pesoReal:peso,m3:m3,cubado:cubado,real:real,taxado:taxado,desc:document.getElementById('mDesc').value||'Volume '+( vid+1)};
 }
-
-['dimC','dimL','dimA','dimQtd','dimPeso'].forEach(function(id){
+['mC','mL','mA','mQtd','mPeso'].forEach(function(id){
   var el=document.getElementById(id);
-  if(el) el.addEventListener('input',recalcular);
+  if(el)el.addEventListener('input',calcManual);
 });
-
-document.getElementById('fatorCub').addEventListener('input',function(){
-  recalcular();
+async function adicionarManual(){
+  if(!window._manual){toast('Preencha as dimensoes primeiro!');return;}
+  var d=window._manual;
+  if(d.C===0||d.L===0||d.A===0){toast('Dimensoes invalidas.');return;}
+  vid++;d.desc=document.getElementById('mDesc').value||'Volume '+vid;
+  volumes.push({id:vid,desc:d.desc,comp:d.C,larg:d.L,alt:d.A,qtd:d.qtd,pesoReal:d.pesoReal});
   renderVolumes();
-});
-
-async function adicionarVolume(){
-  if(!window._current){toast('Tire uma foto primeiro!');return;}
-  var d=window._current;
-  if(d.C===0||d.L===0||d.A===0){toast('Dimensoes zeradas — ajuste os campos.');return;}
-  
-  vid++;
-  var obs=document.getElementById('dimObs').textContent||'';
-  volumes.push({id:vid,desc:'Volume '+vid,comp:d.C,larg:d.L,alt:d.A,qtd:d.qtd,pesoReal:d.pesoReal});
-  renderVolumes();
-  
-  // Fecha painel
-  document.getElementById('painelAnalise').style.display='none';
-  window._current=null;
-  
-  // Salva no Supabase
+  // Limpar campos
+  ['mDesc','mC','mL','mA','mPeso'].forEach(function(id){document.getElementById(id).value='';});
+  document.getElementById('mQtd').value='1';
+  document.getElementById('manualResultBox').style.display='none';
+  window._manual=null;
+  // Salvar Supabase
   try{
     await fetch(SUPA_URL+'/rest/v1/cubagem_historico',{
       method:'POST',
       headers:{'Content-Type':'application/json','apikey':SUPA_KEY,'Authorization':'Bearer '+SUPA_KEY,'Prefer':'return=minimal'},
-      body:JSON.stringify({
-        operador:operadorNome||'Anonimo',
-        descricao:'Volume '+vid,
-        comprimento:d.C,largura:d.L,altura:d.A,
-        qtd_caixas:d.qtd,peso_real:d.real,peso_cubado:d.cubado,
-        peso_taxado:d.taxado,volume_m3:d.m3,
-        fator_cubagem:getFator(),observacao:obs,
-        dispositivo:navigator.userAgent.includes('Mobile')?'Mobile':'Desktop'
-      })
+      body:JSON.stringify({operador:operadorNome||'Anonimo',descricao:d.desc,comprimento:d.C,largura:d.L,altura:d.A,qtd_caixas:d.qtd,peso_real:d.real,peso_cubado:d.cubado,peso_taxado:d.taxado,volume_m3:d.m3,fator_cubagem:getFator(),observacao:'Manual',dispositivo:navigator.userAgent.includes('Mobile')?'Mobile':'Desktop'})
     });
-    toast('✓ Volume '+vid+' salvo no histórico!');
-  }catch(e){
-    toast('Volume '+vid+' adicionado (sem conexão para salvar histórico)');
+    toast('✓ Volume '+vid+' salvo!');
+  }catch(e){toast('Volume '+vid+' adicionado!');}
+}
+
+// ═══════════════════════════════════════════
+// QR CODE — leitura via câmera ou link
+// ═══════════════════════════════════════════
+function handleQR(){
+  // Verifica se URL tem parâmetros de dimensão (vindo de QR Code)
+  var params=new URLSearchParams(window.location.search);
+  if(params.get('C')&&params.get('L')&&params.get('A')){
+    var C=parseFloat(params.get('C'))||0;
+    var L=parseFloat(params.get('L'))||0;
+    var A=parseFloat(params.get('A'))||0;
+    var desc=params.get('desc')||'Volume via QR';
+    var peso=parseFloat(params.get('peso'))||0;
+    // Preenche campos manuais
+    document.getElementById('mDesc').value=desc;
+    document.getElementById('mC').value=C;
+    document.getElementById('mL').value=L;
+    document.getElementById('mA').value=A;
+    document.getElementById('mPeso').value=peso;
+    calcManual();
+    toast('✓ Dimensões lidas do QR Code: '+desc);
+    // Limpa URL para não reler
+    window.history.replaceState({},document.title,window.location.pathname);
   }
 }
 
-function cancelarAnalise(){
-  document.getElementById('painelAnalise').style.display='none';
-  window._current=null;
+// ═══════════════════════════════════════════
+// CATÁLOGO DE PRODUTOS
+// ═══════════════════════════════════════════
+async function loadProdutos(){
+  try{
+    var res=await fetch(SUPA_URL+'/rest/v1/catalogo_cubagem?select=*&order=nome.asc',{
+      headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+SUPA_KEY}
+    });
+    var data=await res.json();
+    if(Array.isArray(data)) produtos=data;
+    renderCatalogo();
+    renderProdutosSelect();
+  }catch(e){console.log('Erro catálogo:',e);}
 }
 
+function renderProdutosSelect(){
+  var sel=document.getElementById('produtoSelect');
+  sel.innerHTML='<option value="">-- Selecione um produto --</option>';
+  produtos.forEach(function(p){
+    var opt=document.createElement('option');
+    opt.value=p.id;
+    opt.textContent=p.nome+' ('+p.comprimento+'×'+p.largura+'×'+p.altura+' cm)';
+    sel.appendChild(opt);
+  });
+}
+
+document.getElementById('produtoSelect').addEventListener('change',function(){
+  var id=this.value;
+  if(!id) return;
+  var p=produtos.find(function(x){return String(x.id)===String(id);});
+  if(!p) return;
+  document.getElementById('mDesc').value=p.nome;
+  document.getElementById('mC').value=p.comprimento;
+  document.getElementById('mL').value=p.largura;
+  document.getElementById('mA').value=p.altura;
+  document.getElementById('mPeso').value=p.peso_unitario||'';
+  calcManual();
+  toast('✓ '+p.nome+' carregado!');
+  // Volta para aba calc
+  switchTab('calc');
+});
+
+function renderCatalogo(){
+  var container=document.getElementById('catalogoList');
+  if(!produtos.length){
+    container.innerHTML='<div class="empty">Nenhum produto cadastrado ainda.<br>Adicione o primeiro produto abaixo!</div>';
+    return;
+  }
+  var fator=getFator();
+  container.innerHTML=produtos.map(function(p){
+    var m3=(p.comprimento/100)*(p.largura/100)*(p.altura/100);
+    var cub=m3*fator;
+    return '<div class="prod-card">'+
+      '<div class="prod-hd">'+
+        '<span class="prod-nome">'+p.nome+'</span>'+
+        '<div style="display:flex;gap:6px">'+
+          '<button class="btn-qr-gen" onclick="gerarQR(\''+p.id+'\')">&#128247; QR</button>'+
+          '<button class="btn-del-prod" onclick="deletarProduto(\''+p.id+'\')">&#215;</button>'+
+        '</div>'+
+      '</div>'+
+      '<div class="prod-dims">'+p.comprimento+' × '+p.largura+' × '+p.altura+' cm</div>'+
+      '<div class="prod-info">'+
+        '<span>'+m3.toLocaleString('pt-BR',{minimumFractionDigits:4,maximumFractionDigits:4})+' m³</span>'+
+        '<span>Cubado: '+fmt(cub)+' kg</span>'+
+        (p.peso_unitario?'<span>Peso: '+p.peso_unitario+' kg/un</span>':'')+
+      '</div>'+
+      '<div id="qr-'+p.id+'" class="qr-container" style="display:none"></div>'+
+    '</div>';
+  }).join('');
+}
+
+async function salvarProduto(){
+  var nome=document.getElementById('pNome').value.trim();
+  var C=parseFloat(document.getElementById('pC').value)||0;
+  var L=parseFloat(document.getElementById('pL').value)||0;
+  var A=parseFloat(document.getElementById('pA').value)||0;
+  var peso=parseFloat(document.getElementById('pPeso').value)||0;
+  if(!nome||C===0||L===0||A===0){toast('Preencha nome e dimensões!');return;}
+  try{
+    var res=await fetch(SUPA_URL+'/rest/v1/catalogo_cubagem',{
+      method:'POST',
+      headers:{'Content-Type':'application/json','apikey':SUPA_KEY,'Authorization':'Bearer '+SUPA_KEY,'Prefer':'return=representation'},
+      body:JSON.stringify({nome:nome,comprimento:C,largura:L,altura:A,peso_unitario:peso||null})
+    });
+    var data=await res.json();
+    if(data&&data[0]) produtos.push(data[0]);
+    else await loadProdutos();
+    ['pNome','pC','pL','pA','pPeso'].forEach(function(id){document.getElementById(id).value='';});
+    renderCatalogo();
+    renderProdutosSelect();
+    toast('✓ Produto cadastrado!');
+  }catch(e){toast('Erro ao salvar produto.');}
+}
+
+async function deletarProduto(id){
+  if(!confirm('Remover este produto do catálogo?'))return;
+  try{
+    await fetch(SUPA_URL+'/rest/v1/catalogo_cubagem?id=eq.'+id,{
+      method:'DELETE',
+      headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+SUPA_KEY}
+    });
+    produtos=produtos.filter(function(p){return String(p.id)!==String(id);});
+    renderCatalogo();
+    renderProdutosSelect();
+    toast('Produto removido.');
+  }catch(e){toast('Erro ao remover.');}
+}
+
+// ═══════════════════════════════════════════
+// GERADOR DE QR CODE
+// ═══════════════════════════════════════════
+function gerarQR(prodId){
+  var p=produtos.find(function(x){return String(x.id)===String(prodId);});
+  if(!p)return;
+  var container=document.getElementById('qr-'+prodId);
+  if(container.style.display!=='none'){container.style.display='none';return;}
+  // URL com parâmetros da caixa
+  var base='https://cubagem-moas.vercel.app';
+  var params='?C='+p.comprimento+'&L='+p.largura+'&A='+p.altura+'&desc='+encodeURIComponent(p.nome)+(p.peso_unitario?'&peso='+p.peso_unitario:'');
+  var url=base+params;
+  // Gerar QR via API pública (não precisa de biblioteca)
+  var qrUrl='https://api.qrserver.com/v1/create-qr-code/?size=200x200&data='+encodeURIComponent(url);
+  container.innerHTML=
+    '<div style="padding:12px;text-align:center">'+
+      '<img src="'+qrUrl+'" style="width:160px;height:160px;border:4px solid white;border-radius:8px" alt="QR Code">'+
+      '<div style="font-size:11px;color:rgba(255,255,255,.6);margin-top:6px">Escaneie para preencher automaticamente</div>'+
+      '<a href="'+qrUrl+'" download="qr-'+p.nome.replace(/\s/g,'-')+'.png" style="display:inline-block;margin-top:8px;background:var(--sage);color:#fff;padding:6px 14px;border-radius:6px;font-size:12px;text-decoration:none">&#8595; Baixar QR</a>'+
+    '</div>';
+  container.style.display='block';
+}
+
+// ═══════════════════════════════════════════
 // VOLUMES
+// ═══════════════════════════════════════════
 function calcVol(v){
   var m3=(v.comp/100)*(v.larg/100)*(v.alt/100)*v.qtd;
   var cub=m3*getFator();var real=v.pesoReal*v.qtd;
@@ -663,28 +588,22 @@ function updVol(id,f,v){
   var vol=volumes.find(function(x){return x.id===id;});
   if(vol){vol[f]=parseFloat(v)||0;renderVolumes();}
 }
-function delVol(id){
-  volumes=volumes.filter(function(x){return x.id!==id;});
-  renderVolumes();
-}
-function limparTudo(){
-  if(!volumes.length)return;
-  if(confirm('Limpar todos os volumes?')){volumes=[];renderVolumes();}
-}
+function delVol(id){volumes=volumes.filter(function(x){return x.id!==id;});renderVolumes();}
+function limparTudo(){if(!volumes.length)return;if(confirm('Limpar todos?')){volumes=[];renderVolumes();}}
 
 function buildCard(v,r,over){
   var m3s=r.m3.toLocaleString('pt-BR',{minimumFractionDigits:4,maximumFractionDigits:4});
-  var rows=[['C (cm)','comp',v.comp,'0.1'],['L (cm)','larg',v.larg,'0.1'],['A (cm)','alt',v.alt,'0.1'],['Qtd cx','qtd',v.qtd,'1'],['Peso/cx kg','pesoReal',v.pesoReal,'0.1']];
+  var rows=[['C(cm)','comp',v.comp,'0.1'],['L(cm)','larg',v.larg,'0.1'],['A(cm)','alt',v.alt,'0.1'],['Qtd','qtd',v.qtd,'1'],['Peso/cx','pesoReal',v.pesoReal,'0.1']];
   var fh='';
   rows.forEach(function(r){fh+='<div class="vf"><label>'+r[0]+'</label><input type="number" min="0" step="'+r[3]+'" value="'+r[2]+'" oninput="updVol('+v.id+',\''+r[1]+'\',this.value)"></div>';});
   fh+='<div class="vf"><label>m³</label><input readonly value="'+m3s+'"></div>';
-  return '<div class="vol-card"><div class="vc-hd"><span class="vc-name">'+v.desc+'</span><span class="vc-badge'+(over?' w':'')+'">'+fmt(r.taxado)+' kg</span></div><div class="vg">'+fh+'</div><div class="vf-row"><span class="vf-info">Real: '+fmt(r.real)+' | Cub: '+fmt(r.cubado)+' | <strong>Tax: '+fmt(r.taxado)+'kg</strong></span><button class="btn-del" onclick="delVol('+v.id+')">\u00d7</button></div></div>';
+  return '<div class="vol-card"><div class="vc-hd"><span class="vc-name">'+v.desc+'</span><span class="vc-badge'+(over?' w':'')+'">'+fmt(r.taxado)+' kg</span></div><div class="vg">'+fh+'</div><div class="vf-row"><span class="vf-info">Real:'+fmt(r.real)+' Cub:'+fmt(r.cubado)+' <strong>Tax:'+fmt(r.taxado)+'kg</strong></span><button class="btn-del" onclick="delVol('+v.id+')">\u00d7</button></div></div>';
 }
 
 function renderVolumes(){
   var list=document.getElementById('volsList');
   if(!volumes.length){
-    list.innerHTML='<div class="empty">📷 Tire uma foto para começar!</div>';
+    list.innerHTML='<div class="empty">Adicione volumes acima para comecar!</div>';
     document.getElementById('totalBar').style.display='none';
     document.getElementById('footerActs').style.display='none';
     return;
@@ -717,16 +636,23 @@ async function loadHist(){
     var res=await fetch(url,{headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+SUPA_KEY}});
     var data=await res.json();
     if(!data||!data.length){c.innerHTML='<div class="empty">Nenhum registro encontrado.</div>';return;}
-    var tot={r:0,c:0,t:0,m:0};
-    data.forEach(function(r){tot.r+=parseFloat(r.peso_real)||0;tot.c+=parseFloat(r.peso_cubado)||0;tot.t+=parseFloat(r.peso_taxado)||0;tot.m+=parseFloat(r.volume_m3)||0;});
+    var tot={t:0,m:0};data.forEach(function(r){tot.t+=parseFloat(r.peso_taxado)||0;tot.m+=parseFloat(r.volume_m3)||0;});
     var ops={};data.forEach(function(r){ops[r.operador]=(ops[r.operador]||0)+1;});
-    var kpi='<div class="hkpis"><div class="hk"><div class="hkv">'+data.length+'</div><div class="hkl">Registros</div></div><div class="hk"><div class="hkv">'+Object.keys(ops).length+'</div><div class="hkl">Operadores</div></div><div class="hk"><div class="hkv">'+tot.m.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})+'</div><div class="hkl">m³ total</div></div><div class="hk hi"><div class="hkv">'+fmt(tot.t)+'</div><div class="hkl">kg taxado</div></div></div>';
+    var kpi='<div class="hkpis">'+
+      '<div class="hk"><div class="hkv">'+data.length+'</div><div class="hkl">Registros</div></div>'+
+      '<div class="hk"><div class="hkv">'+Object.keys(ops).length+'</div><div class="hkl">Operadores</div></div>'+
+      '<div class="hk"><div class="hkv">'+tot.m.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2})+'</div><div class="hkl">m³ total</div></div>'+
+      '<div class="hk hi"><div class="hkv">'+fmt(tot.t)+'</div><div class="hkl">kg taxado</div></div>'+
+    '</div>';
     var rows='';
     data.forEach(function(r){
       var dt2=new Date(r.created_at);
       var ds=dt2.toLocaleDateString('pt-BR')+' '+dt2.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'});
       var ov=(parseFloat(r.peso_cubado)||0)>(parseFloat(r.peso_real)||0);
-      rows+='<div class="hr"><div class="hr-top"><span class="hr-op">'+r.operador+'</span><span class="hr-dt">'+ds+'</span><span class="hr-b'+(ov?' w':'')+'">'+fmt(parseFloat(r.peso_taxado)||0)+' kg</span></div><div class="hr-d">'+(r.comprimento?r.comprimento+'×'+r.largura+'×'+r.altura+' cm':'—')+(r.qtd_caixas&&r.qtd_caixas>1?' × '+r.qtd_caixas+' cx':'')+' | '+(r.volume_m3?parseFloat(r.volume_m3).toLocaleString('pt-BR',{minimumFractionDigits:4,maximumFractionDigits:4})+' m³':'—')+'</div>'+(r.observacao?'<div class="hr-obs">'+r.observacao+'</div>':'')+'</div>';
+      rows+='<div class="hr">'+
+        '<div class="hr-top"><span class="hr-op">'+r.operador+'</span><span class="hr-dt">'+ds+'</span><span class="hr-b'+(ov?' w':'')+'">'+fmt(parseFloat(r.peso_taxado)||0)+' kg</span></div>'+
+        '<div class="hr-d">'+(r.descricao?'<strong>'+r.descricao+'</strong> · ':'')+( r.comprimento?r.comprimento+'×'+r.largura+'×'+r.altura+' cm | ':'')+( r.volume_m3?parseFloat(r.volume_m3).toLocaleString('pt-BR',{minimumFractionDigits:4,maximumFractionDigits:4})+' m³':'')+'</div>'+
+      '</div>';
     });
     c.innerHTML=kpi+'<div class="hlist">'+rows+'</div>';
   }catch(e){c.innerHTML='<div class="empty" style="color:#b94040">Erro ao carregar.</div>';}
@@ -744,9 +670,13 @@ function copiarResumo(){
   navigator.clipboard.writeText('Cubagem MOAS\nOperador: '+operadorNome+'\nVolumes: '+tot.qtd+'\nReal: '+fmt(tot.real)+' kg\nCubado: '+fmt(tot.cub)+' kg\nTaxado: '+fmt(tax)+' kg').then(function(){toast('Copiado!');});
 }
 
+document.getElementById('fatorCub').addEventListener('input',function(){renderVolumes();});
 document.getElementById('btnFiltrar').addEventListener('click',loadHist);
 
+// INIT
+handleQR();
 checkOperador();
+loadProdutos();
 renderVolumes();
 
 </script>
