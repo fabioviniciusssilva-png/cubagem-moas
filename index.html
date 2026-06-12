@@ -20,9 +20,9 @@ header{background:var(--ch);padding:0 16px;padding-top:env(safe-area-inset-top);
 .brand-name{font-size:14px;font-weight:700;color:#fff}.brand-sub{font-size:10px;color:var(--sage-dim)}
 .hdr-op{font-size:11px;color:rgba(255,255,255,.5);cursor:pointer;display:flex;align-items:center;gap:4px}
 .hdr-op span{color:var(--sage-dim);font-weight:600;max-width:90px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-#installBanner{background:linear-gradient(135deg,#3d5a47,#2c3530);padding:11px 14px;margin:12px 14px 0;border-radius:var(--r);display:none;align-items:center;gap:10px;box-shadow:var(--shl)}
+#installBanner{background:linear-gradient(135deg,#3d5a47,#2c3530);padding:10px 14px;margin:10px 14px 0;border-radius:var(--r);display:none;align-items:center;gap:10px;box-shadow:var(--shl)}
 .ib-text{flex:1}.ib-text strong{font-size:12px;color:#fff;display:block}.ib-text span{font-size:10px;color:rgba(255,255,255,.5)}
-.btn-inst{background:var(--sage);color:#fff;border:none;border-radius:var(--rsm);padding:8px 14px;font-size:12px;font-weight:600;cursor:pointer;flex-shrink:0}
+.btn-inst{background:var(--sage);color:#fff;border:none;border-radius:var(--rsm);padding:7px 12px;font-size:12px;font-weight:600;cursor:pointer;flex-shrink:0}
 .btn-inst-x{background:none;border:none;color:rgba(255,255,255,.4);font-size:20px;cursor:pointer;padding:2px 5px;line-height:1}
 #toast{position:fixed;bottom:calc(16px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%) translateY(60px);background:var(--ch);color:#fff;padding:11px 20px;border-radius:30px;font-size:13px;font-weight:500;box-shadow:var(--shl);z-index:999;opacity:0;transition:all .3s;pointer-events:none;white-space:nowrap;max-width:92vw;text-align:center}
 #toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
@@ -34,65 +34,58 @@ header{background:var(--ch);padding:0 16px;padding-top:env(safe-area-inset-top);
 .mob-body input:focus{border-color:var(--sage);background:#fff}
 .btn-ok{width:100%;background:var(--sage);color:#fff;border:none;border-radius:var(--rsm);padding:13px;font-size:15px;font-weight:600;cursor:pointer;font-family:var(--sans)}
 .tabs-bar{background:var(--ch);display:flex;border-top:1px solid rgba(255,255,255,.08)}
-.tab-btn{flex:1;background:none;border:none;color:rgba(255,255,255,.4);font-family:var(--sans);font-size:12px;font-weight:500;padding:10px 4px;cursor:pointer;border-bottom:2px solid transparent;display:flex;align-items:center;justify-content:center;gap:4px}
+.tab-btn{flex:1;background:none;border:none;color:rgba(255,255,255,.4);font-family:var(--sans);font-size:11px;font-weight:500;padding:9px 2px;cursor:pointer;border-bottom:2px solid transparent;display:flex;align-items:center;justify-content:center;gap:3px;flex-direction:column;line-height:1.2}
 .tab-btn.active{color:#fff;border-bottom-color:var(--sage);font-weight:600}
 main{max-width:580px;margin:0 auto;padding:14px 14px 40px}
-.cfg-bar{background:#fff;border:1px solid var(--brd);border-radius:var(--r);padding:10px 14px;display:flex;flex-wrap:wrap;gap:10px;box-shadow:var(--sh);margin-bottom:14px}
+.cfg-bar{background:#fff;border:1px solid var(--brd);border-radius:var(--r);padding:10px 14px;display:flex;flex-wrap:wrap;gap:10px;box-shadow:var(--sh);margin-bottom:12px}
 .cfg-g{display:flex;align-items:center;gap:7px}
 .cfg-lbl{font-size:11px;font-weight:600;color:var(--ch2);text-transform:uppercase;letter-spacing:.4px}
 .cfg-in{font-family:var(--mono);font-size:13px;font-weight:600;color:var(--sage);background:var(--sage-pale);border:1.5px solid var(--sage-dim);border-radius:var(--rsm);padding:5px 9px;width:78px;text-align:center;outline:none}
 .cfg-in:focus{border-color:var(--sage)}
-
-/* SELETOR DE PRODUTO */
-.prod-sel-card{background:linear-gradient(135deg,var(--ch),#3a5244);border-radius:var(--r);padding:16px 14px;margin-bottom:14px;box-shadow:var(--shl)}
-.prod-sel-title{font-size:11px;font-weight:600;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.6px;margin-bottom:10px}
-.prod-select{width:100%;background:rgba(255,255,255,.1);color:#fff;border:1.5px solid rgba(255,255,255,.2);border-radius:var(--r);padding:13px 14px;font-family:var(--sans);font-size:14px;font-weight:500;outline:none;cursor:pointer;margin-bottom:10px;-webkit-appearance:none}
+.prod-sel-card{background:linear-gradient(135deg,var(--ch),#3a5244);border-radius:var(--r);padding:14px;margin-bottom:12px;box-shadow:var(--shl)}
+.prod-sel-title{font-size:11px;font-weight:600;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px}
+.prod-select{width:100%;background:rgba(255,255,255,.1);color:#fff;border:1.5px solid rgba(255,255,255,.2);border-radius:var(--rsm);padding:11px 12px;font-family:var(--sans);font-size:14px;outline:none;cursor:pointer;-webkit-appearance:none}
 .prod-select option{background:var(--ch);color:#fff}
-.btn-catalogo{display:flex;align-items:center;justify-content:center;gap:6px;background:rgba(255,255,255,.08);color:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.15);border-radius:var(--rsm);padding:9px;font-size:13px;cursor:pointer;font-family:var(--sans);width:100%}
-
-/* FORM MANUAL */
-.manual-card{background:#fff;border:1px solid var(--brd);border-radius:var(--r);box-shadow:var(--sh);margin-bottom:14px;overflow:hidden}
-.manual-hd{background:var(--sage-pale);border-bottom:1px solid var(--sage-dim);padding:10px 14px;font-size:13px;font-weight:600;color:var(--sage)}
-.manual-body{padding:14px}
-.m-desc{width:100%;font-family:var(--sans);font-size:14px;color:var(--ch);background:var(--surf);border:1px solid var(--brd);border-radius:var(--rsm);padding:9px 12px;outline:none;margin-bottom:10px}
+.manual-card{background:#fff;border:1px solid var(--brd);border-radius:var(--r);box-shadow:var(--sh);margin-bottom:12px;overflow:hidden}
+.manual-hd{background:var(--sage-pale);border-bottom:1px solid var(--sage-dim);padding:9px 14px;font-size:13px;font-weight:600;color:var(--sage)}
+.manual-body{padding:13px}
+.m-desc{width:100%;font-family:var(--sans);font-size:14px;color:var(--ch);background:var(--surf);border:1px solid var(--brd);border-radius:var(--rsm);padding:9px 12px;outline:none;margin-bottom:9px}
 .m-desc:focus{border-color:var(--sage);background:#fff}
-.dims-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-bottom:10px}
+.dims-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-bottom:9px}
 .dim-box label{font-size:10px;font-weight:700;color:var(--sage);text-transform:uppercase;display:block;margin-bottom:3px}
-.dim-box input{font-family:var(--mono);font-size:20px;font-weight:700;color:var(--ch);background:var(--sage-pale);border:2px solid var(--sage-dim);border-radius:var(--rsm);padding:9px 5px;width:100%;text-align:center;outline:none}
+.dim-box input{font-family:var(--mono);font-size:20px;font-weight:700;color:var(--ch);background:var(--sage-pale);border:2px solid var(--sage-dim);border-radius:var(--rsm);padding:8px 4px;width:100%;text-align:center;outline:none}
 .dim-box input:focus{border-color:var(--sage);background:#fff}
-.row2{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:12px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:10px}
 .dim-box2 label{font-size:10px;font-weight:600;color:var(--ch2);text-transform:uppercase;display:block;margin-bottom:3px}
 .dim-box2 input{font-family:var(--mono);font-size:16px;font-weight:600;color:var(--ch);background:var(--surf);border:1.5px solid var(--brd);border-radius:var(--rsm);padding:8px;width:100%;text-align:center;outline:none}
 .dim-box2 input:focus{border-color:var(--sage);background:#fff}
 .dim-box2.hl label{color:var(--sage)}.dim-box2.hl input{background:var(--sage-pale);border-color:var(--sage-dim);color:var(--sage)}
-#manualResultBox{background:var(--ch);border-radius:var(--rsm);padding:12px;margin-bottom:12px;display:none}
-.mr-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-bottom:8px}
+#manualResultBox{background:var(--ch);border-radius:var(--rsm);padding:11px;margin-bottom:10px;display:none}
+.mr-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:7px}
 .mr-cell{text-align:center}.mr-cell .mrl{font-size:10px;color:rgba(255,255,255,.4);margin-bottom:2px}.mr-cell .mrv{font-family:var(--mono);font-size:13px;font-weight:700;color:#fff}
-.res-tax-box{border-radius:var(--rsm);padding:10px;text-align:center}
+.res-tax-box{border-radius:var(--rsm);padding:9px;text-align:center}
 .res-tax-box.ok{background:var(--sage)}.res-tax-box.warn{background:var(--warn)}
-.tax-val{font-family:var(--mono);font-size:24px;font-weight:700;color:#fff;line-height:1}
+.tax-val{font-family:var(--mono);font-size:22px;font-weight:700;color:#fff;line-height:1}
 .tax-unit{font-size:10px;color:rgba(255,255,255,.7);margin-top:2px}
-.btn-add-vol{width:100%;background:var(--sage);color:#fff;border:none;border-radius:var(--rsm);padding:13px;font-size:15px;font-weight:600;cursor:pointer;font-family:var(--sans)}
+.btn-add-vol{width:100%;background:var(--sage);color:#fff;border:none;border-radius:var(--rsm);padding:12px;font-size:15px;font-weight:600;cursor:pointer;font-family:var(--sans);margin-top:10px}
 .btn-add-vol:active{filter:brightness(.9)}
-
-/* VOLUMES */
-.vols-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:9px}
+.vols-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
 .vols-hd-title{font-size:13px;font-weight:600}
-.btn-clr{background:transparent;color:var(--ch3);border:1px solid var(--brd);border-radius:var(--rsm);padding:5px 11px;font-size:12px;cursor:pointer;font-family:var(--sans)}
-.empty{text-align:center;padding:24px 14px;color:var(--ch3);font-size:13px;background:#fff;border:1px solid var(--brd);border-radius:var(--r)}
+.btn-clr{background:transparent;color:var(--err);border:1px solid var(--brd);border-radius:var(--rsm);padding:5px 11px;font-size:12px;cursor:pointer;font-family:var(--sans)}
+.empty{text-align:center;padding:22px 14px;color:var(--ch3);font-size:13px;background:#fff;border:1px solid var(--brd);border-radius:var(--r);line-height:1.7}
 .vol-card{background:#fff;border:1px solid var(--brd);border-radius:var(--r);margin-bottom:8px;box-shadow:var(--sh);overflow:hidden}
 .vc-hd{background:var(--sage-pale);border-bottom:1px solid var(--sage-dim);padding:8px 12px;display:flex;align-items:center;justify-content:space-between}
-.vc-name{font-size:13px;font-weight:600;color:var(--sage)}
+.vc-name{font-size:13px;font-weight:600;color:var(--sage);flex:1}
 .vc-badge{font-family:var(--mono);font-size:12px;font-weight:600;padding:2px 8px;border-radius:4px;background:#fff;border:1px solid var(--brd);color:var(--ch)}
 .vc-badge.w{color:var(--warn);border-color:var(--wb);background:var(--wp)}
-.vg{padding:10px 12px;display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.vg{padding:9px 12px;display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
 .vf label{font-size:10px;font-weight:600;color:var(--ch3);text-transform:uppercase;display:block;margin-bottom:2px}
 .vf input{font-family:var(--mono);font-size:12px;color:var(--ch);background:var(--surf);border:1px solid var(--brd);border-radius:var(--rsm);padding:5px;width:100%;text-align:center;outline:none}
 .vf input:focus{border-color:var(--sage);background:#fff}
 .vf input[readonly]{color:var(--sage);font-weight:600;background:var(--sage-pale);border-color:var(--sage-dim)}
 .vf-row{border-top:1px solid var(--brd);padding:7px 12px;display:flex;align-items:center;justify-content:space-between}
 .vf-info{font-size:11px;color:var(--ch3)}
-.btn-del{background:none;border:none;color:var(--err);font-size:20px;cursor:pointer;padding:2px 5px;border-radius:4px;line-height:1}
+.btn-del{background:none;border:none;color:var(--err);font-size:18px;cursor:pointer;padding:2px 5px;border-radius:4px;line-height:1}
 #totalBar{background:var(--ch);border-radius:var(--r);padding:14px;margin:12px 0;box-shadow:var(--shl);display:none}
 .tot-lbl{font-size:10px;font-weight:600;color:rgba(255,255,255,.35);text-transform:uppercase;letter-spacing:.5px;margin-bottom:9px}
 .tot-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:10px}
@@ -102,32 +95,56 @@ main{max-width:580px;margin:0 auto;padding:14px 14px 40px}
 .tot-tax-lbl{font-size:11px;color:rgba(255,255,255,.4);margin-bottom:4px}
 .tot-tax-val{font-family:var(--mono);font-size:28px;font-weight:700;color:#a8d4b0;line-height:1}
 .tot-tax-unit{font-size:10px;color:rgba(255,255,255,.35);margin-top:2px}
-#footerActs{display:none;gap:9px;margin-top:4px}
-.btn-act{flex:1;background:#fff;color:var(--ch2);border:1px solid var(--brd);border-radius:var(--rsm);padding:10px 7px;font-family:var(--sans);font-size:12px;font-weight:500;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:4px}
+#footerActs{display:none;gap:8px;margin-top:4px}
+.btn-act{flex:1;background:#fff;color:var(--ch2);border:1px solid var(--brd);border-radius:var(--rsm);padding:10px 6px;font-family:var(--sans);font-size:12px;font-weight:500;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:4px}
 .btn-act:active{background:var(--sage-pale);color:var(--sage)}
-
+/* SCANNER */
+.scanner-card{background:var(--ch);border-radius:var(--r);overflow:hidden;box-shadow:var(--shl);margin-bottom:12px}
+.scanner-hd{padding:14px 16px;background:linear-gradient(135deg,#2c3530,#3a5244)}
+.scanner-title{font-size:15px;font-weight:700;color:#fff;margin-bottom:4px}
+.scanner-sub{font-size:12px;color:rgba(255,255,255,.5)}
+.scanner-video-wrap{position:relative;width:100%;background:#000;aspect-ratio:4/3;max-height:300px}
+#scannerVideo{width:100%;height:100%;object-fit:cover;display:block}
+.scan-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none}
+.scan-frame{width:65%;aspect-ratio:1;border:3px solid var(--sage);border-radius:12px;box-shadow:0 0 0 9999px rgba(0,0,0,.4)}
+.scan-line{position:absolute;width:60%;height:2px;background:var(--sage);animation:scanline 2s linear infinite}
+@keyframes scanline{0%{top:20%}100%{top:80%}}
+#scanStatus{padding:10px 16px;font-size:12px;color:rgba(255,255,255,.6);text-align:center;background:rgba(0,0,0,.3)}
+.scanner-controls{padding:14px 16px;display:flex;flex-direction:column;gap:10px}
+.bip-row{display:flex;gap:8px}
+.bip-input{flex:1;font-family:var(--mono);font-size:16px;color:var(--ch);background:var(--surf);border:1.5px solid var(--brd);border-radius:var(--rsm);padding:10px 12px;outline:none}
+.bip-input:focus{border-color:var(--sage);background:#fff}
+.btn-bip{background:var(--sage);color:#fff;border:none;border-radius:var(--rsm);padding:10px 16px;font-size:14px;font-weight:600;cursor:pointer;font-family:var(--sans);white-space:nowrap}
+.btn-iniciar-scan{width:100%;background:rgba(255,255,255,.1);color:#fff;border:1.5px solid rgba(255,255,255,.2);border-radius:var(--rsm);padding:12px;font-size:14px;font-weight:600;cursor:pointer;font-family:var(--sans);display:flex;align-items:center;justify-content:center;gap:8px}
+.btn-iniciar-scan:active{background:rgba(255,255,255,.15)}
+.nao-encontrado{background:var(--wp);border:1px solid var(--wb);border-radius:var(--rsm);padding:12px 14px;margin-top:4px;display:none}
+.nao-enc-txt{font-size:13px;color:var(--warn);margin-bottom:8px}
+.scanner-hist{padding:0 16px 14px}
+.scan-hist-title{font-size:11px;font-weight:600;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.4px;margin-bottom:8px}
+.scan-item{background:rgba(255,255,255,.07);border-radius:var(--rsm);padding:8px 12px;margin-bottom:6px;display:flex;align-items:center;justify-content:space-between}
+.scan-item-name{font-size:13px;color:#fff;font-weight:500}
+.scan-item-badge{font-family:var(--mono);font-size:12px;color:var(--sage-dim)}
 /* CATÁLOGO */
-.cat-section-title{font-size:14px;font-weight:700;margin-bottom:10px}
+.cat-title{font-size:16px;font-weight:700;margin-bottom:12px}
 .prod-card{background:#fff;border:1px solid var(--brd);border-radius:var(--r);margin-bottom:10px;box-shadow:var(--sh);overflow:hidden}
-.prod-hd{background:var(--ch);padding:10px 14px;display:flex;align-items:center;justify-content:space-between}
+.prod-hd{background:var(--ch);padding:9px 13px;display:flex;align-items:center;justify-content:space-between}
 .prod-nome{font-size:13px;font-weight:600;color:#fff;flex:1}
-.btn-qr-gen{background:var(--sage);color:#fff;border:none;border-radius:var(--rsm);padding:5px 10px;font-size:12px;cursor:pointer;font-family:var(--sans)}
-.btn-del-prod{background:rgba(255,255,255,.1);color:rgba(255,255,255,.6);border:none;border-radius:var(--rsm);padding:5px 8px;font-size:16px;cursor:pointer;line-height:1}
-.prod-dims{font-family:var(--mono);font-size:13px;color:var(--ch2);padding:8px 14px;border-bottom:1px solid var(--brd)}
-.prod-info{display:flex;gap:12px;padding:8px 14px;font-size:12px;color:var(--ch3);flex-wrap:wrap}
+.btn-qr-gen{background:var(--sage);color:#fff;border:none;border-radius:var(--rsm);padding:5px 10px;font-size:12px;cursor:pointer;font-family:var(--sans);font-weight:600}
+.btn-del-prod{background:rgba(255,255,255,.1);color:rgba(255,255,255,.6);border:none;border-radius:var(--rsm);padding:5px 8px;font-size:15px;cursor:pointer;line-height:1}
+.prod-dims{font-family:var(--mono);font-size:12px;color:var(--ch2);padding:8px 13px;border-bottom:1px solid var(--brd)}
+.prod-info{display:flex;gap:10px;padding:7px 13px;font-size:11px;color:var(--ch3);flex-wrap:wrap}
 .qr-container{background:var(--ch);border-top:1px solid rgba(255,255,255,.1)}
 .cat-form{background:#fff;border:1px solid var(--brd);border-radius:var(--r);padding:14px;box-shadow:var(--sh);margin-top:14px}
 .cat-form-title{font-size:13px;font-weight:600;color:var(--ch);margin-bottom:12px}
 .cf-input{width:100%;font-family:var(--sans);font-size:14px;color:var(--ch);background:var(--surf);border:1px solid var(--brd);border-radius:var(--rsm);padding:9px 12px;outline:none;margin-bottom:8px}
 .cf-input:focus{border-color:var(--sage);background:#fff}
-.cf-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:8px}
+.cf-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:7px;margin-bottom:8px}
 .cf-field label{font-size:10px;font-weight:600;color:var(--ch2);text-transform:uppercase;display:block;margin-bottom:3px}
 .cf-field input{font-family:var(--mono);font-size:15px;color:var(--ch);background:var(--surf);border:1px solid var(--brd);border-radius:var(--rsm);padding:8px;width:100%;text-align:center;outline:none}
 .cf-field input:focus{border-color:var(--sage);background:#fff}
 .btn-salvar-prod{width:100%;background:var(--sage);color:#fff;border:none;border-radius:var(--rsm);padding:12px;font-size:14px;font-weight:600;cursor:pointer;font-family:var(--sans)}
-
 /* HISTÓRICO */
-.hist-filt{background:#fff;border:1px solid var(--brd);border-radius:var(--r);padding:11px 14px;box-shadow:var(--sh);margin-bottom:12px;display:flex;flex-wrap:wrap;gap:9px;align-items:flex-end}
+.hist-filt{background:#fff;border:1px solid var(--brd);border-radius:var(--r);padding:11px 14px;box-shadow:var(--sh);margin-bottom:12px;display:flex;flex-wrap:wrap;gap:8px;align-items:flex-end}
 .fg{display:flex;flex-direction:column;gap:3px;flex:1;min-width:100px}
 .fg label{font-size:10px;font-weight:600;color:var(--ch2);text-transform:uppercase;letter-spacing:.4px}
 .fg input{font-size:13px;color:var(--ch);background:var(--surf);border:1px solid var(--brd);border-radius:var(--rsm);padding:7px 9px;outline:none;width:100%;font-family:var(--sans)}
@@ -136,18 +153,21 @@ main{max-width:580px;margin:0 auto;padding:14px 14px 40px}
 .loading-hist{display:flex;align-items:center;gap:10px;color:#2e6fc9;padding:20px 0}
 .spinner{width:20px;height:20px;border:3px solid #e7f0fd;border-top-color:#2e6fc9;border-radius:50%;animation:spin .8s linear infinite;flex-shrink:0}
 @keyframes spin{to{transform:rotate(360deg)}}
-.hkpis{display:grid;grid-template-columns:repeat(2,1fr);gap:9px;margin-bottom:12px}
-.hk{background:#fff;border:1px solid var(--brd);border-radius:var(--r);padding:11px;box-shadow:var(--sh);text-align:center}
+.hkpis{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:12px}
+.hk{background:#fff;border:1px solid var(--brd);border-radius:var(--r);padding:10px;box-shadow:var(--sh);text-align:center}
 .hk.hi{background:var(--ch)}.hkv{font-family:var(--mono);font-size:20px;font-weight:700;color:var(--ch);line-height:1;margin-bottom:3px}
 .hk.hi .hkv{color:#a8d4b0}.hkl{font-size:11px;color:var(--ch3)}.hk.hi .hkl{color:rgba(255,255,255,.4)}
-.hlist{display:flex;flex-direction:column;gap:8px}
+.hlist{display:flex;flex-direction:column;gap:7px}
 .hr{background:#fff;border:1px solid var(--brd);border-radius:var(--r);padding:10px 12px;box-shadow:var(--sh)}
-.hr-top{display:flex;align-items:center;gap:7px;margin-bottom:4px;flex-wrap:wrap}
+.hr-top{display:flex;align-items:center;gap:6px;margin-bottom:4px;flex-wrap:wrap}
 .hr-op{font-size:13px;font-weight:600;color:var(--sage);flex:1}.hr-dt{font-size:11px;color:var(--ch3)}
-.hr-b{font-family:var(--mono);font-size:12px;font-weight:600;padding:2px 8px;border-radius:4px;background:var(--sage-pale);border:1px solid var(--sage-dim);color:var(--sage)}
+.hr-b{font-family:var(--mono);font-size:12px;font-weight:600;padding:2px 7px;border-radius:4px;background:var(--sage-pale);border:1px solid var(--sage-dim);color:var(--sage)}
 .hr-b.w{color:var(--warn);border-color:var(--wb);background:var(--wp)}
 .hr-d{font-family:var(--mono);font-size:12px;color:var(--ch2)}
-@media print{header,.tabs-bar,#installBanner,#footerActs,.btn-del,.btn-clr{display:none!important}body{background:#fff}#totalBar{background:#485249!important}}
+.hr-obs{font-size:11px;color:var(--ch3);margin-top:3px;font-style:italic}
+.btn-del-hist{background:none;border:none;color:var(--err);font-size:16px;cursor:pointer;padding:2px 4px;border-radius:4px;line-height:1;flex-shrink:0}
+.btn-del-hist:active{background:var(--ep)}
+@media print{header,.tabs-bar,#installBanner,#footerActs,.btn-del,.btn-clr,.hist-filt,.btn-del-hist{display:none!important}body{background:#fff}#totalBar{background:#485249!important}}
 </style>
 </head>
 <body>
@@ -169,14 +189,23 @@ main{max-width:580px;margin:0 auto;padding:14px 14px 40px}
 </header>
 
 <div class="tabs-bar">
-  <button class="tab-btn active" id="btn-tab-calc" onclick="switchTab('calc')">&#128221; Calcular</button>
-  <button class="tab-btn" id="btn-tab-catalogo" onclick="switchTab('catalogo')">&#128230; Cat&aacute;logo</button>
-  <button class="tab-btn" id="btn-tab-hist" onclick="switchTab('hist')">&#128202; Hist&oacute;rico</button>
+  <button class="tab-btn active" id="btn-tab-calc" onclick="switchTab('calc')">
+    <span>&#128221;</span><span>Calcular</span>
+  </button>
+  <button class="tab-btn" id="btn-tab-scanner" onclick="switchTab('scanner');iniciarScanner();">
+    <span>&#128248;</span><span>Scanner</span>
+  </button>
+  <button class="tab-btn" id="btn-tab-catalogo" onclick="switchTab('catalogo')">
+    <span>&#128230;</span><span>Cat&aacute;logo</span>
+  </button>
+  <button class="tab-btn" id="btn-tab-hist" onclick="switchTab('hist')">
+    <span>&#128202;</span><span>Hist&oacute;rico</span>
+  </button>
 </div>
 
 <div id="installBanner">
   <span style="font-size:22px">&#128241;</span>
-  <div class="ib-text"><strong>Instalar como App</strong><span>Funciona offline &mdash; &iacute;cone na tela inicial</span></div>
+  <div class="ib-text"><strong>Instalar como App</strong><span>Funciona offline</span></div>
   <button class="btn-inst" id="btnInstall">Instalar</button>
   <button class="btn-inst-x" onclick="fecharBanner()">&#215;</button>
 </div>
@@ -189,34 +218,30 @@ main{max-width:580px;margin:0 auto;padding:14px 14px 40px}
     <div class="cfg-g">
       <span class="cfg-lbl">Fator</span>
       <input class="cfg-in" id="fatorCub" type="number" value="300" min="50" max="1000">
-      <span style="font-size:11px;color:var(--ch3)">kg/m&sup3; rod:300 a&eacute;reo:167</span>
+      <span style="font-size:11px;color:var(--ch3)">kg/m&sup3; &nbsp;rod:300 &nbsp;a&eacute;reo:167</span>
     </div>
   </div>
 
-  <!-- SELETOR DE PRODUTO DO CATÁLOGO -->
   <div class="prod-sel-card">
-    <div class="prod-sel-title">&#128230; Selecionar do Cat&aacute;logo ou Escanear QR</div>
+    <div class="prod-sel-title">&#128230; Selecionar produto do cat&aacute;logo</div>
     <select class="prod-select" id="produtoSelect">
-      <option value="">-- Selecione um produto cadastrado --</option>
+      <option value="">-- Selecione para preencher automaticamente --</option>
     </select>
-    <button class="btn-catalogo" onclick="switchTab('catalogo')">&#43; Gerenciar cat&aacute;logo de produtos</button>
   </div>
 
-  <!-- ENTRADA MANUAL -->
   <div class="manual-card">
-    <div class="manual-hd">&#9999;&#65038; Inserir Dimens&otilde;es</div>
+    <div class="manual-hd">&#9999;&#65038; Inser&ccedil;&atilde;o Manual</div>
     <div class="manual-body">
-      <input class="m-desc" type="text" id="mDesc" placeholder="Descri&ccedil;&atilde;o (ex: Caixa Produto A)">
+      <input class="m-desc" type="text" id="mDesc" placeholder="Descri&ccedil;&atilde;o (ex: Caixa Espelho G)">
       <div class="dims-grid">
         <div class="dim-box"><label>&#8596; Comp.</label><input type="number" id="mC" min="0" step="1" placeholder="0"></div>
         <div class="dim-box"><label>&#8597; Larg.</label><input type="number" id="mL" min="0" step="1" placeholder="0"></div>
-        <div class="dim-box"><label>&#8645; Altura</label><input type="number" id="mA" min="0" step="1" placeholder="0"></div>
+        <div class="dim-box"><label>&#8645; Alt.</label><input type="number" id="mA" min="0" step="1" placeholder="0"></div>
       </div>
       <div class="row2">
         <div class="dim-box2 hl"><label>&#128230; Qtd caixas</label><input type="number" id="mQtd" min="1" step="1" value="1"></div>
         <div class="dim-box2"><label>Peso/cx (kg)</label><input type="number" id="mPeso" min="0" step="0.1" placeholder="0"></div>
       </div>
-
       <div id="manualResultBox">
         <div class="mr-grid">
           <div class="mr-cell"><div class="mrl">Peso Real</div><div class="mrv" id="mrReal">&mdash;</div></div>
@@ -224,25 +249,23 @@ main{max-width:580px;margin:0 auto;padding:14px 14px 40px}
           <div class="mr-cell"><div class="mrl">Volume</div><div class="mrv" id="mrM3">&mdash;</div></div>
         </div>
         <div class="res-tax-box ok" id="mrTaxBox">
-          <div style="font-size:11px;color:rgba(255,255,255,.8);margin-bottom:4px">&#9654; Peso Taxado (cobrado)</div>
+          <div style="font-size:10px;color:rgba(255,255,255,.8);margin-bottom:3px">&#9654; PESO TAXADO</div>
           <div class="tax-val" id="mrTax">&mdash;</div>
-          <div class="tax-unit">kg</div>
+          <div class="tax-unit">kg &mdash; cobrado pela transportadora</div>
         </div>
       </div>
-
-      <button class="btn-add-vol" onclick="adicionarManual()" style="margin-top:12px">&#43; Adicionar ao total</button>
+      <button class="btn-add-vol" onclick="adicionarManual()">&#43; Adicionar ao total</button>
     </div>
   </div>
 
-  <!-- LISTA DE VOLUMES -->
   <div class="vols-hd">
-    <span class="vols-hd-title">Volumes adicionados</span>
-    <button class="btn-clr" onclick="limparTudo()">&#128465; Limpar</button>
+    <span class="vols-hd-title">Volumes da sess&atilde;o</span>
+    <button class="btn-clr" onclick="limparTudo()">&#128465; Apagar tudo</button>
   </div>
   <div id="volsList"></div>
 
   <div id="totalBar">
-    <div class="tot-lbl">Total Geral</div>
+    <div class="tot-lbl">Total Geral do Pallet</div>
     <div class="tot-grid">
       <div><div class="ti-lbl">Volumes (caixas)</div><div class="ti-val" id="totVol">0</div></div>
       <div><div class="ti-lbl">m&sup3; total</div><div class="ti-val" id="totM3" style="font-size:14px">0,0000</div></div>
@@ -263,21 +286,70 @@ main{max-width:580px;margin:0 auto;padding:14px 14px 40px}
 </main>
 </div>
 
+<!-- TAB SCANNER -->
+<div id="tab-scanner" style="display:none">
+<main>
+  <div class="scanner-card">
+    <div class="scanner-hd">
+      <div class="scanner-title">&#128248; Scanner de C&oacute;digo</div>
+      <div class="scanner-sub">Bipe o c&oacute;digo de barras ou QR Code da caixa</div>
+    </div>
+    <div class="scanner-video-wrap">
+      <video id="scannerVideo" autoplay playsinline muted></video>
+      <div class="scan-overlay">
+        <div style="position:relative;width:65%;aspect-ratio:1">
+          <div class="scan-frame"></div>
+          <div class="scan-line"></div>
+        </div>
+      </div>
+    </div>
+    <div id="scanStatus" style="padding:10px 16px;font-size:12px;color:rgba(255,255,255,.5);text-align:center;background:rgba(0,0,0,.3)">
+      Toque em "Iniciar Scanner" para ativar a c&acirc;mera
+    </div>
+    <div class="scanner-controls">
+      <button class="btn-iniciar-scan" onclick="iniciarScanner()">
+        &#128247; Iniciar Scanner pela C&acirc;mera
+      </button>
+      <div style="font-size:11px;color:var(--ch3);text-align:center">— ou use pistola/leitor USB —</div>
+      <div class="bip-row">
+        <input class="bip-input" type="text" id="inputBip" placeholder="Cole ou digite o c&oacute;digo aqui...">
+        <button class="btn-bip" id="btnBip">Bip!</button>
+      </div>
+      <div class="nao-encontrado" id="codigoNaoEncontrado">
+        <div class="nao-enc-txt">C&oacute;digo <strong id="codigoLido"></strong> n&atilde;o encontrado no cat&aacute;logo.</div>
+        <div style="font-size:12px;color:var(--ch2);margin-bottom:8px">Cadastre este produto no cat&aacute;logo para bip&aacute;-lo automaticamente:</div>
+        <div class="cf-grid" style="margin-bottom:8px">
+          <div class="cf-field"><label>Comp. (cm)</label><input type="number" id="pC" min="0" placeholder="0"></div>
+          <div class="cf-field"><label>Larg. (cm)</label><input type="number" id="pL" min="0" placeholder="0"></div>
+          <div class="cf-field"><label>Alt. (cm)</label><input type="number" id="pA" min="0" placeholder="0"></div>
+          <div class="cf-field"><label>Peso/un (kg)</label><input type="number" id="pPeso" min="0" placeholder="0"></div>
+        </div>
+        <input class="cf-input" type="text" id="pNome" placeholder="Nome do produto" style="margin-bottom:8px">
+        <input class="cf-input" type="text" id="pCodigo" placeholder="C&oacute;digo de barras" style="margin-bottom:8px">
+        <button class="btn-salvar-prod" onclick="salvarProduto()">&#128190; Salvar e adicionar</button>
+      </div>
+    </div>
+  </div>
+  <div style="font-size:13px;font-weight:600;margin-bottom:8px;color:var(--ch2)">Volumes bipados nesta sess&atilde;o:</div>
+  <div id="volsList2"></div>
+</main>
+</div>
+
 <!-- TAB CATÁLOGO -->
 <div id="tab-catalogo" style="display:none">
 <main>
-  <div class="cat-section-title">Cat&aacute;logo de Produtos</div>
+  <div class="cat-title">Cat&aacute;logo de Produtos</div>
   <div id="catalogoList"><div class="empty">Carregando...</div></div>
-
   <div class="cat-form">
     <div class="cat-form-title">&#43; Cadastrar Novo Produto</div>
-    <input class="cf-input" type="text" id="pNome" placeholder="Nome do produto (ex: Caixa Espelho G)">
+    <input class="cf-input" type="text" id="pNome" placeholder="Nome (ex: Caixa Espelho Grande)">
     <div class="cf-grid">
       <div class="cf-field"><label>Comp. (cm)</label><input type="number" id="pC" min="0" step="0.1" placeholder="0"></div>
       <div class="cf-field"><label>Larg. (cm)</label><input type="number" id="pL" min="0" step="0.1" placeholder="0"></div>
-      <div class="cf-field"><label>Altura (cm)</label><input type="number" id="pA" min="0" step="0.1" placeholder="0"></div>
+      <div class="cf-field"><label>Alt. (cm)</label><input type="number" id="pA" min="0" step="0.1" placeholder="0"></div>
       <div class="cf-field"><label>Peso/un (kg)</label><input type="number" id="pPeso" min="0" step="0.1" placeholder="0"></div>
     </div>
+    <input class="cf-input" type="text" id="pCodigo" placeholder="C&oacute;digo de barras (opcional — para bip)">
     <button class="btn-salvar-prod" onclick="salvarProduto()">&#128190; Salvar no Cat&aacute;logo</button>
   </div>
 </main>
@@ -305,7 +377,8 @@ var produtos=[];
 var vid=0;
 var operadorNome='';
 var deferredPrompt=null;
-var currentTab='calc';
+var barcodeReader=null;
+var scannerAtivo=false;
 
 // PWA
 window.addEventListener('beforeinstallprompt',function(e){
@@ -349,11 +422,11 @@ document.getElementById('btnTrocarOp').addEventListener('click',function(){
 
 // TABS
 function switchTab(tab){
-  currentTab=tab;
-  ['calc','catalogo','hist'].forEach(function(t){
+  ['calc','scanner','catalogo','hist'].forEach(function(t){
     document.getElementById('tab-'+t).style.display=t===tab?'block':'none';
     document.getElementById('btn-tab-'+t).className='tab-btn'+(t===tab?' active':'');
   });
+  if(tab!=='scanner') pararScanner();
   if(tab==='catalogo') renderCatalogo();
   if(tab==='hist') loadHist();
 }
@@ -367,8 +440,163 @@ function toast(msg,dur){
   setTimeout(function(){t.classList.remove('show');},dur||2800);
 }
 
+// QR params
+function handleQR(){
+  var params=new URLSearchParams(window.location.search);
+  if(params.get('C')&&params.get('L')&&params.get('A')){
+    var C=parseFloat(params.get('C'))||0;
+    var L=parseFloat(params.get('L'))||0;
+    var A=parseFloat(params.get('A'))||0;
+    var desc=params.get('desc')||'Volume via QR';
+    var peso=parseFloat(params.get('peso'))||0;
+    document.getElementById('mDesc').value=desc;
+    document.getElementById('mC').value=C;
+    document.getElementById('mL').value=L;
+    document.getElementById('mA').value=A;
+    document.getElementById('mPeso').value=peso||'';
+    calcManual();
+    toast('QR lido: '+desc);
+    window.history.replaceState({},document.title,window.location.pathname);
+  }
+}
+
 // ═══════════════════════════════════════════
-// ENTRADA MANUAL RÁPIDA
+// SCANNER DE CÓDIGO DE BARRAS / QR
+// ═══════════════════════════════════════════
+function iniciarScanner(){
+  var video=document.getElementById('scannerVideo');
+  var status=document.getElementById('scanStatus');
+  status.textContent='Abrindo câmera...';
+  status.style.color='rgba(255,255,255,.6)';
+
+  navigator.mediaDevices.getUserMedia({video:{facingMode:'environment',width:{ideal:1280},height:{ideal:720}}})
+  .then(function(stream){
+    video.srcObject=stream;
+    video.play();
+    barcodeReader=stream;
+    scannerAtivo=true;
+    status.textContent='Aponte para o código de barras ou QR Code da caixa';
+    status.style.color='rgba(255,255,255,.7)';
+    scanLoop();
+  })
+  .catch(function(err){
+    status.textContent='Erro ao abrir câmera: '+err.message;
+    status.style.color='#f0b97a';
+  });
+}
+
+function pararScanner(){
+  scannerAtivo=false;
+  var video=document.getElementById('scannerVideo');
+  if(video&&video.srcObject){
+    video.srcObject.getTracks().forEach(function(t){t.stop();});
+    video.srcObject=null;
+  }
+  barcodeReader=null;
+}
+
+async function scanLoop(){
+  if(!scannerAtivo) return;
+  var video=document.getElementById('scannerVideo');
+  if(!video||video.readyState<2){setTimeout(scanLoop,200);return;}
+
+  // Usar BarcodeDetector se disponível (Android Chrome)
+  if('BarcodeDetector' in window){
+    try{
+      var detector=new BarcodeDetector({formats:['qr_code','code_128','code_39','ean_13','ean_8','upc_a','upc_e','itf','data_matrix']});
+      var barcodes=await detector.detect(video);
+      if(barcodes&&barcodes.length>0){
+        var code=barcodes[0].rawValue;
+        await processarCodigo(code);
+        return;
+      }
+    }catch(e){}
+  }
+
+  // Fallback: canvas snapshot para leitura manual
+  if(scannerAtivo) setTimeout(scanLoop,300);
+}
+
+async function processarCodigo(code){
+  pararScanner();
+  var status=document.getElementById('scanStatus');
+  status.textContent='Código lido: '+code+' — buscando produto...';
+  status.style.color='#a8d4b0';
+
+  // Verificar se é URL do app (QR gerado pelo catálogo)
+  if(code.includes('cubagem-moas.vercel.app')){
+    try{
+      var url=new URL(code);
+      var C=parseFloat(url.searchParams.get('C'))||0;
+      var L=parseFloat(url.searchParams.get('L'))||0;
+      var A=parseFloat(url.searchParams.get('A'))||0;
+      var desc=url.searchParams.get('desc')||'Volume via QR';
+      var peso=parseFloat(url.searchParams.get('peso'))||0;
+      adicionarDoCodigo(desc,C,L,A,1,peso,'QR Code');
+      return;
+    }catch(e){}
+  }
+
+  // Buscar no catálogo pelo código de barras
+  var prod=produtos.find(function(p){return p.codigo_barras===code||p.codigo_qr===code;});
+  if(prod){
+    adicionarDoCodigo(prod.nome,prod.comprimento,prod.largura,prod.altura,1,prod.peso_unitario||0,'Código de barras');
+    return;
+  }
+
+  // Tentar buscar no Supabase
+  try{
+    var res=await fetch(SUPA_URL+'/rest/v1/catalogo_cubagem?or=(codigo_barras.eq.'+encodeURIComponent(code)+',codigo_qr.eq.'+encodeURIComponent(code)+')&limit=1',{
+      headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+SUPA_KEY}
+    });
+    var data=await res.json();
+    if(data&&data.length>0){
+      var p=data[0];
+      adicionarDoCodigo(p.nome,p.comprimento,p.largura,p.altura,1,p.peso_unitario||0,'Código de barras');
+      return;
+    }
+  }catch(e){}
+
+  // Não encontrado — mostrar código para entrada manual
+  status.textContent='Código "'+code+'" não encontrado no catálogo. Cadastre-o!';
+  status.style.color='#f0b97a';
+  document.getElementById('codigoNaoEncontrado').style.display='block';
+  document.getElementById('codigoLido').textContent=code;
+  document.getElementById('pCodigo').value=code;
+  setTimeout(iniciarScanner,3000);
+}
+
+function adicionarDoCodigo(desc,C,L,A,qtd,peso,origem){
+  // Verificar se já existe este produto na sessão para somar
+  var existente=volumes.find(function(v){return v.desc===desc;});
+  if(existente){
+    existente.qtd+=qtd;
+    renderVolumes();
+    toast('✓ +'+qtd+' '+desc+' (total: '+existente.qtd+')');
+    switchTab('calc');
+    salvarHistorico({desc:desc,C:C,L:L,A:A,qtd:qtd,pesoReal:peso,obs:'Bipado via '+origem});
+    return;
+  }
+  vid++;
+  volumes.push({id:vid,desc:desc,comp:C,larg:L,alt:A,qtd:qtd,pesoReal:peso});
+  renderVolumes();
+  toast('✓ '+desc+' adicionado!');
+  switchTab('calc');
+  salvarHistorico({desc:desc,C:C,L:L,A:A,qtd:qtd,pesoReal:peso,obs:'Bipado via '+origem});
+
+  // Vibrar para confirmar
+  if(navigator.vibrate) navigator.vibrate([100,50,100]);
+}
+
+function bipManual(){
+  var code=document.getElementById('inputBip').value.trim();
+  if(!code){toast('Digite ou escaneie um código!');return;}
+  document.getElementById('inputBip').value='';
+  processarCodigo(code);
+}
+
+// ═══════════════════════════════════════════
+// ENTRADA MANUAL
 // ═══════════════════════════════════════════
 function calcManual(){
   var C=parseFloat(document.getElementById('mC').value)||0;
@@ -388,65 +616,47 @@ function calcManual(){
   document.getElementById('mrReal').textContent=fmt(real)+' kg';
   document.getElementById('mrCub').textContent=fmt(cubado)+' kg';
   document.getElementById('mrTax').textContent=fmt(taxado)+' kg';
-  var taxBox=document.getElementById('mrTaxBox');
-  taxBox.className='res-tax-box '+(over?'warn':'ok');
+  document.getElementById('mrTaxBox').className='res-tax-box '+(over?'warn':'ok');
   box.style.display='block';
-  window._manual={C:C,L:L,A:A,qtd:qtd,pesoReal:peso,m3:m3,cubado:cubado,real:real,taxado:taxado,desc:document.getElementById('mDesc').value||'Volume '+( vid+1)};
+  window._manual={C:C,L:L,A:A,qtd:qtd,pesoReal:peso,m3:m3,cubado:cubado,real:real,taxado:taxado,desc:document.getElementById('mDesc').value||'Volume '+(vid+1)};
 }
+
 ['mC','mL','mA','mQtd','mPeso'].forEach(function(id){
   var el=document.getElementById(id);
   if(el)el.addEventListener('input',calcManual);
 });
+
 async function adicionarManual(){
-  if(!window._manual){toast('Preencha as dimensoes primeiro!');return;}
+  if(!window._manual){toast('Preencha as dimensoes!');return;}
   var d=window._manual;
   if(d.C===0||d.L===0||d.A===0){toast('Dimensoes invalidas.');return;}
   vid++;d.desc=document.getElementById('mDesc').value||'Volume '+vid;
   volumes.push({id:vid,desc:d.desc,comp:d.C,larg:d.L,alt:d.A,qtd:d.qtd,pesoReal:d.pesoReal});
   renderVolumes();
-  // Limpar campos
   ['mDesc','mC','mL','mA','mPeso'].forEach(function(id){document.getElementById(id).value='';});
   document.getElementById('mQtd').value='1';
   document.getElementById('manualResultBox').style.display='none';
   window._manual=null;
-  // Salvar Supabase
+  salvarHistorico({desc:d.desc,C:d.C,L:d.L,A:d.A,qtd:d.qtd,pesoReal:d.pesoReal,obs:'Manual'});
+  toast('Volume '+vid+' adicionado!');
+}
+
+async function salvarHistorico(d){
+  var m3=(d.C/100)*(d.L/100)*(d.A/100)*d.qtd;
+  var cubado=m3*getFator();
+  var real=(d.pesoReal||0)*d.qtd;
+  var taxado=Math.max(cubado,real);
   try{
     await fetch(SUPA_URL+'/rest/v1/cubagem_historico',{
       method:'POST',
       headers:{'Content-Type':'application/json','apikey':SUPA_KEY,'Authorization':'Bearer '+SUPA_KEY,'Prefer':'return=minimal'},
-      body:JSON.stringify({operador:operadorNome||'Anonimo',descricao:d.desc,comprimento:d.C,largura:d.L,altura:d.A,qtd_caixas:d.qtd,peso_real:d.real,peso_cubado:d.cubado,peso_taxado:d.taxado,volume_m3:d.m3,fator_cubagem:getFator(),observacao:'Manual',dispositivo:navigator.userAgent.includes('Mobile')?'Mobile':'Desktop'})
+      body:JSON.stringify({operador:operadorNome||'Anonimo',descricao:d.desc,comprimento:d.C,largura:d.L,altura:d.A,qtd_caixas:d.qtd,peso_real:real,peso_cubado:cubado,peso_taxado:taxado,volume_m3:m3,fator_cubagem:getFator(),observacao:d.obs||'',dispositivo:navigator.userAgent.includes('Mobile')?'Mobile':'Desktop'})
     });
-    toast('✓ Volume '+vid+' salvo!');
-  }catch(e){toast('Volume '+vid+' adicionado!');}
+  }catch(e){console.log('Supabase err:',e);}
 }
 
 // ═══════════════════════════════════════════
-// QR CODE — leitura via câmera ou link
-// ═══════════════════════════════════════════
-function handleQR(){
-  // Verifica se URL tem parâmetros de dimensão (vindo de QR Code)
-  var params=new URLSearchParams(window.location.search);
-  if(params.get('C')&&params.get('L')&&params.get('A')){
-    var C=parseFloat(params.get('C'))||0;
-    var L=parseFloat(params.get('L'))||0;
-    var A=parseFloat(params.get('A'))||0;
-    var desc=params.get('desc')||'Volume via QR';
-    var peso=parseFloat(params.get('peso'))||0;
-    // Preenche campos manuais
-    document.getElementById('mDesc').value=desc;
-    document.getElementById('mC').value=C;
-    document.getElementById('mL').value=L;
-    document.getElementById('mA').value=A;
-    document.getElementById('mPeso').value=peso;
-    calcManual();
-    toast('✓ Dimensões lidas do QR Code: '+desc);
-    // Limpa URL para não reler
-    window.history.replaceState({},document.title,window.location.pathname);
-  }
-}
-
-// ═══════════════════════════════════════════
-// CATÁLOGO DE PRODUTOS
+// CATÁLOGO
 // ═══════════════════════════════════════════
 async function loadProdutos(){
   try{
@@ -455,14 +665,14 @@ async function loadProdutos(){
     });
     var data=await res.json();
     if(Array.isArray(data)) produtos=data;
-    renderCatalogo();
     renderProdutosSelect();
-  }catch(e){console.log('Erro catálogo:',e);}
+    renderCatalogo();
+  }catch(e){}
 }
 
 function renderProdutosSelect(){
   var sel=document.getElementById('produtoSelect');
-  sel.innerHTML='<option value="">-- Selecione um produto --</option>';
+  sel.innerHTML='<option value="">-- Selecione produto do catálogo --</option>';
   produtos.forEach(function(p){
     var opt=document.createElement('option');
     opt.value=p.id;
@@ -472,10 +682,9 @@ function renderProdutosSelect(){
 }
 
 document.getElementById('produtoSelect').addEventListener('change',function(){
-  var id=this.value;
-  if(!id) return;
+  var id=this.value;if(!id)return;
   var p=produtos.find(function(x){return String(x.id)===String(id);});
-  if(!p) return;
+  if(!p)return;
   document.getElementById('mDesc').value=p.nome;
   document.getElementById('mC').value=p.comprimento;
   document.getElementById('mL').value=p.largura;
@@ -483,14 +692,14 @@ document.getElementById('produtoSelect').addEventListener('change',function(){
   document.getElementById('mPeso').value=p.peso_unitario||'';
   calcManual();
   toast('✓ '+p.nome+' carregado!');
-  // Volta para aba calc
   switchTab('calc');
+  this.value='';
 });
 
 function renderCatalogo(){
   var container=document.getElementById('catalogoList');
   if(!produtos.length){
-    container.innerHTML='<div class="empty">Nenhum produto cadastrado ainda.<br>Adicione o primeiro produto abaixo!</div>';
+    container.innerHTML='<div class="empty">Nenhum produto cadastrado.<br>Adicione abaixo!</div>';
     return;
   }
   var fator=getFator();
@@ -501,14 +710,14 @@ function renderCatalogo(){
       '<div class="prod-hd">'+
         '<span class="prod-nome">'+p.nome+'</span>'+
         '<div style="display:flex;gap:6px">'+
-          '<button class="btn-qr-gen" onclick="gerarQR(\''+p.id+'\')">&#128247; QR</button>'+
+          '<button class="btn-qr-gen" onclick="gerarQR(\''+p.id+'\')">QR</button>'+
           '<button class="btn-del-prod" onclick="deletarProduto(\''+p.id+'\')">&#215;</button>'+
         '</div>'+
       '</div>'+
-      '<div class="prod-dims">'+p.comprimento+' × '+p.largura+' × '+p.altura+' cm</div>'+
+      '<div class="prod-dims">'+p.comprimento+' × '+p.largura+' × '+p.altura+' cm'+(p.codigo_barras?' &nbsp;·&nbsp; Cód: '+p.codigo_barras:'')+'</div>'+
       '<div class="prod-info">'+
         '<span>'+m3.toLocaleString('pt-BR',{minimumFractionDigits:4,maximumFractionDigits:4})+' m³</span>'+
-        '<span>Cubado: '+fmt(cub)+' kg</span>'+
+        '<span>Cub: '+fmt(cub)+' kg</span>'+
         (p.peso_unitario?'<span>Peso: '+p.peso_unitario+' kg/un</span>':'')+
       '</div>'+
       '<div id="qr-'+p.id+'" class="qr-container" style="display:none"></div>'+
@@ -522,57 +731,54 @@ async function salvarProduto(){
   var L=parseFloat(document.getElementById('pL').value)||0;
   var A=parseFloat(document.getElementById('pA').value)||0;
   var peso=parseFloat(document.getElementById('pPeso').value)||0;
+  var cod=document.getElementById('pCodigo').value.trim();
   if(!nome||C===0||L===0||A===0){toast('Preencha nome e dimensões!');return;}
   try{
+    var body={nome:nome,comprimento:C,largura:L,altura:A};
+    if(peso) body.peso_unitario=peso;
+    if(cod) body.codigo_barras=cod;
     var res=await fetch(SUPA_URL+'/rest/v1/catalogo_cubagem',{
       method:'POST',
       headers:{'Content-Type':'application/json','apikey':SUPA_KEY,'Authorization':'Bearer '+SUPA_KEY,'Prefer':'return=representation'},
-      body:JSON.stringify({nome:nome,comprimento:C,largura:L,altura:A,peso_unitario:peso||null})
+      body:JSON.stringify(body)
     });
     var data=await res.json();
     if(data&&data[0]) produtos.push(data[0]);
     else await loadProdutos();
-    ['pNome','pC','pL','pA','pPeso'].forEach(function(id){document.getElementById(id).value='';});
-    renderCatalogo();
-    renderProdutosSelect();
-    toast('✓ Produto cadastrado!');
-  }catch(e){toast('Erro ao salvar produto.');}
+    ['pNome','pC','pL','pA','pPeso','pCodigo'].forEach(function(id){document.getElementById(id).value='';});
+    document.getElementById('codigoNaoEncontrado').style.display='none';
+    renderCatalogo();renderProdutosSelect();
+    toast('✓ Produto salvo!');
+    switchTab('catalogo');
+  }catch(e){toast('Erro ao salvar.');}
 }
 
 async function deletarProduto(id){
   if(!confirm('Remover este produto do catálogo?'))return;
   try{
     await fetch(SUPA_URL+'/rest/v1/catalogo_cubagem?id=eq.'+id,{
-      method:'DELETE',
-      headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+SUPA_KEY}
+      method:'DELETE',headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+SUPA_KEY}
     });
     produtos=produtos.filter(function(p){return String(p.id)!==String(id);});
-    renderCatalogo();
-    renderProdutosSelect();
+    renderCatalogo();renderProdutosSelect();
     toast('Produto removido.');
   }catch(e){toast('Erro ao remover.');}
 }
 
-// ═══════════════════════════════════════════
-// GERADOR DE QR CODE
-// ═══════════════════════════════════════════
 function gerarQR(prodId){
   var p=produtos.find(function(x){return String(x.id)===String(prodId);});
   if(!p)return;
   var container=document.getElementById('qr-'+prodId);
   if(container.style.display!=='none'){container.style.display='none';return;}
-  // URL com parâmetros da caixa
   var base='https://cubagem-moas.vercel.app';
   var params='?C='+p.comprimento+'&L='+p.largura+'&A='+p.altura+'&desc='+encodeURIComponent(p.nome)+(p.peso_unitario?'&peso='+p.peso_unitario:'');
   var url=base+params;
-  // Gerar QR via API pública (não precisa de biblioteca)
-  var qrUrl='https://api.qrserver.com/v1/create-qr-code/?size=200x200&data='+encodeURIComponent(url);
-  container.innerHTML=
-    '<div style="padding:12px;text-align:center">'+
-      '<img src="'+qrUrl+'" style="width:160px;height:160px;border:4px solid white;border-radius:8px" alt="QR Code">'+
-      '<div style="font-size:11px;color:rgba(255,255,255,.6);margin-top:6px">Escaneie para preencher automaticamente</div>'+
-      '<a href="'+qrUrl+'" download="qr-'+p.nome.replace(/\s/g,'-')+'.png" style="display:inline-block;margin-top:8px;background:var(--sage);color:#fff;padding:6px 14px;border-radius:6px;font-size:12px;text-decoration:none">&#8595; Baixar QR</a>'+
-    '</div>';
+  var qrUrl='https://api.qrserver.com/v1/create-qr-code/?size=220x220&data='+encodeURIComponent(url);
+  container.innerHTML='<div style="padding:14px;text-align:center">'+
+    '<img src="'+qrUrl+'" style="width:180px;height:180px;border:4px solid #fff;border-radius:8px" alt="QR">'+
+    '<div style="font-size:11px;color:rgba(255,255,255,.5);margin:6px 0">Escaneie para bip automático</div>'+
+    '<a href="'+qrUrl+'" download="qr-'+p.nome.replace(/\s/g,'-')+'.png" style="display:inline-block;background:var(--sage);color:#fff;padding:7px 16px;border-radius:6px;font-size:12px;text-decoration:none;font-weight:600">&#8595; Baixar QR</a>'+
+  '</div>';
   container.style.display='block';
 }
 
@@ -588,22 +794,41 @@ function updVol(id,f,v){
   var vol=volumes.find(function(x){return x.id===id;});
   if(vol){vol[f]=parseFloat(v)||0;renderVolumes();}
 }
-function delVol(id){volumes=volumes.filter(function(x){return x.id!==id;});renderVolumes();}
-function limparTudo(){if(!volumes.length)return;if(confirm('Limpar todos?')){volumes=[];renderVolumes();}}
+function delVol(id,desc){
+  if(!confirm('Apagar o volume "'+desc+'" da lista?\n\nEsta ação não pode ser desfeita.'))return;
+  volumes=volumes.filter(function(x){return x.id!==id;});
+  renderVolumes();
+  toast('Volume removido.');
+}
+function limparTudo(){
+  if(!volumes.length)return;
+  if(confirm('Apagar TODOS os volumes desta sessão?\n\nEsta ação não pode ser desfeita.'))
+    {volumes=[];renderVolumes();}
+}
 
 function buildCard(v,r,over){
   var m3s=r.m3.toLocaleString('pt-BR',{minimumFractionDigits:4,maximumFractionDigits:4});
   var rows=[['C(cm)','comp',v.comp,'0.1'],['L(cm)','larg',v.larg,'0.1'],['A(cm)','alt',v.alt,'0.1'],['Qtd','qtd',v.qtd,'1'],['Peso/cx','pesoReal',v.pesoReal,'0.1']];
   var fh='';
-  rows.forEach(function(r){fh+='<div class="vf"><label>'+r[0]+'</label><input type="number" min="0" step="'+r[3]+'" value="'+r[2]+'" oninput="updVol('+v.id+',\''+r[1]+'\',this.value)"></div>';});
+  rows.forEach(function(row){fh+='<div class="vf"><label>'+row[0]+'</label><input type="number" min="0" step="'+row[3]+'" value="'+row[2]+'" oninput="updVol('+v.id+',\''+row[1]+'\',this.value)"></div>';});
   fh+='<div class="vf"><label>m³</label><input readonly value="'+m3s+'"></div>';
-  return '<div class="vol-card"><div class="vc-hd"><span class="vc-name">'+v.desc+'</span><span class="vc-badge'+(over?' w':'')+'">'+fmt(r.taxado)+' kg</span></div><div class="vg">'+fh+'</div><div class="vf-row"><span class="vf-info">Real:'+fmt(r.real)+' Cub:'+fmt(r.cubado)+' <strong>Tax:'+fmt(r.taxado)+'kg</strong></span><button class="btn-del" onclick="delVol('+v.id+')">\u00d7</button></div></div>';
+  return '<div class="vol-card">'+
+    '<div class="vc-hd">'+
+      '<span class="vc-name">'+v.desc+'</span>'+
+      '<div style="display:flex;align-items:center;gap:8px">'+
+        '<span class="vc-badge'+(over?' w':'')+'">'+fmt(r.taxado)+' kg</span>'+
+        '<button class="btn-del" onclick="delVol('+v.id+',\''+v.desc.replace(/'/g,'')+'\')" title="Apagar este volume">&#128465;</button>'+
+      '</div>'+
+    '</div>'+
+    '<div class="vg">'+fh+'</div>'+
+    '<div class="vf-row"><span class="vf-info">Real:'+fmt(r.real)+' | Cub:'+fmt(r.cubado)+' | <strong>Tax:'+fmt(r.taxado)+'kg</strong></span></div>'+
+  '</div>';
 }
 
 function renderVolumes(){
   var list=document.getElementById('volsList');
   if(!volumes.length){
-    list.innerHTML='<div class="empty">Adicione volumes acima para comecar!</div>';
+    list.innerHTML='<div class="empty">Nenhum volume ainda.<br>Use o scanner ou insira manualmente.</div>';
     document.getElementById('totalBar').style.display='none';
     document.getElementById('footerActs').style.display='none';
     return;
@@ -623,20 +848,23 @@ function renderVolumes(){
   document.getElementById('footerActs').style.display='flex';
 }
 
-// HISTÓRICO
+// ═══════════════════════════════════════════
+// HISTÓRICO COM APAGAR
+// ═══════════════════════════════════════════
 async function loadHist(){
   var c=document.getElementById('histContainer');
   c.innerHTML='<div class="loading-hist"><div class="spinner"></div><span>Carregando...</span></div>';
   var op=document.getElementById('filtroOp').value.trim();
   var dt=document.getElementById('filtroData').value;
-  var url=SUPA_URL+'/rest/v1/cubagem_historico?select=*&order=created_at.desc&limit=100';
+  var url=SUPA_URL+'/rest/v1/cubagem_historico?select=*&order=created_at.desc&limit=100&deleted_at=is.null';
   if(op)url+='&operador=ilike.*'+encodeURIComponent(op)+'*';
   if(dt)url+='&created_at=gte.'+dt+'T00:00:00';
   try{
     var res=await fetch(url,{headers:{'apikey':SUPA_KEY,'Authorization':'Bearer '+SUPA_KEY}});
     var data=await res.json();
     if(!data||!data.length){c.innerHTML='<div class="empty">Nenhum registro encontrado.</div>';return;}
-    var tot={t:0,m:0};data.forEach(function(r){tot.t+=parseFloat(r.peso_taxado)||0;tot.m+=parseFloat(r.volume_m3)||0;});
+    var tot={t:0,m:0};
+    data.forEach(function(r){tot.t+=parseFloat(r.peso_taxado)||0;tot.m+=parseFloat(r.volume_m3)||0;});
     var ops={};data.forEach(function(r){ops[r.operador]=(ops[r.operador]||0)+1;});
     var kpi='<div class="hkpis">'+
       '<div class="hk"><div class="hkv">'+data.length+'</div><div class="hkl">Registros</div></div>'+
@@ -649,13 +877,37 @@ async function loadHist(){
       var dt2=new Date(r.created_at);
       var ds=dt2.toLocaleDateString('pt-BR')+' '+dt2.toLocaleTimeString('pt-BR',{hour:'2-digit',minute:'2-digit'});
       var ov=(parseFloat(r.peso_cubado)||0)>(parseFloat(r.peso_real)||0);
-      rows+='<div class="hr">'+
-        '<div class="hr-top"><span class="hr-op">'+r.operador+'</span><span class="hr-dt">'+ds+'</span><span class="hr-b'+(ov?' w':'')+'">'+fmt(parseFloat(r.peso_taxado)||0)+' kg</span></div>'+
-        '<div class="hr-d">'+(r.descricao?'<strong>'+r.descricao+'</strong> · ':'')+( r.comprimento?r.comprimento+'×'+r.largura+'×'+r.altura+' cm | ':'')+( r.volume_m3?parseFloat(r.volume_m3).toLocaleString('pt-BR',{minimumFractionDigits:4,maximumFractionDigits:4})+' m³':'')+'</div>'+
+      rows+='<div class="hr" id="hr-'+r.id+'">'+
+        '<div class="hr-top">'+
+          '<span class="hr-op">'+r.operador+'</span>'+
+          '<span class="hr-dt">'+ds+'</span>'+
+          '<span class="hr-b'+(ov?' w':'')+'">'+fmt(parseFloat(r.peso_taxado)||0)+' kg</span>'+
+          '<button class="btn-del-hist" onclick="apagarHistorico(\''+r.id+'\',\''+( r.descricao||'este registro').replace(/'/g,'')+'\')">&#128465;</button>'+
+        '</div>'+
+        '<div class="hr-d">'+(r.descricao?'<strong>'+r.descricao+'</strong> &nbsp;':'')+
+          (r.comprimento?r.comprimento+'×'+r.largura+'×'+r.altura+' cm':'')+
+          (r.qtd_caixas&&r.qtd_caixas>1?' × '+r.qtd_caixas+' cx':'')+
+          (r.volume_m3?' | '+parseFloat(r.volume_m3).toLocaleString('pt-BR',{minimumFractionDigits:4,maximumFractionDigits:4})+' m³':'')+
+        '</div>'+
+        (r.observacao?'<div class="hr-obs">'+r.observacao+'</div>':'')+
       '</div>';
     });
     c.innerHTML=kpi+'<div class="hlist">'+rows+'</div>';
   }catch(e){c.innerHTML='<div class="empty" style="color:#b94040">Erro ao carregar.</div>';}
+}
+
+async function apagarHistorico(id,desc){
+  if(!confirm('Apagar o registro "'+desc+'" do histórico?\n\nEsta ação marca o registro como excluído.'))return;
+  try{
+    await fetch(SUPA_URL+'/rest/v1/cubagem_historico?id=eq.'+id,{
+      method:'PATCH',
+      headers:{'Content-Type':'application/json','apikey':SUPA_KEY,'Authorization':'Bearer '+SUPA_KEY},
+      body:JSON.stringify({deleted_at:new Date().toISOString()})
+    });
+    var el=document.getElementById('hr-'+id);
+    if(el){el.style.opacity='0';el.style.transition='opacity .3s';setTimeout(function(){el.remove();},300);}
+    toast('Registro apagado.');
+  }catch(e){toast('Erro ao apagar.');}
 }
 
 function exportCSV(){
@@ -672,8 +924,9 @@ function copiarResumo(){
 
 document.getElementById('fatorCub').addEventListener('input',function(){renderVolumes();});
 document.getElementById('btnFiltrar').addEventListener('click',loadHist);
+document.getElementById('btnBip').addEventListener('click',bipManual);
+document.getElementById('inputBip').addEventListener('keydown',function(e){if(e.key==='Enter')bipManual();});
 
-// INIT
 handleQR();
 checkOperador();
 loadProdutos();
